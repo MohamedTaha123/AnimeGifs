@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_163821) do
+ActiveRecord::Schema.define(version: 2020_05_01_183206) do
 
   create_table "announcements", force: :cascade do |t|
     t.datetime "published_at"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2020_05_01_163821) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "gifs", force: :cascade do |t|
+    t.string "image"
+    t.string "description"
+    t.string "label"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "notifications", force: :cascade do |t|

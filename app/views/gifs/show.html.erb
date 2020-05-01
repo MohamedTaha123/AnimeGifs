@@ -1,0 +1,21 @@
+<div class="page-header">
+  <%= link_to gifs_path, class: 'btn btn-default' do %>
+    All Gifs
+  <% end %>
+  <%= link_to edit_gif_path(@gif), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show gif</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Image:</dt>
+  <dd><%= @gif.image %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @gif.description %></dd>
+
+  <dt>Label:</dt>
+  <dd><%= @gif.label %></dd>
+
+</dl>
