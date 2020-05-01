@@ -2,12 +2,44 @@
 // $light-orange: #ff8c00;
 // $navbar-default-color: $light-orange;
 
+
+// Brand Colors
+$blue: #19508c;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #84212a;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #67b9c6;
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "bootstrap";
-@import "jumpstart/sticky-footer";
-@import "jumpstart/announcements";
+@import 'nucleo';
+@import 'nucleo-svg';
+@import 'argon';
+@import 'jumpstart/announcements.scss';
+@import 'jumpstart/sticky-footer.scss';
 
+.navbar-brand {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  text-transform: none;
+}
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
   .container {
