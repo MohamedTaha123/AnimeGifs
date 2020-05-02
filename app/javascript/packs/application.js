@@ -9,6 +9,8 @@ require("@rails/activestorage").start();
 require("channels");
 require("local-time").start();
 require("jquery");
+
+
 window.Rails = Rails;
 
 import 'bootstrap';
@@ -18,3 +20,6 @@ $(document).on("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
 })
+
+require("trix")
+require("@rails/actiontext")

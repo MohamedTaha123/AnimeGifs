@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'dashboard/index'
   resources :gifs
   namespace :admin do
     resources :users

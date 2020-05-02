@@ -1,15 +1,17 @@
+<div class="box">
+  <%= simple_form_for(@gif) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@gif) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      
+      <%= f.file_field :image,as: :file, class: "btn btn-dark", required: true %>
+      <%= f.rich_text_area :description, placeholder: "Little Description" %>
+      <%= f.input :label , placeholder: "Label"%>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :image %>
-    <%= f.input :description %>
-    <%= f.input :label %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 
 <dl class="dl-horizontal">
   <dt>Image:</dt>
-  <dd><%= @gif.image %></dd>
+  <dd><%= image_tag(@gif.image.url) %></dd>
 
   <dt>Description:</dt>
   <dd><%= @gif.description %></dd>

@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <%= link_to "AnimaGif", root_path, class: "navbar-brand" %>
+    <%= link_to "AnimaGif.io", root_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default"
       aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="javascript:void(0)">
-              <h5>AnimeGif</h5>
+              <h5>AnimaGif.io</h5>
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -40,7 +40,11 @@
         <li class="nav-item">
           <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
         <% if user_signed_in? %>
-
+        <li class="nav-item">
+          <%= link_to new_gif_path , class: "nav-link", "data-toggle": "tooltip", "data-placement": "bottom" ,"title": "New Gif" do %>
+            <span><i class="fas fa-plus"></i></span>
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= link_to notifications_path, class: "nav-link" do %>
           <span><i class="far fa-bell" aria-hidden="true"></i></span>
@@ -63,8 +67,11 @@
 
         <% else %>
         <li class="nav-item">
+          <%= link_to  "New Gif", new_gif_path, class:"nav-link btn btn-danger btn-round btn-sm" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn btn-info btn-sm btn-round" %></li>
-        <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link btn" %></li>
+        <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link " %></li>
         <% end %>
       </ul>
     </div>
