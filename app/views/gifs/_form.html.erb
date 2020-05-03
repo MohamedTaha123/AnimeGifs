@@ -1,17 +1,33 @@
 <div class="box">
-  <%= simple_form_for(@gif) do |f| %>
+  <div class="card">
+    <%= simple_form_for(@gif) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      
-      <%= f.file_field :image,as: :file, class: "img btn btn-dark", required: true %>
-      <%= f.rich_text_area :description, placeholder: "Little Description", class: "form-control" %>
-      <%= f.input :label , placeholder: "Label"%>
+      <div class="form-group">
+        <% unless @gif.image.blank? %>
+          <%= image_tag (@gif.image_url) %>
+        <% end %>
+
+        
+        <br />
+
+        <%= f.input :image,as: :image_preview, input_html: {preview_version: :thumb} %>
+
+      </div>
+      <div class="form-group">
+        <%= f.rich_text_area :description, placeholder: "Little Description", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :label , placeholder: "Label"%>
+      </div>
     </div>
 
     <div class="form-actions">
       <%= f.button :submit %>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+

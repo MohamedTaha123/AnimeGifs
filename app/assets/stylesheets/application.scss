@@ -24,12 +24,15 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
 
+// Notify Offset
+
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'nucleo';
 @import 'nucleo-svg';
 @import 'argon';
+@import "bootstrap_notify";
 @import 'jumpstart/announcements.scss';
 @import 'jumpstart/sticky-footer.scss';
 @import "./actiontext.scss";
@@ -84,4 +87,5 @@ body > .alert {
   box-shadow: none;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
 

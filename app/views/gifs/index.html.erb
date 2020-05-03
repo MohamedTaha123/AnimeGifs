@@ -16,8 +16,9 @@
 <div class="card-columns ">
   <% @gifs.each do |gif| %>
   <div class="card">
-  
-      <%= link_to  image_tag(gif.image.url(:thumb), class: "card-img-top" )%>
+    <%= link_to  gif_path(gif) do %>
+            <%=  image_tag(gif.image.url(:thumb), class: "card-img-top" )%>
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= gif.label %></h5>
       <p class="card-text"><%= gif.description %></p>
@@ -26,3 +27,4 @@
   </div> 
   <% end %>
 </div>
+
