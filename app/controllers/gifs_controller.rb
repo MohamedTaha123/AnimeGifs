@@ -1,17 +1,22 @@
 # frozen_string_literal: true
 
 class GifsController < ApplicationController
-  before_action :set_gif, only: %i[show edit update destroy]
+  before_action :set_gif, only: %i[show edit update destroy like unlike]
   before_action :authenticate_user!, except: [:index]
+  impressionist actions: [:show]
+
   # GET /gifs
   # GET /gifs.json
   def index
     @gifs = Gif.all
+    @trending = Gif.last(5)
   end
 
   # GET /gifs/1
   # GET /gifs/1.json
-  def show; end
+  def show
+    @gif = Gif.friendly.find(params[:id])
+  end
 
   # GET /gifs/new
   def new
@@ -62,11 +67,29 @@ class GifsController < ApplicationController
     end
   end
 
+  # PUT /gifs/1/like
+  def like
+    @gif.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_to request.referer, notice: 'Liked.' }
+      format.json { head :no_content }
+    end
+  end
+
+  # PUT /gifs/1/unlike
+  def unlike
+    @gif.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_to request.referer, alert: 'Unliked' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_gif
-    @gif = Gif.find(params[:id])
+    @gif = Gif.friendly.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

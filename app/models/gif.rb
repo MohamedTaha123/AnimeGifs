@@ -2,7 +2,11 @@
 
 class Gif < ApplicationRecord
   belongs_to :user
-  has_rich_text :description
+  # has_rich_text :description
+  extend FriendlyId
+  friendly_id :label, use: :slugged
+  acts_as_votable
+  is_impressionable 
   mount_uploader :image, ImageUploader, mount_on: :image
   validates_integrity_of :image
   validates_processing_of :image

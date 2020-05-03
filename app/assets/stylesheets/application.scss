@@ -6,9 +6,9 @@ $blue: #19508c;
 $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #e83e8c;
-$red: #84212a;
-$orange: #fd7e14;
-$yellow: #ffc107;
+$red: #f0747e;
+$orange: #fd4646;
+$yellow: #f6f312;
 $green: #28a745;
 $teal: #20c997;
 $cyan: #67b9c6;
@@ -35,6 +35,7 @@ $black: #000;
 @import "bootstrap_notify";
 @import 'jumpstart/announcements.scss';
 @import 'jumpstart/sticky-footer.scss';
+@import 'gifs.scss';
 @import "./actiontext.scss";
 
 .navbar-brand {
@@ -49,7 +50,12 @@ $black: #000;
     margin-right: 0;
   }
 }
-
+body {
+  margin: 0;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; 
+  font-size: 1rem;
+  font-weight: 400;
+}
 html {
   font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; 
   line-height: 1.5;

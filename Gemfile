@@ -55,8 +55,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
+gem 'acts_as_votable'
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap_notify', '~> 0.0.5'
@@ -68,6 +67,7 @@ gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'haml', '~> 5.1', '>= 5.1.2'
+gem 'impressionist'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'name_of_person', '~> 1.1'
 gem 'omniauth-facebook', '~> 5.0'
@@ -77,4 +77,5 @@ gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_form_fancy_uploads'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'whenever', require: false

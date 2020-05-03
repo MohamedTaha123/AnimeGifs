@@ -1,33 +1,30 @@
-<div class="box">
-  <div class="card">
-    <%= simple_form_for(@gif) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for(@gif) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <div class="form-group">
-        <% unless @gif.image.blank? %>
-          <%= image_tag (@gif.image_url) %>
-        <% end %>
-
-        
-        <br />
-
-        <%= f.input :image,as: :image_preview, input_html: {preview_version: :thumb} %>
-
-      </div>
-      <div class="form-group">
-        <%= f.rich_text_area :description, placeholder: "Little Description", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.input :label , placeholder: "Label"%>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+<div class="form-inputs">
+  <div class="form-group">
+    <% unless @gif.image.blank? %>
+    <%= image_tag (@gif.image_url) %>
     <% end %>
+
+
+    <br />
+
+    <%= f.input :image,as: :image_preview, input_html: {preview_version: :thumb} ,class: "form-control" %>
+
+  </div>
+  <div class="form-group">
+    <%= f.input :description, as: :text, placeholder: "Little Description", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :label , placeholder: "Label"%>
   </div>
 </div>
 
+<div class="form-actions">
+  <div class="text-center">
+    <%= f.submit "CREATE" , class: "btn btn-info btn-outline" %>
+  </div>
+</div>
+<% end %>

@@ -1,30 +1,72 @@
-
-
-
 <div class="row">
-  <div class="col-sm-6">
-    <h1>Gifs</h1>
-  </div>
-
-  <div class="col-sm-6 text-right">
-  <%= link_to new_gif_path, class: 'btn btn-primary' do %>
-    Add New Gif
-  <% end %>
-  </div>
-</div>
-
-<div class="card-columns ">
-  <% @gifs.each do |gif| %>
-  <div class="card">
-    <%= link_to  gif_path(gif) do %>
-            <%=  image_tag(gif.image.url(:thumb), class: "card-img-top" )%>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= gif.label %></h5>
-      <p class="card-text"><%= gif.description %></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="col-sm-8">
+    
+    <div class="card-columns">
+      <% @gifs.each do |gif| %>
+      <div class="card bg-dark  border-0">
+        <%= link_to  gif_path(gif) do %>
+        <%=  image_tag(gif.image.url(:thumb), class: "card-img-top" )%>
+        <% end %>
+        <div class="card-body">
+          
+          <h6 class="card-title">
+            <%= image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+            @<%= gif.user.name %> 
+            
+          </h6> 
+          <% if user_signed_in?%>
+              <% if  current_user.liked? gif %>
+                <%= button_to "Liked", unlike_gif_path(gif) , method: :put , class: "btn btn-sm btn-round btn-round", remote: true %>
+              <% else %>
+                <%= button_to "Like", like_gif_path(gif) , method: :put , class: "btn btn-sm btn-danger btn-round", remote: true %>
+              <% end %>
+            <% else %>
+              <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-info"%>
+          <% end %>
+          <p class="card-text"><%= gif.description %></p>
+          <p class="card-text">
+          <small class="text-muted">
+            <div class= "row">
+              <div class="col">
+                <%= time_ago_in_words(gif.created_at) %> 
+              </div>
+              <div class="col">
+              
+                  <%= gif.impressionist_count %>
+                  views 
+              </div>
+            </div>
+          </small>
+          </p>
+        </div>
+      </div>
+      <% end %>
     </div>
-  </div> 
-  <% end %>
+  </div>
+  
+  <div class="col-sm-4">
+    <div class= "container">
+      <h2 style="font-weight: bolder;">Trending GIFs</h2>
+      <% @trending.each do |trending| %>
+        <div class="card">
+          <%= link_to  gif_path(trending) do %>
+          <%=  image_tag(trending.image.url(:thumb), class: "card-img-top" )%>
+          <% end %>
+          <div class="card-body">
+            
+            <h6 class="card-title">
+              <%= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+              @<%= trending.user.name %>  
+            </h6> 
+            <p class="card-text"><%= trending.description %></p>
+            <p class="card-text">
+            <small class="text-muted">
+              "Created"  <%= time_ago_in_words(trending.created_at) %></small>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
 </div>
-
