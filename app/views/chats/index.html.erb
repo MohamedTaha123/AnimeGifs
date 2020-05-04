@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chats.each do |chat| %>
+      <tr id="<%=chat.id%>">
+        <td><%= chat.message %></td>
+        <td><%= link_to 'Show', chat %></td>
+        <td><%= link_to 'Edit', edit_chat_path(chat) %></td>
+        <td><%= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' }, remote: true%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id="new_message"></div>
+
+<br>
+
+<%= link_to 'New Chat', new_chat_path %>
