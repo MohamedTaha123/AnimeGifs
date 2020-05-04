@@ -1,21 +1,66 @@
-<div class="page-header">
-  <%= link_to gifs_path, class: 'btn btn-default' do %>
-    All Gifs
-  <% end %>
-  <%= link_to edit_gif_path(@gif), class: 'btn btn-primary' do %>
-    Edit
-  <% end %>
-  <h1>Show gif</h1>
-</div>
 
-<dl class="dl-horizontal">
-  <dt>Image:</dt>
-  <dd><%= image_tag(@gif.image.url) %></dd>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <!-- Card body -->
+        <div class="card-body">
 
-  <dt>Description:</dt>
-  <dd><%= @gif.description %></dd>
+          <a href="#!">
+            <%=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
 
-  <dt>Label:</dt>
-  <dd><%= @gif.label %></dd>
+          </a>
+          <div class="pt-4 text-center">
+            <h5 class="h3 title">
+              <span class="d-block mb-1"><%= @gif.user.name %></span>
+               <%= link_to gifs_path, class: 'btn btn-default btn-sm' do %>
+                       Back
+              <% end %>
 
-</dl>
+              <% if current_user.id == @gif.user_id %>
+                <%= link_to edit_gif_path(@gif), class: 'btn btn-primary btn-sm' do %>
+                   Edit
+                <% end %>
+              <% else %>
+                  <% if !current_user.following?(@gif.user) %>
+                    <%= link_to follow_gif_path(@gif), class: 'btn btn-primary btn-sm', method: :put, remote: true do %>
+                      Follow
+                    <% end %>
+                  <% else %>
+                    <%= link_to unfollow_gif_path(@gif), class: 'btn btn-primary btn-sm', method: :put, remote: true do %>
+                    Followed
+                    <% end %>
+                  <% end %>
+              <% end %>
+
+            </h5>
+            <div class="mt-3">
+              <a href="#" class="btn btn-twitter btn-icon-only rounded-circle">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-facebook btn-icon-only rounded-circle">
+                <i class="fab fa-facebook"></i>
+              </a>
+             
+            </div>
+          </div>
+
+        </div>
+      </div>
+     
+
+
+    </div>
+    <div class="col-8">
+      <dl class="dl-horizontal">
+        <dt>Image:</dt>
+        <dd><%= image_tag(@gif.image.url) %></dd>
+
+        <dt>Description:</dt>
+        <dd><%= @gif.description %></dd>
+
+        <dt>Label:</dt>
+        <dd><%= @gif.label %></dd>
+
+      </dl>
+    </div>
+  </div>

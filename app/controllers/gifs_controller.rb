@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GifsController < ApplicationController
-  before_action :set_gif, only: %i[show edit update destroy like unlike]
+  before_action :set_gif, only: %i[show edit update destroy like unlike follow unfollow]
   before_action :authenticate_user!, except: [:index]
   impressionist actions: [:show]
 
@@ -16,6 +16,7 @@ class GifsController < ApplicationController
   # GET /gifs/1.json
   def show
     @gif = Gif.friendly.find(params[:id])
+    impressionist(@gif)
   end
 
   # GET /gifs/new
@@ -85,6 +86,23 @@ class GifsController < ApplicationController
     end
   end
 
+  def follow
+    @user = @gif.user
+    current_user.follow(@user)
+    respond_to do |format|
+      format.html { redirect_to request.referer, alert: 'Followed' }
+      format.json { head :no_content }
+    end
+  end
+
+  def unfollow
+    @user = @gif.user
+    current_user.stop_following(@user)
+    respond_to do |format|
+      format.html { redirect_to request.referer, alert: 'Unfollowed' }
+      format.json { head :no_content }
+    end
+  end
   private
 
   # Use callbacks to share common setup or constraints between actions.

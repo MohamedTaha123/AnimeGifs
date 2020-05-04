@@ -9,7 +9,7 @@ require("@rails/activestorage").start();
 require("channels");
 require("local-time").start();
 require("jquery");
-
+require('@client-side-validations/client-side-validations');
 
 window.Rails = Rails;
 

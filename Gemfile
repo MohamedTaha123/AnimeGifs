@@ -55,11 +55,13 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap_notify', '~> 0.0.5'
 gem 'carrierwave', '~> 2.0'
+gem 'client_side_validations'
 gem 'devise', '~> 4.7', '>= 4.7.0'
 gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise_masquerade', '~> 1.2'
@@ -78,4 +80,5 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_form_fancy_uploads'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'valid_email2'
 gem 'whenever', require: false

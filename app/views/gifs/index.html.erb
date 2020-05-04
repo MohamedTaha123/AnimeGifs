@@ -10,8 +10,8 @@
         <div class="card-body">
           
           <h6 class="card-title">
-            <%= image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
-            @<%= gif.user.name %> 
+            <%=  image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle","data-container": "body", "data-toggle": "popover", "data-placement": "top", "data-content": "#{gif.user.name}"  %>
+            <small class="text-muted "> <%= gif.user.name.mentionable.capitalize %></small>
             
           </h6> 
           <% if user_signed_in?%>
@@ -31,9 +31,12 @@
                 <%= time_ago_in_words(gif.created_at) %> 
               </div>
               <div class="col">
-              
-                  <%= gif.impressionist_count %>
-                  views 
+                  <% if gif.impressions_count.present? %>
+                    <%= gif.impressions_count %> views
+                  <% else %>
+                    No views
+                  <% end %>
+                   
               </div>
             </div>
           </small>
