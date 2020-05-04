@@ -2,6 +2,16 @@
 
 <ul>
   <% @notifications.each do |notification| %>
-    <li><%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %></li>
+    <li>
+      <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
+      <% if notification.notification_unread %>
+        <%= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
+      <% else %>
+        <button class="btn btn-info btn-sm btn-round">
+          Marked As Read
+        </button>
+      <% end %>
+    </li>
+
   <% end %>
 </ul>

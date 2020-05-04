@@ -27,7 +27,11 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index] do
+    member do
+      put 'markasread', to: 'notifications#mark_as_read'
+    end
+  end
   resources :announcements, only: [:index]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'gifs#index'

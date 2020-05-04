@@ -2,14 +2,15 @@
 
 class GifsController < ApplicationController
   before_action :set_gif, only: %i[show edit update destroy like unlike follow unfollow]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :load_activities, only: %i[index show new edit]
   impressionist actions: [:show]
 
   # GET /gifs
   # GET /gifs.json
   def index
     @gifs = Gif.all
-    @trending = Gif.last(5)
+    @trending = Gif.last(5).reverse
   end
 
   # GET /gifs/1
@@ -89,7 +90,7 @@ class GifsController < ApplicationController
   def follow
     @user = @gif.user
     current_user.follow(@user)
-    Notification.create!(recipient: @gif.user, actor: current_user, action: "follow",notifiable: @user)
+    Notification.create!(recipient: @gif.user, actor: current_user, action: 'follow', notifiable: @user)
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Followed' }
       format.json { head :no_content }
@@ -99,13 +100,19 @@ class GifsController < ApplicationController
   def unfollow
     @user = @gif.user
     current_user.stop_following(@user)
-    Notification.create!(recipient: @gif.user, actor: current_user, action: "unfollow", notifiable: @user)
+    Notification.create!(recipient: @gif.user, actor: current_user, action: 'unfollow', notifiable: @user)
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Unfollowed' }
       format.json { head :no_content }
     end
   end
+
   private
+
+  # Activity Load
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_gif

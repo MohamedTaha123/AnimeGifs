@@ -48,7 +48,7 @@
     </div>
     <div class="col-8">
       <dl class="dl-horizontal">
-        <dt>Image:</dt>
+        <dt>Gif:</dt>
         <dd><%= image_tag(@gif.image.url) %></dd>
 
         <dt>Description:</dt>
@@ -56,7 +56,20 @@
 
         <dt>Label:</dt>
         <dd><%= @gif.label %></dd>
-
+        
       </dl>
+      <% if user_signed_in?  %>
+        <% if current_user.id != @gif.user_id%>
+          <% if  current_user.liked? @gif %>
+            <%= button_to "Liked", unlike_gif_path(@gif) , method: :put , class: "btn btn-sm btn-round btn-round", remote: true %>
+          <% else %>
+            <%= button_to "Like", like_gif_path(@gif) , method: :put , class: "btn btn-sm btn-danger btn-round", remote: true %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
+        <% end %>
+      <% else %>
+        <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-info"%>
+      <% end %>
     </div>
   </div>

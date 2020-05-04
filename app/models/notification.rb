@@ -24,4 +24,8 @@ class Notification < ApplicationRecord
     end
     notifications
   end
+
+  def notification_unread
+    return true if read_at.nil?
+  end
 end

@@ -49,10 +49,12 @@
         </li>
         <li class="nav-item">
           <%= link_to notifications_path, class: "nav-link" do %>
-          <span><i class="far fa-bell fa-lg" aria-hidden="true"></i></span>
-          <% if @notifications.unread.present? %>
-            <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><%= @notifications.unread.count%></span>
-          <% end %>
+            <span><i class="far fa-bell fa-lg" aria-hidden="true"></i></span>
+            <% if @notifications.unread.present? %>
+              <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><%= @notifications.unread.count%></span>
+            <% else %>
+              <span class="badge badge-md badge-circle badge-floating badge-danger border-white">0</span>
+            <% end %>
           <% end %>
         </li>
         
