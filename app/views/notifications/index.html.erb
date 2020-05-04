@@ -2,6 +2,6 @@
 
 <ul>
   <% @notifications.each do |notification| %>
-    <li><%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable  %></li>
+    <li><%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %></li>
   <% end %>
 </ul>

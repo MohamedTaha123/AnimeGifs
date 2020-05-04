@@ -89,6 +89,7 @@ class GifsController < ApplicationController
   def follow
     @user = @gif.user
     current_user.follow(@user)
+    Notification.create!(recipient: @gif.user, actor: current_user, action: "follow",notifiable: @user)
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Followed' }
       format.json { head :no_content }
@@ -98,6 +99,7 @@ class GifsController < ApplicationController
   def unfollow
     @user = @gif.user
     current_user.stop_following(@user)
+    Notification.create!(recipient: @gif.user, actor: current_user, action: "unfollow", notifiable: @user)
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Unfollowed' }
       format.json { head :no_content }
@@ -112,6 +114,6 @@ class GifsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def gif_params
-    params.require(:gif).permit(:image, :description, :label)
+    params.require(:gif).permit(:image, :description, :label, :image_cache)
   end
 end

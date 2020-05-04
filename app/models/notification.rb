@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Notification < ApplicationRecord
-  belongs_to :recipient, class_name: "User"
-  belongs_to :actor, class_name: "User"
+  belongs_to :recipient, class_name: 'User'
+  belongs_to :actor, class_name: 'User'
   belongs_to :notifiable, polymorphic: true
-  
+
   scope :unread, -> { where(read_at: nil) }
   scope :recent, -> { order(created_at: :desc).limit(5) }
 
@@ -14,9 +16,9 @@ class Notification < ApplicationRecord
       notifications = recipients.uniq.each do |recipient|
         Notification.create(
           notifiable: notifiable,
-          action:     action,
-          recipient:  recipient,
-          actor:      from
+          action: action,
+          recipient: recipient,
+          actor: from
         )
       end
     end
