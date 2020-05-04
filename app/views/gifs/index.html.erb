@@ -11,27 +11,27 @@
           
           <h6 class="card-title">
             <%=  image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle","data-container": "body", "data-toggle": "popover", "data-placement": "top", "data-content": "#{gif.user.name}"  %>
-            <small class="text-muted "> <%= gif.user.name.mentionable.capitalize %></small>
+            <small class="text-muted font-italic font-weight-bold"> <%= gif.user.name.mentionable.capitalize %></small>
             
           </h6> 
           
-          <p class="card-text"><%= gif.description %></p>
-          <p class="card-text">
-          <small class="text-muted">
-            <div class= "row">
-              <div class="col">
-                <%= time_ago_in_words(gif.created_at) %> 
+          <p class="card-text font-weight-bold">
+            <%= gif.description %>
+            <small class="text-muted">
+              <div class= "row">
+                <div class="col">
+                  <%= time_ago_in_words(gif.created_at) %> 
+                </div>
+                <div class="col">
+                    <% if gif.impressions_count.present? %>
+                      <%= gif.impressions_count %> views
+                    <% else %>
+                      No views
+                    <% end %>
+                    
+                </div>
               </div>
-              <div class="col">
-                  <% if gif.impressions_count.present? %>
-                    <%= gif.impressions_count %> views
-                  <% else %>
-                    No views
-                  <% end %>
-                   
-              </div>
-            </div>
-          </small>
+            </small>
           </p>
         </div>
       </div>
