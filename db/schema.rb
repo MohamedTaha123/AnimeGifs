@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_060923) do
+ActiveRecord::Schema.define(version: 2020_05_04_180710) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_060923) do
 
   create_table "chats", force: :cascade do |t|
     t.string "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "conversation_id"
+    t.integer "user_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "sender_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -144,6 +153,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_060923) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "conversation_id"
+    t.integer "user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

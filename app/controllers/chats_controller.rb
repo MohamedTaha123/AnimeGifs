@@ -1,35 +1,45 @@
-class ChatsController < ApplicationController
-  before_action :set_chat, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
 
+class ChatsController < ApplicationController
+  before_action :set_chat, only: %i[show edit update destroy]
+  before_action :authenticate_user!
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.all
+    @conversation = Conversation.find(
+      params[:conversation_id]
+    )
+    @chats = @conversation.chats.all
   end
 
   # GET /chats/1
   # GET /chats/1.json
-  def show
-  end
+  def show; end
 
   # GET /chats/new
   def new
-    @chats = Chat.all
+    @conversation = Conversation.find(
+      params[:conversation_id]
+    )
+    @chats = @conversation.chats.all
     @chat = Chat.new
+    @chat.conversation_id = @conversation.id
   end
 
   # GET /chats/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /chats
   # POST /chats.json
   def create
-    @chat = Chat.new(chat_params)
-    
+    @conversation = Conversation.find(
+      params[:conversation_id]
+    )
+    @chat = @conversation.chats.new(chat_params)
+    @chat.user = current_user
     respond_to do |format|
       if @chat.save
-        ActionCable.server.broadcast 'room_channel', content: @chat 
+        ActionCable.server.broadcast 'room_channel', content: @chat
         format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
         format.json { render :show, status: :created, location: @chat }
         format.js
@@ -65,13 +75,14 @@ class ChatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat
-      @chat = Chat.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def chat_params
-      params.require(:chat).permit(:message)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chat
+    @chat = Chat.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def chat_params
+    params.require(:chat).permit(:message)
+  end
 end
