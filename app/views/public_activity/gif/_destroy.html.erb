@@ -1,5 +1,5 @@
 <li class="list-group-item">
   <span class="fa fa-trash"></span>
   <small class="text-muted"><%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %></small><br/>
-  A Gif was deleted.
-</li>
+  A Gif was deleted By <%= a.owner ? a.owner.name : 'Anonymous' %>
+  
