@@ -3,8 +3,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :conversations do
-    resources :chats, only: %i[new create]
+  resources :conversations, only: %i[create index] do
+    resources :chats, only: %i[create new ]
   end
   get 'dashboard/index'
   resources :gifs do

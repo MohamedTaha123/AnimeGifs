@@ -3,8 +3,8 @@
 
   
   <% @notifications.each do |notification| %>
-    <div class="card">
-      <div class="card-body">
+      <ul>
+      <li>
         <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
         <% if notification.notification_unread %>
           <%= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
@@ -13,8 +13,8 @@
             Marked As Read
           </button>
         <% end %>
-      </div>
-    </div>
+      </li>
+      </ul>
 
   <% end %>
   

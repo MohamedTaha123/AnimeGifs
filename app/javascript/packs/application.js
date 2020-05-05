@@ -24,4 +24,5 @@ $(document).on("turbolinks:load", () => {
 require("trix")
 require("@rails/actiontext")
 
-
+// Web Notifications
+Notification.requestPermission().then(function (result) {})

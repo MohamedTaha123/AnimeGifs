@@ -3,8 +3,23 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @conversations = Conversation.where(recipient_id: current_user.id).or(Conversation.where(sender_id: current_user.id))
+    @users = User.where.not(id: current_user.id)
+    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id)
   end
 
-  def show; end
+  def create
+    if Conversation.between(params[:sender_id], params[:recipient_id]).present?
+      @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+    else
+      @conversation = Conversation.create!(conversation_params)
+    end
+    ActionCable.server.broadcast 'conversations_channel', @conversation
+    redirect_to new_conversation_chat_path(@conversation)
+  end
+
+  private
+
+  def conversation_params
+    params.require(:conversation).permit(:sender_id, :recipient_id)
+  end
 end

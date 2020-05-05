@@ -22,7 +22,7 @@ class ChatsController < ApplicationController
       params[:conversation_id]
     )
     @chats = @conversation.chats.all
-    @chat = Chat.new
+    @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
   end
 

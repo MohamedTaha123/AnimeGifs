@@ -1,3 +1,19 @@
-<% @conversations.each do |conv| %>
-    <%= link_to 'New', new_conversation_chat_path(conv) %>
-<% end %>
+
+
+<h1>Inbox</h1>
+
+<ul>
+  <% @conversations.each do |conversation| %>
+    <li>
+      <%= link_to conversation.opposed_user(current_user).name, new_conversation_chat_path(conversation) %>
+    </li>
+  <% end %>
+</ul>
+
+
+<h2>Users</h2>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.name, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></li>
+  <% end %>
+</ul>
