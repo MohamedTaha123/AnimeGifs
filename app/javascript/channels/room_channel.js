@@ -11,9 +11,9 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     var node = document.createElement("P");
-
+    console.log(data.content);
     var textnode = document.createTextNode(data.content.message);
-
+  
     node.appendChild(textnode);
 
     document.getElementById("new_message").appendChild(node);

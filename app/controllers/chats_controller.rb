@@ -2,6 +2,7 @@
 
 class ChatsController < ApplicationController
   before_action :set_chat, only: %i[show edit update destroy]
+  before_action :set_conversation
   before_action :authenticate_user!
   # GET /chats
   # GET /chats.json
@@ -18,9 +19,7 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    @conversation = Conversation.find(
-      params[:conversation_id]
-    )
+    puts params
     @chats = @conversation.chats.all
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
@@ -32,16 +31,12 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
-    @conversation = Conversation.find(
-      params[:conversation_id]
-    )
     @chat = @conversation.chats.new(chat_params)
     @chat.user = current_user
     respond_to do |format|
       if @chat.save
+        # ChatRelayJob.perform_later(@conversation, current_user, @chat)
         ActionCable.server.broadcast 'room_channel', content: @chat
-        format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
-        format.json { render :show, status: :created, location: @chat }
         format.js
       else
         format.html { render :new }
@@ -81,8 +76,14 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
   end
 
+  def set_conversation
+    @conversation = Conversation.find(
+      params[:conversation_id]
+    )
+  end
+
   # Only allow a list of trusted parameters through.
   def chat_params
-    params.require(:chat).permit(:message)
+    params.require(:chat).permit(:message, :conversation_id)
   end
 end
