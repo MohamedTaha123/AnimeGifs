@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id           :integer          not null, primary key
+#  recipient_id :integer
+#  sender_id    :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+
 class Conversation < ApplicationRecord
   has_many :chats, dependent: :destroy
   belongs_to :sender, foreign_key: :sender_id, class_name: "User"
