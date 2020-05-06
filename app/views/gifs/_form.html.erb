@@ -6,13 +6,11 @@
 
 <div class="form-inputs">
   <div class="form-group">
-    
-
-
-    <br />
-
-    <%= f.input :image,as: :image_preview, input_html: {preview_version: :thumb} ,class: "form-control" %>
-
+    <div class="upload-btn-wrapper">
+      
+      <button class="btn">Upload a GIF</button>
+      <%= f.file_field :image,as: :image_preview, input_html: {preview_version: :thumb}  %>
+    </div>
   </div>
   <div class="form-group">
     <%= f.input :description, as: :text, placeholder: "Little Description", class: "form-control" %>
@@ -24,7 +22,7 @@
 
 <div class="form-actions">
   <div class="text-center">
-    <%= f.submit "CREATE" , class: "btn btn-info btn-outline" %>
+    <%= f.button :submit, "CREATE" , class: "btn btn-lg btn-round btn-dark" %>
   </div>
 </div>
 <% end %>

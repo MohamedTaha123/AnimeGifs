@@ -9,7 +9,8 @@ class GifsController < ApplicationController
   # GET /gifs
   # GET /gifs.json
   def index
-    @gifs = Gif.all
+    @q = Gif.ransack(params[:q])
+    @gifs = @q.result(distinct: true)
     @trending = Gif.last(5).reverse
   end
 
@@ -18,6 +19,8 @@ class GifsController < ApplicationController
   def show
     @gif = Gif.friendly.find(params[:id])
     impressionist(@gif)
+  rescue StandardError => e
+    puts e.to_s
   end
 
   # GET /gifs/new
@@ -33,7 +36,6 @@ class GifsController < ApplicationController
   def create
     @user = current_user
     @gif = @user.gifs.build(gif_params)
-
     respond_to do |format|
       if @gif.save
         format.html { redirect_to @gif, notice: 'Gif was successfully created.' }
@@ -91,7 +93,8 @@ class GifsController < ApplicationController
     @user = @gif.user
     current_user.follow(@user)
     Notification.create!(recipient: @gif.user, actor: current_user, action: 'follow', notifiable: @user)
-    ActionCable.server.broadcast('welcome_channel', "#{current_user.name} Start Following You.")
+    ActionCable.server.broadcast('welcome_channel', "You Start Following #{@user.name}.")
+    # ActionCable.server.broadcast('welcome_channel', "#{current_user} Start Following You.")
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Followed' }
       format.json { head :no_content }

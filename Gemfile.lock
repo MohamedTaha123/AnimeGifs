@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 6434e3bedfbf4cc5d97d33c84d10682970a95083
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
+GIT
   remote: https://github.com/ctran/annotate_models.git
   revision: 111640d077836ced23cfffb882c93e40968ab9d9
   specs:
@@ -437,6 +446,7 @@ DEPENDENCIES
   public_activity
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
+  ransack!
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
