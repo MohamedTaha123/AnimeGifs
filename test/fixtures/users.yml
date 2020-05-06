@@ -7,7 +7,9 @@
 #  announcements_last_read_at :datetime
 #  email                      :string           default(""), not null
 #  encrypted_password         :string           default(""), not null
+#  facebook_url               :string
 #  first_name                 :string
+#  github_url                 :string
 #  last_name                  :string
 #  little_description         :string
 #  remember_created_at        :datetime

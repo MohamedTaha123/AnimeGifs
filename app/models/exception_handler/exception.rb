@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: errors
+#
+#  id         :integer          not null, primary key
+#  class_name :text
+#  message    :text
+#  params     :text
+#  referrer   :text
+#  status     :text
+#  target     :text
+#  trace      :text
+#  user_agent :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 module ExceptionHandler
 
   ############################################################

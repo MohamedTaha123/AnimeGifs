@@ -13,29 +13,35 @@
             <h5 class="h3 title">
               <span class="d-block mb-1"><%= @gif.user.name %></span>
              
-
-              <% if current_user.id == @gif.user_id %>
-                  <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primamry btn-sm"%>
-              <%else %>
-                  <% if !current_user.following?(@gif.user) %>
-                    <%= button_to follow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
-                      Follow
+              <% if user_signed_in? %>
+                <% if current_user.id == @gif.user_id %>
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primamry btn-sm"%>
+                <%else %>
+                    <% if !current_user.following?(@gif.user) %>
+                      <%= button_to follow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
+                        Follow
+                      <% end %>
+                    <% else %>
+                      <%= button_to unfollow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
+                      Followed
+                      <% end %>
                     <% end %>
-                  <% else %>
-                    <%= button_to unfollow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
-                    Followed
-                    <% end %>
-                  <% end %>
+                <% end %>
               <% end %>
 
             </h5>
             <div class="mt-3">
-              <a href="#" class="btn btn-twitter btn-icon-only rounded-circle">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="btn btn-facebook btn-icon-only rounded-circle">
+              
+              <% if @gif.user.github_url.present? %>
+                <a href="<%= @gif.user.github_url %>" target="_blank" class="btn btn-github btn-icon-only rounded-circle">
+                  <i class="fab fa-github"></i>
+                </a>
+              <% end %>
+              <% if @gif.user.github_url.present? %>
+              <a href="<%= @gif.user.facebook_url %>" target="_blank" class="btn btn-facebook btn-icon-only rounded-circle">
                 <i class="fab fa-facebook"></i>
               </a>
+              <% end %>
              
             </div>
           </div>
