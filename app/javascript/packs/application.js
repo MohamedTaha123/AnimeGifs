@@ -11,6 +11,7 @@ require("local-time").start();
 require("jquery");
 require('@client-side-validations/client-side-validations');
 
+
 window.Rails = Rails;
 
 import 'bootstrap';

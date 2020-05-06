@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-
+  include CarrierWave::BombShelter
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -37,6 +37,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_whitelist
      %w(jpg jpeg gif png)
+  end
+  
+  def max_pixel_dimensions
+    [1024, 1024]
   end
 
   # Override the filename of the uploaded files:

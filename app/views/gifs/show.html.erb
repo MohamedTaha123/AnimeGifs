@@ -19,11 +19,11 @@
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primamry btn-sm"%>
                 <%else %>
                     <% if !current_user.following?(@gif.user) %>
-                      <%= button_to follow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
+                      <%= button_to follow_gif_path(@gif), class: 'btn btn-info btn-sm', data: { disable_with: 'Loading..'}, method: :put do %>
                         Follow
                       <% end %>
                     <% else %>
-                      <%= button_to unfollow_gif_path(@gif), class: 'btn btn-info btn-sm', method: :put, remote: true do %>
+                      <%= button_to unfollow_gif_path(@gif), class: 'btn btn-info btn-sm',data: { disable_with: 'Loading..'}, method: :put do %>
                       Followed
                       <% end %>
                     <% end %>
