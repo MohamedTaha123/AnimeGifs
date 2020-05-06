@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
   before_action :masquerade_user!
   before_action :set_notifications, if: :user_signed_in?
   include PublicActivity::StoreController
- 
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :little_description])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name little_description github_url facebook_url])
   end
 
   def set_notifications

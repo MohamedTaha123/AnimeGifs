@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_180710) do
+ActiveRecord::Schema.define(version: 2020_05_06_065836) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,19 @@ ActiveRecord::Schema.define(version: 2020_05_04_180710) do
     t.integer "sender_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "errors", force: :cascade do |t|
+    t.text "class_name"
+    t.text "status"
+    t.text "message"
+    t.text "trace"
+    t.text "target"
+    t.text "referrer"
+    t.text "params"
+    t.text "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "follows", force: :cascade do |t|
@@ -195,6 +208,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_180710) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "little_description"
+    t.string "github_url"
+    t.string "facebook_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

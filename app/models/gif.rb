@@ -5,14 +5,18 @@
 # Table name: gifs
 #
 #  id                :integer          not null, primary key
-#  image             :string
 #  description       :string
+#  image             :string
+#  impressions_count :integer
 #  label             :string
+#  slug              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  user_id           :integer
-#  slug              :string
-#  impressions_count :integer
+#
+# Indexes
+#
+#  index_gifs_on_slug  (slug) UNIQUE
 #
 
 
@@ -28,7 +32,7 @@ class Gif < ApplicationRecord
   validates_integrity_of :image
   validates_processing_of :image
   validates_presence_of :image
-  validates_size_of :image, maximum: 1.megabytes, message: 'should be less than 1MB'
+  validates_size_of :image, maximum: 2.megabytes, message: 'should be less than 1MB'
 
   validates :label, :description, presence: true
   validates :description, length: { minimum: 15 }

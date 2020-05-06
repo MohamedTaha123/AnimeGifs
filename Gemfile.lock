@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 6434e3bedfbf4cc5d97d33c84d10682970a95083
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
+GIT
   remote: https://github.com/ctran/annotate_models.git
   revision: 111640d077836ced23cfffb882c93e40968ab9d9
   specs:
@@ -107,6 +116,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.7.6)
       execjs
+    avatarly (1.6.0)
+      rfc822
+      rmagick
+      unicode_utils
     bcrypt (3.1.13)
     better_errors (2.7.0)
       coderay (>= 1.0.0)
@@ -170,6 +183,10 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.9.0)
+    exception_handler (0.8.0.0)
+      bundler
+      rails (>= 4.2.0)
+      responders
     execjs (2.7.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
@@ -319,6 +336,8 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rfc822 (0.1.5)
+    rmagick (4.1.2)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -372,6 +391,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    unicode_utils (1.4.0)
     valid_email2 (3.2.2)
       activemodel (>= 3.2)
       mail (~> 2.5)
@@ -407,6 +427,7 @@ DEPENDENCIES
   acts_as_votable
   administrate!
   annotate!
+  avatarly
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
@@ -421,6 +442,7 @@ DEPENDENCIES
   devise-bootstrapped!
   devise_masquerade (~> 1.2)
   dotenv-rails
+  exception_handler (~> 0.8.0.0)
   font-awesome-sass (~> 5.6, >= 5.6.1)
   friendly_id (~> 5.2, >= 5.2.5)
   gravatar_image_tag!
@@ -437,6 +459,7 @@ DEPENDENCIES
   public_activity
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
+  ransack!
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
