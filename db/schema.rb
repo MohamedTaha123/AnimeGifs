@@ -86,6 +86,19 @@ ActiveRecord::Schema.define(version: 2020_05_04_180710) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "errors", force: :cascade do |t|
+    t.text "class_name"
+    t.text "status"
+    t.text "message"
+    t.text "trace"
+    t.text "target"
+    t.text "referrer"
+    t.text "params"
+    t.text "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "follows", force: :cascade do |t|
     t.string "followable_type", null: false
     t.integer "followable_id", null: false
