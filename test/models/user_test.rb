@@ -5,6 +5,7 @@
 #  id                         :integer          not null, primary key
 #  admin                      :boolean          default(FALSE)
 #  announcements_last_read_at :datetime
+#  avatar                     :string
 #  email                      :string           default(""), not null
 #  encrypted_password         :string           default(""), not null
 #  facebook_url               :string
@@ -12,11 +13,9 @@
 #  github_url                 :string
 #  last_name                  :string
 #  little_description         :string
-#  provider                   :string
 #  remember_created_at        :datetime
 #  reset_password_sent_at     :datetime
 #  reset_password_token       :string
-#  uid                        :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #

@@ -4,7 +4,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :conversations, only: %i[create index] do
-    resources :chats, only: %i[create new ]
+    resources :chats, only: %i[create new]
   end
   get 'dashboard/index'
   resources :gifs do
@@ -36,9 +36,12 @@ Rails.application.routes.draw do
     end
   end
   resources :announcements, only: [:index]
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
   root to: 'gifs#index'
-  
+
   mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
