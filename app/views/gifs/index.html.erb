@@ -74,7 +74,9 @@
             <div class="card-body">
               
               <h6 class="card-title">
-                <%= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+                <%#= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+                <img src="data:image/png;base64,<%=  avatarly_url(trending.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
+
                 @<%= trending.user.name %>  
               </h6> 
               <p class="card-text"><%= trending.description %></p>

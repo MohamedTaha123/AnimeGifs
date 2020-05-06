@@ -32,7 +32,7 @@ class Gif < ApplicationRecord
   validates_integrity_of :image
   validates_processing_of :image
   validates_presence_of :image
-  validates_size_of :image, maximum: 1.megabytes, message: 'should be less than 1MB'
+  validates_size_of :image, maximum: 2.megabytes, message: 'should be less than 1MB'
 
   validates :label, :description, presence: true
   validates :description, length: { minimum: 15 }
