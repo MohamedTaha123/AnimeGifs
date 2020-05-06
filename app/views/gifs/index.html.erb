@@ -30,7 +30,8 @@
           <div class="card-body">
             
             <h6 class="card-title">
-              <%=  image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle","data-container": "body", "data-toggle": "popover", "data-placement": "top", "data-content": "#{gif.user.name}"  %>
+              <img src="data:image/png;base64,<%=  avatarly_url(gif.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
+              <%#=  image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle","data-container": "body", "data-toggle": "popover", "data-placement": "top", "data-content": "#{gif.user.name}"  %>
               <small class="text-muted  font-weight-bold font-italic"> <%= gif.user.name.mentionable.capitalize %> <%= gif.label%> </small>
               
             </h6> 

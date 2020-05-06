@@ -60,6 +60,7 @@ end
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart'
+gem 'avatarly'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap_notify', '~> 0.0.5'
 gem 'carrierwave', '~> 2.0'

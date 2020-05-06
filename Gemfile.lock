@@ -116,6 +116,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (9.7.6)
       execjs
+    avatarly (1.6.0)
+      rfc822
+      rmagick
+      unicode_utils
     bcrypt (3.1.13)
     better_errors (2.7.0)
       coderay (>= 1.0.0)
@@ -332,6 +336,8 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rfc822 (0.1.5)
+    rmagick (4.1.2)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -385,6 +391,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    unicode_utils (1.4.0)
     valid_email2 (3.2.2)
       activemodel (>= 3.2)
       mail (~> 2.5)
@@ -420,6 +427,7 @@ DEPENDENCIES
   acts_as_votable
   administrate!
   annotate!
+  avatarly
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)

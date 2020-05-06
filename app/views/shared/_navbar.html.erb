@@ -70,7 +70,8 @@
 
         <li class="nav-item dropdown">
           <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
-          <%= image_tag gravatar_image_url(current_user.email, size: 40), height: 25, width: 25, class: "rounded-circle" %>
+          <%#= image_tag gravatar_image_url(current_user.email, size: 40), height: 25, width: 25, class: "rounded-circle" %>
+            <img src="data:image/png;base64,<%=  avatarly_url(current_user,32) %>" class="rounded-circle" alt="">
           <% end %>
           <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
             <% if current_user.admin? %>

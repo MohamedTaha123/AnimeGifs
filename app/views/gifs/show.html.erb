@@ -6,7 +6,8 @@
         <div class="card-body">
 
           <a href="#!">
-            <%=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
+            <img src="data:image/png;base64,<%=  avatarly_url(@gif.user,40) %>" class="rounded-circle img-center img-fluid shadow shadow-lg--hover" width="140px;" alt="">
+            <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
 
           </a>
           <div class="pt-4 text-center">
