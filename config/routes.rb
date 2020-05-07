@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    resources :gifs
     resources :users
     resources :services
     resources :notifications
