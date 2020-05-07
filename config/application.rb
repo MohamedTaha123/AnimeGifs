@@ -20,7 +20,7 @@ module MyApi
     config.load_defaults 6.0
     # Exception Handler
     config.exception_handler =
-      { dev: true,
+      { dev: false,
         db: true,
         # Custom Exceptions
         custom_exceptions: {

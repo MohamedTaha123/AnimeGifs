@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   devise :masqueradable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
   has_rich_text :little_description
-  has_one_attached :avatar
+  mount_uploader :avatar, ImageUploader
   has_person_name
   acts_as_voter
   acts_as_followable
@@ -48,16 +48,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
-  validates :github_url, on: :update, allow_blank: true, length: { maximum: 100 }, format: GITHUB_URL_REGEXP
-  validates :facebook_url, on: :update, allow_blank: true, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP
-  validates_uniqueness_of :github_url, on: :update, allow_blank: true, message: 'Already Taken'
-  validates_uniqueness_of :facebook_url, on: :update, allow_blank: true, message: 'Already Taken'
+  validates :github_url,presence: false, on: :update,  length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true
+  validates :facebook_url,presence: false, on: :update, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP, allow_blank: true
+  validates :github_url, uniqueness: { scope: :id }
+  validates :facebook_url, uniqueness: { scope: :id }
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
       user.email = auth.info.email
-      user.uid = auth.uid
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
     end

@@ -1,12 +1,14 @@
 <% if !notice.blank? %>
   <script type="text/javascript">
     
-      $(document).ready(function () {
+     
         $('.bottom-right').notify({
           message: { text: "#{notice}" },
+          closable: true,
           fadeOut: { enabled: true, delay: 3000 }
         }).show();
-      });
+       
+ 
 
   </script>
 <% end %>
