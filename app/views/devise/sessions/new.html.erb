@@ -1,8 +1,21 @@
 <div class="row">
-  <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-    <h1 class="text-center">Log in</h1>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="col">
+  </div>
+  <div class="col-6 ml-auto mr-auto">
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name),class: "form") do |f| %>
+      <figure aria-hidden="true">
+      <div class="person-body"></div>
+      <div class="neck skin"></div>
+      <div class="head skin">
+        <div class="eyes"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="hair"></div>
+      <div class="ears"></div>
+      <div class="shirt-1"></div>
+      <div class="shirt-2"></div>
+    </figure>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
       </div>
@@ -22,11 +35,12 @@
 
       <div class="form-group">
         <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
+        <%= link_to user_github_omniauth_authorize_path, class: "btn btn-github btn-block " do %>
+          Sign in with  <i class="fab fa-github"></i>
+        <% end %>
       </div>
     <% end %>
-
-    <div class="text-center">
-      <%= render "devise/shared/links" %>
-    </div>
+  </div>
+  <div class="col">
   </div>
 </div>
