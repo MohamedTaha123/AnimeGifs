@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@client-side-validations/client-side-validations": "^0.1.3",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.2-2",
     "@rails/activestorage": "^6.0.0",
@@ -13,13 +14,20 @@
     "bootstrap-social": "^5.1.1",
     "clipboard": "^2.0.6",
     "data-confirm-modal": "^1.6.2",
+    "datatables.net": "^1.10.20",
     "dropzone": "^5.7.0",
+    "es6-promise": "^4.2.8",
     "expose-loader": "^0.7.5",
-    "jquery": "3.4.1",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.5.1",
     "local-time": "^2.1.0",
+    "mdbootstrap": "^4.17.0",
+    "node-waves": "^0.7.6",
     "popper.js": "^1.16.1",
     "trix": "^1.0.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "underscore": "^1.10.2",
+    "wow.js": "^1.2.2"
   },
   "version": "0.1.0",
   "devDependencies": {

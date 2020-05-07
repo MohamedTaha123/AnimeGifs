@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container-fluid content-row">
   
   <%= search_form_for @q do |f| %>
   
@@ -15,17 +15,41 @@
       </div>
     </div>
   <% end %>
- 
-  <hr>
-
+  <br>
   <div class="row">
-    <div class="col-sm-8 ">
-      
-      <div class="card-columns ">
+    <div class="col-sm-8">
+      <h2 style="font-weight: bolder;">Trending GIFs</h2>
+      <div class="card-columns">
+        <% @trending.each do |trending| %>
+        
+          <div class="card  bg-dark  border-0 h-100">
+            <%= link_to  gif_path(trending) do %>
+            <%=  image_tag(trending.image.url(:thumb), class: "card-img-top" )%>
+            <% end %>
+            <div class="card-body">
+              
+              <h6 class="card-title">
+                <%#= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+                <img src="data:image/png;base64,<%=  avatarly_url(trending.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
+
+                @<%= trending.user.name.mentionable.capitalize %> 
+               
+              </h6> 
+              <p class="card-text font-weight-bold"><%= trending.description %></p>
+              <p class="card-text">
+              <small class="text-muted">
+                Created  <%= time_ago_in_words(trending.created_at) %></small>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <h2 style="font-weight: bolder;">More GIFs</h2>
+      <div class="card-columns">
         <% @gifs.each do |gif| %>
-        <div class="card bg-dark  border-0">
+        <div class="card bg-dark  border-0 h-100">
           <%= link_to  gif_path(gif) do %>
-            <%=  image_tag(gif.image.url(:thumb), class: "card-img-top" )%>
+            <%=  image_tag(gif.image.url(:thumb), class: "card-img" )%>
           <% end %>
           <div class="card-body">
             
@@ -35,7 +59,6 @@
               <small class="text-muted  font-weight-bold font-italic"> <%= gif.user.name.mentionable.capitalize %> <%= gif.label%> </small>
               
             </h6> 
-            
             <p class="card-text font-weight-bold font-italic">
               <%= gif.description %>
               <small class="text-muted">
@@ -61,34 +84,7 @@
     </div>
     
     <div class="col-sm-4">
-      
-      <div class= "container">
         <%= render_activities(@activities) %>
-        <hr>
-        <h2 style="font-weight: bolder;">Trending GIFs</h2>
-        <% @trending.each do |trending| %>
-          <div class="card">
-            <%= link_to  gif_path(trending) do %>
-            <%=  image_tag(trending.image.url(:thumb), class: "card-img-top" )%>
-            <% end %>
-            <div class="card-body">
-              
-              <h6 class="card-title">
-                <%#= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
-                <img src="data:image/png;base64,<%=  avatarly_url(trending.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
-
-                @<%= trending.user.name %> 
-               
-              </h6> 
-              <p class="card-text"><%= trending.description %></p>
-              <p class="card-text">
-              <small class="text-muted">
-                Created  <%= time_ago_in_words(trending.created_at) %></small>
-              </p>
-            </div>
-          </div>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 
   <div class="row">
     <div class="col-4">
-      <div class="card">
+      <div class="card bg-dark">
         <!-- Card body -->
         <div class="card-body">
 
@@ -11,7 +11,7 @@
 
           </a>
           <div class="pt-4 text-center">
-            <h5 class="h3 title">
+            <h5 class="h3 title text-white font-weight-bold">
               <span class="d-block mb-1"><%= @gif.user.name %></span>
              
               <% if user_signed_in? %>
@@ -55,7 +55,8 @@
     </div>
     <div class="col-8">
       <dl class="dl-horizontal">
-        <dt>Gif:</dt>
+        <dt><%= @gif.label %> GIF by <%= @gif.user.name%></dt>
+        <br>
         <dd><%= image_tag(@gif.image.url) %></dd>
 
         <dt>Description:</dt>

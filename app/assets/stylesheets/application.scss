@@ -44,6 +44,16 @@ $black: #000;
   font-size: large;
   text-transform: none;
 }
+
+.nav-link img {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -8px 0;
+  float: left;
+  margin-right: 10px;
+}
+
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
   .container {
@@ -56,6 +66,7 @@ body {
   font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; 
   font-size: 1rem;
   font-weight: 400;
+  background-color: black;
 }
 html {
   font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; 
@@ -103,17 +114,22 @@ body > .alert {
   font-size: 1rem;
   font-weight: bolder;
   line-height: 1.5;
-  color: #868e96;
-  background-color:black;
+  color: dark;
+  background-color: whitesmoke;
   background-clip: padding-box;
   border: 1px solid thick; 
   border-radius: 0.25rem;
   box-shadow: burlywood;
-  border-color: none;
+  border-color: #19508c;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 
+
+
+
+
+// Sticky Ofsset
 .sticky-offset {
   top: 56px;
 }
