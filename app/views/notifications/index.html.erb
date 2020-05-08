@@ -1,20 +1,22 @@
-<h1>Notifications</h1>
 
 
-  
-  <% @notifications.each do |notification| %>
-      <ul>
-      <li>
-        <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
-        <% if notification.notification_unread %>
-          <%= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
-        <% else %>
-          <button class="btn btn-info btn-sm btn-round">
-            Marked As Read
-          </button>
-        <% end %>
-      </li>
-      </ul>
+<% if @notifications.present? %>
+  <h1>Notifications</h1>
+    <% @notifications.each do |notification| %>
+        <ul>
+        <li>
+          <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
+          <% if notification.notification_unread %>
+            <%= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
+          <% else %>
+            <button class="btn btn-info btn-sm btn-round">
+              Marked As Read
+            </button>
+          <% end %>
+        </li>
+        </ul>
 
-  <% end %>
-  
+    <% end %>
+<% else %>
+  <h1 class="text-center font-weight-bold">No Notifications</h1>
+<% end %>
