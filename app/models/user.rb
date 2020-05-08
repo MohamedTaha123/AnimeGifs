@@ -44,7 +44,7 @@ class User < ApplicationRecord
   acts_as_follower
 
   has_many :notifications, foreign_key: :recipient_id
-  has_many :services, dependent: :delete_all
+  has_many :services
   has_many :gifs, dependent: :delete_all
 
   validates :name, presence: true
@@ -53,7 +53,7 @@ class User < ApplicationRecord
   validates :facebook_url, presence: false, on: :update, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP, allow_blank: true
   validates :github_url, uniqueness: { scope: :id }
   validates :facebook_url, uniqueness: { scope: :id }
-  validates_presence_of :little_description
+  validates_presence_of :little_description, on: :update
  
  
 
