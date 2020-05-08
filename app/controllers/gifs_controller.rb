@@ -11,7 +11,7 @@ class GifsController < ApplicationController
   def index
     @q = Gif.ransack(params[:q])
     @gifs = @q.result(distinct: true)
-    @trending = Gif.last(5).reverse
+    @trending = Gif.includes([:user]).last(5).reverse
   end
 
   # GET /gifs/1
