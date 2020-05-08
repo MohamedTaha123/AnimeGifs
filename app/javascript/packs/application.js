@@ -11,6 +11,9 @@ require("local-time").start();
 require("jquery");
 require('@client-side-validations/client-side-validations');
 
+import $ from 'jquery';
+
+global.$ = jQuery;
 
 window.Rails = Rails;
 

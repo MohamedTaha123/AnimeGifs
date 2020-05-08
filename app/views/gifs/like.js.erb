@@ -1,0 +1,1 @@
+$("#like_<%= @gif.id %>").html('<%= button_to  unlike_gif_path(@gif.id), class: "btn btn-sm btn-danger",method: :put, remote: true do "Liked" end %>');

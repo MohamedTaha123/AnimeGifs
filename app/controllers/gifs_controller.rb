@@ -75,8 +75,9 @@ class GifsController < ApplicationController
   def like
     @gif.liked_by current_user
     respond_to do |format|
-      format.html { redirect_to request.referer, notice: 'Liked.' }
-      format.json { head :no_content }
+      # format.html { redirect_to request.referer, alert: 'Liked' }
+      format.html { redirect_to :back }
+      format.js
     end
   end
 
@@ -84,8 +85,9 @@ class GifsController < ApplicationController
   def unlike
     @gif.unliked_by current_user
     respond_to do |format|
-      format.html { redirect_to request.referer, alert: 'Unliked' }
-      format.json { head :no_content }
+      # format.html { redirect_to request.referer, alert: 'Unliked' }
+      format.html { redirect_to :back }
+      format.js
     end
   end
 
@@ -97,7 +99,6 @@ class GifsController < ApplicationController
     # ActionCable.server.broadcast('welcome_channel', "#{current_user} Start Following You.")
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Followed' }
-      format.json { head :no_content }
     end
   end
 
@@ -107,7 +108,6 @@ class GifsController < ApplicationController
     Notification.create!(recipient: @gif.user, actor: current_user, action: 'unfollow', notifiable: @user)
     respond_to do |format|
       format.html { redirect_to request.referer, alert: 'Unfollowed' }
-      format.json { head :no_content }
     end
   end
 
