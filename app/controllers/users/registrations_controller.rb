@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def destroy
   #   super
   # end
+  
   # DELETE /resource
   # def destroy
     # resource.soft_delete

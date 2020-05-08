@@ -45,14 +45,17 @@ class User < ApplicationRecord
 
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :delete_all
-  has_many :gifs, dependent: :destroy
+  has_many :gifs, dependent: :delete_all
 
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
-  validates :github_url,presence: false, on: :update,  length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true
-  validates :facebook_url,presence: false, on: :update, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP, allow_blank: true
+  validates :github_url, presence: false, on: :update, length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true
+  validates :facebook_url, presence: false, on: :update, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP, allow_blank: true
   validates :github_url, uniqueness: { scope: :id }
   validates :facebook_url, uniqueness: { scope: :id }
+  validates_presence_of :little_description
+ 
+ 
 
   # alternative callback for omniauth
   def self.from_omniauth(auth)
@@ -62,18 +65,19 @@ class User < ApplicationRecord
       user.name = auth.info.name
     end
   end
-  # instead of deleting, indicate the user requested a delete & timestamp it  
-  def soft_delete  
-    update_attribute(:deleted_at, Time.current)  
-  end  
-  
-  # ensure user account is active  
-  def active_for_authentication?  
-    super && !deleted_at  
-  end  
-  
-  # provide a custom message for a deleted account   
-  def inactive_message   
-    !deleted_at ? super : :deleted_account  
-  end  
+
+  # instead of deleting, indicate the user requested a delete & timestamp it
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
+  end
+
+  # ensure user account is active
+  def active_for_authentication?
+    super && !deleted_at
+  end
+
+  # provide a custom message for a deleted account
+  def inactive_message
+    !deleted_at ? super : :deleted_account
+  end
 end
