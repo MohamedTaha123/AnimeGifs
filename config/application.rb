@@ -18,6 +18,7 @@ module MyApi
     config.application_name = Rails.application.class.module_parent_name
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
     # Exception Handler
     config.exception_handler =
       { dev: false,
