@@ -6,6 +6,7 @@
 #  admin                      :boolean          default(FALSE)
 #  announcements_last_read_at :datetime
 #  avatar                     :string
+#  deleted_at                 :datetime
 #  email                      :string           default(""), not null
 #  encrypted_password         :string           default(""), not null
 #  facebook_url               :string

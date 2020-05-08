@@ -19,12 +19,12 @@
 #  index_gifs_on_slug  (slug) UNIQUE
 #
 
-
 class Gif < ApplicationRecord
   belongs_to :user
   extend FriendlyId
   friendly_id :label, use: :slugged
   acts_as_votable
+  acts_as_taggable
   is_impressionable counter_cache: true, column_name: :impressions_count
   include PublicActivity::Model
   tracked owner: proc { |controller, _model| controller.current_user }
@@ -36,4 +36,9 @@ class Gif < ApplicationRecord
 
   validates :label, :description, presence: true
   validates :description, length: { minimum: 15 }
+  validate :has_at_least_one_tag
+
+  def has_at_least_one_tag
+    errors.add(:tag_list, 'must have at least one tag') unless tag_list.present?
+  end
 end

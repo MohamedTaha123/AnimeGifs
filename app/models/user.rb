@@ -8,6 +8,7 @@
 #  admin                      :boolean          default(FALSE)
 #  announcements_last_read_at :datetime
 #  avatar                     :string
+#  deleted_at                 :datetime
 #  email                      :string           default(""), not null
 #  encrypted_password         :string           default(""), not null
 #  facebook_url               :string
@@ -43,7 +44,7 @@ class User < ApplicationRecord
   acts_as_follower
 
   has_many :notifications, foreign_key: :recipient_id
-  has_many :services
+  has_many :services, dependent: :delete_all
   has_many :gifs, dependent: :destroy
 
   validates :name, presence: true
@@ -53,7 +54,7 @@ class User < ApplicationRecord
   validates :github_url, uniqueness: { scope: :id }
   validates :facebook_url, uniqueness: { scope: :id }
 
-
+  # alternative callback for omniauth
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -61,4 +62,18 @@ class User < ApplicationRecord
       user.name = auth.info.name
     end
   end
+  # instead of deleting, indicate the user requested a delete & timestamp it  
+  def soft_delete  
+    update_attribute(:deleted_at, Time.current)  
+  end  
+  
+  # ensure user account is active  
+  def active_for_authentication?  
+    super && !deleted_at  
+  end  
+  
+  # provide a custom message for a deleted account   
+  def inactive_message   
+    !deleted_at ? super : :deleted_account  
+  end  
 end

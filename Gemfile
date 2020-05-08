@@ -56,7 +56,7 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
 gem 'administrate', github: 'excid3/administrate', branch: 'jumpstart'
