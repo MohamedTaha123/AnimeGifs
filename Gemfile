@@ -92,3 +92,6 @@ gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'valid_email2'
 gem 'whenever', require: false
+
+gem "cable_ready", "~> 4.1"
+gem "stimulus_reflex", "~> 3.2"

@@ -148,6 +148,8 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.1.3)
+    cable_ready (4.1.2)
+      rails (>= 5.2)
     capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -408,6 +410,11 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stimulus_reflex (3.2.1)
+      cable_ready (>= 4.1.2)
+      nokogiri
+      rack
+      rails (>= 6.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -464,6 +471,7 @@ DEPENDENCIES
   brakeman (~> 4.8, >= 4.8.1)
   bullet
   byebug
+  cable_ready (~> 4.1)
   capybara (>= 2.15)
   carrierwave (~> 2.0)
   carrierwave-bombshelter
@@ -501,6 +509,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  stimulus_reflex (~> 3.2)
   turbolinks (~> 5)
   tzinfo-data
   valid_email2
