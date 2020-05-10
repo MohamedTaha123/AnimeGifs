@@ -2,11 +2,17 @@
 
 <% if @chats.present? %>
     <% @chats.each do |chat| %>
-        <p id="<%=chat.id%>"><%= chat.message %><h6 class="font-weight-bolder">  <%= chat.chat_time%></h6></p>
+        <p id="<%=chat.id%>">
+            <%= chat.message %>
+            <h6 class="font-weight-bolder"> 
+                <%= chat.chat_time%>
+            </h6>
+        </p>
        
     <% end %>
 <% end %>
 
 <div id="new_message"></div>
+
 <%= render 'form', chat: @chat %>
 

@@ -10,7 +10,7 @@ class GifsController < ApplicationController
   # GET /gifs.json
   def index
     @q = Gif.ransack(params[:q])
-    @gifs = @q.result(distinct: true)
+    @gifs = @q.result(distinct: true).includes([:user])
     @trending = @q.result(distinct: true).includes([:user]).last(5).reverse
   end
 

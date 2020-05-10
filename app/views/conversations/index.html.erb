@@ -5,7 +5,9 @@
 <ul>
   <% @conversations.each do |conversation| %>
     <li>
-      <%= link_to conversation.opposed_user(current_user).name, new_conversation_chat_path(conversation) %>
+      <% if conversation.opposed_user(current_user).present? %>
+        <%= link_to conversation.opposed_user(current_user).name, new_conversation_chat_path(conversation) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

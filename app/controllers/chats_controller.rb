@@ -19,8 +19,8 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    puts params
-    @chats = @conversation.chats.all
+    # @chats = @conversation.recipient.chats.all
+    @chats = @conversation.chats.where('user_id = ? OR user_id = ?', @conversation.recipient, @conversation.sender)
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
   end
@@ -36,7 +36,8 @@ class ChatsController < ApplicationController
     respond_to do |format|
       if @chat.save
         # ChatRelayJob.perform_later(@conversation, current_user, @chat)
-        ActionCable.server.broadcast 'room_channel', content: @chat
+        ActionCable.server.broadcast "room_channel",
+                                     content: @chat                          
         format.js
       else
         format.html { render :new }
