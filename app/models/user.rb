@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                         :integer          not null, primary key
+#  id                         :bigint           not null, primary key
 #  admin                      :boolean          default(FALSE)
 #  announcements_last_read_at :datetime
 #  avatar                     :string

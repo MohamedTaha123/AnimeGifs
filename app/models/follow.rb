@@ -2,14 +2,14 @@
 #
 # Table name: follows
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  blocked         :boolean          default(FALSE), not null
 #  followable_type :string           not null
 #  follower_type   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  followable_id   :integer          not null
-#  follower_id     :integer          not null
+#  followable_id   :bigint           not null
+#  follower_id     :bigint           not null
 #
 # Indexes
 #

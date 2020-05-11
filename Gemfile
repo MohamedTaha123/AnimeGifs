@@ -8,7 +8,7 @@ gem 'dotenv-rails', groups: %i[development test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -65,6 +65,7 @@ gem 'avatarly'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-glyphicons'
 gem 'bootstrap_notify', '~> 0.0.5'
+gem 'cable_ready', '~> 4.1'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-bombshelter'
 gem 'carrierwave-imageoptimizer'
@@ -84,14 +85,14 @@ gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-github', '~> 1.3'
 gem 'omniauth-twitter', '~> 1.4'
 gem 'public_activity'
+gem 'pg'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_form_fancy_uploads'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
+gem 'stimulus_reflex', '~> 3.2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'valid_email2'
 gem 'whenever', require: false
-
-gem "cable_ready", "~> 4.1"
-gem "stimulus_reflex", "~> 3.2"
+gem 'yaml_db'

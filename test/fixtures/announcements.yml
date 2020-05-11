@@ -2,11 +2,11 @@
 #
 # Table name: announcements
 #
-#  id                :integer          not null, primary key
-#  published_at      :datetime
+#  id                :bigint           not null, primary key
 #  announcement_type :string
-#  name              :string
 #  description       :text
+#  name              :string
+#  published_at      :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

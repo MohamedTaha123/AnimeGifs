@@ -2,15 +2,15 @@
 #
 # Table name: notifications
 #
-#  id              :integer          not null, primary key
-#  recipient_id    :bigint
-#  actor_id        :bigint
-#  read_at         :datetime
+#  id              :bigint           not null, primary key
 #  action          :string
-#  notifiable_id   :bigint
 #  notifiable_type :string
+#  read_at         :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  actor_id        :bigint
+#  notifiable_id   :bigint
+#  recipient_id    :bigint
 #
 
 require 'test_helper'
