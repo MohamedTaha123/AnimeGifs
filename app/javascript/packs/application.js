@@ -32,3 +32,5 @@ require("@rails/actiontext")
 // Web Notifications
 Notification.requestPermission().then(function (result) {})
 
+
+import "controllers"

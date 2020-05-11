@@ -3,6 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   include CarrierWave::BombShelter
+  include CarrierWave::ImageOptimizer
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -27,7 +28,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  process :optimize
   # Create different versions of your uploaded files:
   version :thumb do
      process resize_to_fit: [200, 200]

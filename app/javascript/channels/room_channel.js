@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("RoomChannel", {
+consumer.subscriptions.create( "RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -11,7 +11,9 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     var node = document.createElement("P");
-    console.log(data.content);
+    
+   
+    
     var textnode = document.createTextNode(data.content.message);
   
     node.appendChild(textnode);

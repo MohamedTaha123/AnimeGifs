@@ -1,1 +1,2 @@
 $("#like_<%= @gif.id %>").html('<%= button_to  like_gif_path(@gif.id), class: "btn btn-sm btn-danger",method: :put, remote: true do "Like" end %>');
+$("#likes_<%= @gif.id %>").html('<%= j render 'gifs/likes', gif: @gif %>');

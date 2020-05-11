@@ -1,10 +1,7 @@
 
   <div class="row">
     <div class="col-4">
-      <div class="card bg-dark">
-        <!-- Card body -->
-        <div class="card-body">
-
+    
           <a href="#!">
             <img src="data:image/png;base64,<%=  avatarly_url(@gif.user,40) %>" class=" img-center img-fluid shadow shadow-lg--hover" width="100px;" alt="">
             <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
@@ -47,11 +44,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-     
-
-
     </div>
     <div class="col-8">
       <dl class="dl-horizontal">
@@ -69,7 +61,7 @@
                 <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-info"%>
               <% end %>
               <%= @gif.label %> GIF by <%= @gif.user.name%>
-              
+              <%= render 'gifs/likes', gif: @gif %>
             
         </dt>
         <br>

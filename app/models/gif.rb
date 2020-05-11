@@ -21,6 +21,7 @@
 
 class Gif < ApplicationRecord
   belongs_to :user
+
   extend FriendlyId
   friendly_id :label, use: :slugged
   acts_as_votable
@@ -36,6 +37,7 @@ class Gif < ApplicationRecord
 
   validates :label, :description, presence: true
   validates :description, length: { minimum: 15 }
+  validates :tag_list, presence: true
   validate :has_at_least_one_tag
 
   def has_at_least_one_tag

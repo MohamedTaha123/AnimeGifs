@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_222913) do
+ActiveRecord::Schema.define(version: 2020_05_11_022532) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -130,10 +130,11 @@ ActiveRecord::Schema.define(version: 2020_05_07_222913) do
     t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "slug"
     t.integer "impressions_count"
+    t.integer "user_id"
     t.index ["slug"], name: "index_gifs_on_slug", unique: true
+    t.index ["user_id"], name: "index_gifs_on_user_id"
   end
 
   create_table "impressions", force: :cascade do |t|

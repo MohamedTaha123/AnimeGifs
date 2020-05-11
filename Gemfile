@@ -40,6 +40,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman', '~> 4.8', '>= 4.8.1'
+  gem 'bullet'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
@@ -66,6 +67,7 @@ gem 'bootstrap-glyphicons'
 gem 'bootstrap_notify', '~> 0.0.5'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-bombshelter'
+gem 'carrierwave-imageoptimizer'
 gem 'client_side_validations'
 gem 'devise', '~> 4.7', '>= 4.7.0'
 gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
@@ -90,3 +92,6 @@ gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'valid_email2'
 gem 'whenever', require: false
+
+gem "cable_ready", "~> 4.1"
+gem "stimulus_reflex", "~> 3.2"

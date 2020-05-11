@@ -5,13 +5,13 @@ class GifsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :load_activities, only: %i[index show new edit]
   impressionist actions: [:show]
-
+  include CableReady::Broadcaster
   # GET /gifs
   # GET /gifs.json
   def index
     @q = Gif.ransack(params[:q])
-    @gifs = @q.result(distinct: true)
-    @trending = Gif.last(5).reverse
+    @gifs = @q.result(distinct: true).includes([:user])
+    @trending = @q.result(distinct: true).includes([:user]).last(5).reverse
   end
 
   # GET /gifs/1
@@ -35,11 +35,16 @@ class GifsController < ApplicationController
   # POST /gifs.json
   def create
     @user = current_user
-    @gif = @user.gifs.build(gif_params)
+    @gif = @user.gifs.create(gif_params)
+    
     respond_to do |format|
       if @gif.save
         format.html { redirect_to @gif, notice: 'Gif was successfully created.' }
         format.json { render :show, status: :created, location: @gif }
+        cable_ready['gifs_channel'].insert_adjacent_html(
+          selector: '#gifs'
+        )
+        cable_ready.broadcast
       else
         format.html { render :new }
         format.json { render json: @gif.errors, status: :unprocessable_entity }
