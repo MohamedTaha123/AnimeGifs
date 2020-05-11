@@ -1,4 +1,5 @@
-import consumer from "./consumer"
+import CableReady from "cable_ready";
+import consumer from "./consumer";
 
 consumer.subscriptions.create("GifsChannel", {
   connected() {
@@ -11,5 +12,6 @@ consumer.subscriptions.create("GifsChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    if (data.cableReady) CableReady.perform(operations)
   }
 });

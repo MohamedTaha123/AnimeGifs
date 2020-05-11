@@ -45,7 +45,8 @@
         <% end %>
       </div>
       <h2 style="font-weight: bolder;">More GIFs</h2>
-      <div class="card-columns">
+      <div class="card-columns" id="gifs">
+
         <% @gifs.each do |gif| %>
         <div class="card bg-dark  border-0 h-100">
           <%= link_to  gif_path(gif) do %>
@@ -79,6 +80,7 @@
             </p>
           </div>
         </div>
+      
         <% end %>
       </div>
     </div>

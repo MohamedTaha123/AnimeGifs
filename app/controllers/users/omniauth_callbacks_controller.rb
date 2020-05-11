@@ -78,7 +78,7 @@ module Users
       User.create(
         email: auth.info.email,
         name: auth.info.name,
-        avatar: auth.info.avatar_url,
+        avatar: auth.info.image,
         password: Devise.friendly_token[0, 20]
       )
     end
