@@ -11,6 +11,7 @@
   
   <div class="form-group">
     <%= f.input :label , placeholder: "Label"%>
+    
   </div>
 
   <div class="form-group">
@@ -20,8 +21,10 @@
   <div class="form-group">
   
     <%= f.input :tag_list, value: f.object.tag_list.join(", "), class: "form-control",placeholder: "Tag list (comma separated)" %>
+    
   </div>
   
+
  
 
 </div>

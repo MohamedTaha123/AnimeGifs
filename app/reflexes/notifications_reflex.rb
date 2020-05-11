@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GifsReflex < ApplicationReflex
+class NotificationsReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -20,7 +20,9 @@ class GifsReflex < ApplicationReflex
   #   end
   #
   # Learn more at: https://docs.stimulusreflex.com
-  def perform
-    @value = element[:value].capitalize
+
+  def mark_as_read
+    notification = Notification.find(element.dataset[:id])
+    notification.update(read_at: (notification.read_at ? nil : Time.now))
   end
 end

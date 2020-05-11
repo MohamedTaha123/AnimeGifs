@@ -7,11 +7,12 @@
         <li>
           <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
           <% if notification.notification_unread %>
-            <%= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
+            <%#= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
+            <%= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id}%>
           <% else %>
-            <button class="btn btn-info btn-sm btn-round">
+            <div class="text-white">
               Marked As Read
-            </button>
+            </div>
           <% end %>
         </li>
         </ul>
