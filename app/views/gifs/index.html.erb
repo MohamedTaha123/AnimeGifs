@@ -30,7 +30,11 @@
               
               <h6 class="card-title">
                 <%#= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
-                <img src="data:image/png;base64,<%=  avatarly_url(trending.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
+                <% if trending.user.avatar.present? %>
+                  <%= image_tag github_avatar_url(trending.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
+                <% else %>
+                  <img src="data:image/png;base64,<%=  avatarly_url(trending.user,32) %>" class="rounded-circle" alt="">
+                <% end %>
 
                 @<%= trending.user.name.mentionable.capitalize %> 
                
@@ -55,8 +59,11 @@
           <div class="card-body">
             
             <h6 class="card-title">
-              <img src="data:image/png;base64,<%=  avatarly_url(gif.user,40) %>" height="30" width="30" class="rounded-circle" alt="">
-              <%#=  image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle","data-container": "body", "data-toggle": "popover", "data-placement": "top", "data-content": "#{gif.user.name}"  %>
+             <% if gif.user.avatar.present? %>
+                <%= image_tag github_avatar_url(gif.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
+              <% else %>
+                <img src="data:image/png;base64,<%=  avatarly_url(gif.user,32) %>" class="rounded-circle" alt="">
+              <% end %>
               <small class="text-muted  font-weight-bold font-italic"> <%= gif.user.name.mentionable.capitalize %> <%= gif.label%> </small>
               
             </h6> 

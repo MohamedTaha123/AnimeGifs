@@ -11,10 +11,10 @@ module UsersHelper
   end
 
   def avatarly_url(user, size)
-    if user.avatar.present?
-      user.avatar
-    else
-      Base64.strict_encode64(Avatarly.generate_avatar(user.name, opts = { size: size, font_color: '#ffffff' }))
-    end
+    Base64.strict_encode64(Avatarly.generate_avatar(user.name, opts = { size: size, font_color: '#ffffff' }))
+  end
+
+  def github_avatar_url(user, _size)
+    user.avatar if user.avatar.present?
   end
 end
