@@ -33,6 +33,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do
@@ -74,6 +77,7 @@ gem 'devise', '~> 4.7', '>= 4.7.0'
 gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise_masquerade', '~> 1.2'
 gem 'exception_handler', '~> 0.8.0.0'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'gon', '~> 6.3', '>= 6.3.2'
@@ -84,8 +88,8 @@ gem 'name_of_person', '~> 1.1'
 gem 'omniauth-facebook', '~> 5.0'
 gem 'omniauth-github', '~> 1.3'
 gem 'omniauth-twitter', '~> 1.4'
-gem 'public_activity'
 gem 'pg'
+gem 'public_activity'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
