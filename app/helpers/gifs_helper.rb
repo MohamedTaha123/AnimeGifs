@@ -10,6 +10,7 @@ module GifsHelper
       recent_liker_and_count(votes)
     end
   end
+
   def like_button_for(gif)
     if current_user.nil?
       button_to like_gif_path(gif.id), method: :put, class: 'btn btn-sm btn-danger' do
@@ -27,6 +28,19 @@ module GifsHelper
       end
     end
   end
+
+  def follow_button_for(user)
+    if current_user.following?(user)
+      button_to unfollow_gif_path(user), method: :put, class: 'btn btn-info btn-sm', remote: true do
+        'Followed'
+      end
+    else
+      button_to follow_gif_path(user), method: :put, class: 'btn btn-info btn-sm', remote: true do
+        'Follow'
+      end
+    end
+  end
+
   private
 
   def list_likers(votes)
@@ -35,7 +49,9 @@ module GifsHelper
       likers << user.name
     end
 
-    likers.to_sentence.html_safe + pluralize_likes(likers.count) if likers.count > 0
+    if likers.count > 0
+      likers.to_sentence.html_safe + pluralize_likes(likers.count)
+    end
   end
 
   def recent_liker_and_count(votes)

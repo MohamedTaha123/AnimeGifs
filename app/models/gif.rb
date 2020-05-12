@@ -9,6 +9,7 @@
 #  image             :string
 #  impressions_count :integer
 #  label             :string
+#  language          :string
 #  slug              :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

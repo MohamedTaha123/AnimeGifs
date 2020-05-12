@@ -36,7 +36,7 @@ class GifsController < ApplicationController
   def create
     @user = current_user
     @gif = @user.gifs.create(gif_params)
-    
+
     respond_to do |format|
       if @gif.save
         format.html { redirect_to @gif, notice: 'Gif was successfully created.' }
@@ -100,19 +100,20 @@ class GifsController < ApplicationController
     @user = @gif.user
     current_user.follow(@user)
     Notification.create!(recipient: @gif.user, actor: current_user, action: 'follow', notifiable: @user)
-    ActionCable.server.broadcast('welcome_channel', "You Start Following #{@user.name}.")
+    # ActionCable.server.broadcast('welcome_channel', "You Start Following #{@user.name}.")
     # ActionCable.server.broadcast('welcome_channel', "#{current_user} Start Following You.")
     respond_to do |format|
-      format.html { redirect_to request.referer, alert: 'Followed' }
+      format.html { redirect_to :back }
+      format.js
     end
   end
 
   def unfollow
     @user = @gif.user
     current_user.stop_following(@user)
-    Notification.create!(recipient: @gif.user, actor: current_user, action: 'unfollow', notifiable: @user)
     respond_to do |format|
-      format.html { redirect_to request.referer, alert: 'Unfollowed' }
+      format.html { redirect_to :back }
+      format.js
     end
   end
 
