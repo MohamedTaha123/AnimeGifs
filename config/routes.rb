@@ -3,6 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'editor/create'
   resources :conversations, only: %i[create index] do
     resources :chats, only: %i[create new]
   end
