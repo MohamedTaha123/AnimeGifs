@@ -22,7 +22,7 @@ module MyApi
     # Exception Handler
     config.exception_handler =
       { dev: false,
-        db: true,
+        db: nil,
         # Custom Exceptions
         custom_exceptions: {
           # 'ActionController::RoutingError' => :not_found # => example
