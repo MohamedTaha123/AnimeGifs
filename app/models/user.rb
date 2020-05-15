@@ -54,7 +54,7 @@ class User < ApplicationRecord
   validates :facebook_url, presence: false, on: :update, length: { maximum: 100 }, format: FACEBOOK_URL_REGEXP, allow_blank: true
   validates :github_url, uniqueness: { scope: :id }
   validates :facebook_url, uniqueness: { scope: :id }
-  validates_presence_of :little_description, on: :update
+  # validates_presence_of :little_description, on: :update
  
  
 
