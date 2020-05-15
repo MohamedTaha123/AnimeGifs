@@ -29,14 +29,20 @@ module GifsHelper
     end
   end
 
-  def follow_button_for(gif)
-    if current_user.following?(gif)
-      button_to unfollow_gif_path(gif.id), method: :get, class: 'btn btn-info btn-sm', remote: true do
-        'Followed'
+  def follow_button_for(user)
+    if current_user.nil?
+      button_to follow_gif_path(user), method: :put, class: 'btn btn-info btn-sm' do
+        'Follow'
       end
     else
-      button_to follow_gif_path(gif.id), method: :get, class: 'btn btn-info btn-sm', remote: true do
-        'Follow'
+      if current_user.following?(user)
+        button_to unfollow_gif_path(user), method: :put, class: 'btn btn-info btn-sm', remote: true do
+          'Followed'
+        end
+      else
+        button_to follow_gif_path(user), method: :put, class: 'btn btn-info btn-sm', remote: true do
+          'Follow'
+        end
       end
     end
   end

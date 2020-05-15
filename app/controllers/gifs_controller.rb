@@ -41,10 +41,6 @@ class GifsController < ApplicationController
       if @gif.save
         format.html { redirect_to @gif, notice: 'Gif was successfully created.' }
         format.json { render :show, status: :created, location: @gif }
-        cable_ready['gifs_channel'].insert_adjacent_html(
-          selector: '#gifs'
-        )
-        cable_ready.broadcast
       else
         format.html { render :new }
         format.json { render json: @gif.errors, status: :unprocessable_entity }
