@@ -1,10 +1,10 @@
 .list-group-item {
     border: none;
-    color: #2d2222;
+    color: #db7e7e;
   }
   
   .list-group-item.active {
-    background-color: #fff;
+    background-color: transparentize($color: teal, $amount: 0);
     border-color: initial;
     color: #2d2222;
     font-weight: bold;
