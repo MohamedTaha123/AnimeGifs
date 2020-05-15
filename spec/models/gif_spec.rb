@@ -23,18 +23,14 @@ RSpec.describe Gif, type: :model do
       expect(FactoryGirl.build(:gif, description: Faker::Lorem.characters(51))).to_not be_valid
     end
     it 'should have tag_list' do
-      expect(FactoryGirl.build(:gif, tag_list: '')).to_not be_valid 
+      expect(FactoryGirl.build(:gif, tag_list: '')).to_not be_valid
     end
     it 'should not pass without image' do
       expect(FactoryGirl.build(:gif, image: nil)).to_not be_valid
     end
     it 'should not pass without languauge' do
-     @gif = FactoryGirl.build(:gif, language: '')
-     expect(@gif).to_not be_valid
-    end
-    it 'should have slug with same name of label' do
-      @gif = FactoryGirl.create(:gif,user_id: '2', label: 'gif_test')
-      expect(@gif.slug).to eql('gif_test')
+      @gif = FactoryGirl.build(:gif, language: '')
+      expect(@gif).to_not be_valid
     end
   end
   describe '#user' do

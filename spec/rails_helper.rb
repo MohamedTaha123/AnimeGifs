@@ -9,6 +9,7 @@ if Rails.env.production?
 end
 
 require 'support/factory_girl'
+require 'support/database_cleaner'
 require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
@@ -26,7 +27,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.include Devise::TestHelpers, type: :controller
   config.infer_spec_type_from_file_location!

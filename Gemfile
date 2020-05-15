@@ -57,7 +57,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'selenium-webdriver'
-   gem 'shoulda-matchers'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
