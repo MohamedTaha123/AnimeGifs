@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       get 'unfollow', to: 'gifs#unfollow'
     end
   end
+  resources :chatroom, only: :show do
+    resources :messages, only: :create
+  end
 
   namespace :admin do
 

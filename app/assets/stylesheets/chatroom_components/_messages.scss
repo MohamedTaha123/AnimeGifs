@@ -1,0 +1,13 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.author {
+    span {
+      font-style: normal;
+      font-weight: bold;
+    }
+  
+    small {
+      color: $gray-500;
+    }
+  }

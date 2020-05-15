@@ -1,0 +1,11 @@
+.list-group-item {
+    border: none;
+    color: #2d2222;
+  }
+  
+  .list-group-item.active {
+    background-color: #fff;
+    border-color: initial;
+    color: #2d2222;
+    font-weight: bold;
+  }

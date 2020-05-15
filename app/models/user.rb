@@ -46,7 +46,7 @@ class User < ApplicationRecord
   has_many :gifs, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy
-  
+  has_many :messages
 
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
