@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     member do
       put 'like', to: 'gifs#like'
       put 'unlike', to: 'gifs#unlike'
-      put 'follow', to: 'gifs#follow'
-      put 'unfollow', to: 'gifs#unfollow'
+      get 'follow', to: 'gifs#follow'
+      get 'unfollow', to: 'gifs#unfollow'
     end
   end
 

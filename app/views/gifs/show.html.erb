@@ -16,7 +16,7 @@
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primamry btn-sm"%>
                 <%else %>
                   <div id="follow_<%= @gif.id %>" >
-                    <%= follow_button_for @gif.user %>
+                    <%= follow_button_for @gif %>
                   </div>
                 <% end %>
               <% end %>
