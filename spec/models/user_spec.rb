@@ -31,12 +31,20 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:little_description).on(:update) }
   end
   describe '#follow' do
-    it 'should return true if follow other user' do
+    it 'returns true if follows other user' do
       subject_user = FactoryGirl.create(:user)
       other_user = FactoryGirl.create(:user)
-      Follow.create(following_id: subject_user.id, follower_id: other_user.id)
 
-      expect(subject_user.follows?(other_user)).to be_falsey
+      Follow.create(followable_id: other_user.id, follower_id: subject_user.id)
+
+      expect(subject_user.following?(other_user)).to be_truthy
+    end
+    it 'returns false if does not follow other user'  do
+      subject_user = FactoryGirl.create(:user)
+      other_user = FactoryGirl.create(:user)
+      Follow.create(followable_id: subject_user.id, follower_id: other_user.id)
+
+      expect(subject_user.following?(other_user)).to be_falsey
     end
   end
 end

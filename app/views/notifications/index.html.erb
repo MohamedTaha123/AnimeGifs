@@ -9,10 +9,7 @@
           <% if notification.notification_unread %>
             <%#= button_to  "Mark As Read", markasread_notification_path(notification),class: 'btn btn-info btn-sm btn-round', method: :put, remote: true %>
             <%= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id}%>
-          <% else %>
-            <div class="text-white">
-              Marked As Read
-            </div>
+          
           <% end %>
         </li>
         </ul>
