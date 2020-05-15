@@ -62,12 +62,10 @@
         </li>
        
            
-         
          <li class="nav-item">
-          <%= link_to conversations_path, class: "nav-link","data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Start Conversation" do %>
-            <span><i class="far fa-comment-dots fa-lg"></i></span>
-          <% end %>
-        </li>
+          <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link" ,"data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Join Room and Discuss with other devs"%>
+         </li>
+      
         
 
         <li class="nav-item dropdown">
