@@ -52,10 +52,10 @@
           <%= link_to notifications_path, class: "nav-link" do %>
             <i class="far fa-bell fa-lg" aria-hidden="true">
               <% if @notifications.unread.present? %>
-              <span class=" badge badge-md badge-pill badge-floating badge-warning border-white"><%= @notifications.unread.count%></span>
-            <% else %>
-              <span class="badge badge-md badge-pill badge-floating badge-warning border-white">0</span>
-            <% end %>
+                <span class=" badge badge-md badge-pill badge-floating badge-warning border-white"><%= @notifications.unread.count%></span>
+              <% else %>
+                <span class="badge badge-md badge-pill badge-floating badge-warning border-white">0</span>
+              <% end %>
             </i>
             
           <% end %>
@@ -63,7 +63,7 @@
        
            
          <li class="nav-item">
-          <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link" ,"data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Join Room and Discuss with other devs"%>
+          <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link" %>
          </li>
       
         

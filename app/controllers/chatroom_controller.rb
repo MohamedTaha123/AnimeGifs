@@ -3,7 +3,7 @@
 class ChatroomController < ApplicationController
   before_action :authenticate_user!
   def show
-    @chatroom = Chatroom.find(params[:id])
+    @chatroom = Chatroom.friendly.find(params[:id])
     @message = Message.new
   end
 end
