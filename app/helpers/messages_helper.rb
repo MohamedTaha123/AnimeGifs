@@ -1,33 +1,31 @@
 # frozen_string_literal: true
 
 module MessagesHelper
-  # Pygments Modification
-  class HTMLwithPygments < Redcarpet::Render::HTML
+  # CodeRay Integration
+  class MarkdownRenderer < Redcarpet::Render::HTML
     def block_code(code, language)
-      sha = Digest::SHA1.hexdigest(code)
-      Rails.cache.fetch ['code', language, sha].join('-') do
-        Pygments.highlight(code, lexer: language)
-      end
+      CodeRay.highlight(code, language)
     end
   end
 
+  def coderay(text)
+    text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
+      CodeRay.scan($3, $2).div(:css => :class)
+    end
+  end
   def markdown(text)
-    renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true)
+    rndr = MarkdownRenderer.new(filter_html: true, hard_wrap: true)
     options = {
-      autolink: true,
-      no_intra_emphasis: true,
       fenced_code_blocks: true,
-      lax_html_blocks: true,
+      no_intra_emphasis: true,
+      autolink: true,
+      disable_indented_code_blocks: true,
       strikethrough: true,
+      lax_html_blocks: true,
       superscript: true
     }
-    Redcarpet::Markdown.new(renderer, options).render(text).html_safe
-  end
-
-  # Classic markdown support
-  def markdown_classic(text)
-    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    syntax_highlighter(Redcarpet::Markdown.new(text, *options).to_html).html_safe
+    markdown_to_html = Redcarpet::Markdown.new(rndr, options)
+    markdown_to_html.render(text).html_safe
   end
 
   def syntax_highlighter(html)

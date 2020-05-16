@@ -5,6 +5,7 @@
 # Table name: chatrooms
 #
 #  id         :bigint           not null, primary key
+#  language   :string
 #  name       :string
 #  slug       :string
 #  created_at :datetime         not null

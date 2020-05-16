@@ -33,7 +33,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 4.0.0'
 end
@@ -77,6 +76,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-bombshelter'
 gem 'carrierwave-imageoptimizer'
 gem 'client_side_validations'
+gem 'coderay'
 gem 'devise', '~> 4.7', '>= 4.7.0'
 gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise_masquerade', '~> 1.2'
@@ -93,7 +93,6 @@ gem 'omniauth-github', '~> 1.3'
 gem 'omniauth-twitter', '~> 1.4'
 gem 'pg'
 gem 'public_activity'
-gem 'pygments.rb'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'redcarpet', '~> 3.5'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
