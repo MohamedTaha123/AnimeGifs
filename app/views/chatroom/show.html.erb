@@ -19,8 +19,7 @@
           </div>
 
           <%= simple_form_for [ @chatroom, @message ] do |f| %>
-            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" , hint: "Markdown is supported for #{@chatroom.name} users"%>
-            
+            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" , hint: "Markdown is supported."  %>
           <% end %>
         </div>
       </div>

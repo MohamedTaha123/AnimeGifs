@@ -5,5 +5,5 @@
     </span>
     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
   </i>
-  <p><%=  message.content %></p>
+  <p><%=  markdown(message.content) %></p>
 </div>
