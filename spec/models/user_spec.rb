@@ -28,7 +28,6 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -50,30 +49,15 @@ RSpec.describe User, type: :model do
     end
     it { should allow_value('https://github.com/test').for(:github_url) }
     it { should allow_value('https://facobook.com/test').for(:facebook_url) }
-  
   end
   describe '#uniqueness' do
     it { should validate_uniqueness_of(:facebook_url).scoped_to(:id) }
     it { should validate_uniqueness_of(:github_url).scoped_to(:id) }
   end
-  describe '#presence' do
-    it { should validate_presence_of(:little_description).on(:update) }
-  end
-  describe '#follow' do
-    it 'returns true if follows other user' do
-      subject_user = FactoryGirl.create(:user)
-      other_user = FactoryGirl.create(:user)
 
-      Follow.create(followable_id: other_user.id, follower_id: subject_user.id)
-
-      expect(subject_user.following?(other_user)).to be_truthy
-    end
-    it 'returns false if does not follow other user'  do
-      subject_user = FactoryGirl.create(:user)
-      other_user = FactoryGirl.create(:user)
-      Follow.create(followable_id: subject_user.id, follower_id: other_user.id)
-
-      expect(subject_user.following?(other_user)).to be_falsey
-    end
+  describe '#havemany' do
+    it { should have_many(:gifs) }
+    it { should have_many(:services) }
+    it { should have_many(:notifications) }
   end
 end
