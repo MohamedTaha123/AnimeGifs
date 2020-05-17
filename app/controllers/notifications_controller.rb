@@ -4,16 +4,6 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = current_user.notifications.includes([:actor]).includes([:notifiable])
-  end
-
-  def mark_as_read
-    @notification = Notification.find(
-      params[:id]
-    )
-    @notification.update(read_at: Time.now)
-    respond_to do |format|
-      format.html { redirect_to request.referer, alert: 'Marked As Read' }
-    end
+    @notifications = current_user.notifications.recent.includes(%i[actor notifiable])
   end
 end

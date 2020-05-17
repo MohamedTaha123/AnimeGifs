@@ -1,3 +1,7 @@
-<%= actor.name %>
-  <%= action %>ed
+<% if actor.avatar.present? %>
+    <%= image_tag github_avatar_url(actor, size: 40), height: 25, width: 25, class: "rounded-circle" %>
+<% else %>
+   <img src="data:image/png;base64,<%=  avatarly_url(actor,32) %>" class="rounded-circle" alt="">
+<% end %>
+<%= action %>ed
   you
