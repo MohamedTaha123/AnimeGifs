@@ -1,7 +1,11 @@
 <div class="message-container" id="message-<%= message.id %>">
   <i class="author">
     <span>
-       @<%= message.user.name.mentionable %>
+      <% if message.user.present? %>
+         @<%= message.user.name.mentionable %>
+      <% else %>
+         @Anonymous
+      <% end %>
     </span>
     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
   </i>

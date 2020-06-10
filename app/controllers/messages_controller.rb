@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
     else
       redirect_to chatroom_path(@chatroom)
-      
+
     end
   end
 

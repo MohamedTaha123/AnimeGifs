@@ -127,6 +127,6 @@ class GifsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def gif_params
-    params.require(:gif).permit(:image, :description, :label, :image_cache, :tag_list)
+    params.require(:gif).permit(:image, :description, :label, :image_cache, :tag_list, :language)
   end
 end
