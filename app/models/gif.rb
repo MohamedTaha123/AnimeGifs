@@ -27,7 +27,6 @@
 
 class Gif < ApplicationRecord
   belongs_to :user
-
   extend FriendlyId
   friendly_id :label, use: :slugged
   acts_as_votable
