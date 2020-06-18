@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_043604) do
+ActiveRecord::Schema.define(version: 2020_06_18_153415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,19 +98,6 @@ ActiveRecord::Schema.define(version: 2020_05_16_043604) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "errors", id: :serial, force: :cascade do |t|
-    t.text "class_name"
-    t.text "status"
-    t.text "message"
-    t.text "trace"
-    t.text "target"
-    t.text "referrer"
-    t.text "params"
-    t.text "user_agent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "follows", force: :cascade do |t|
     t.string "followable_type", null: false
     t.bigint "followable_id", null: false
@@ -148,6 +135,15 @@ ActiveRecord::Schema.define(version: 2020_05_16_043604) do
     t.string "language"
     t.index ["slug"], name: "index_gifs_on_slug", unique: true
     t.index ["user_id"], name: "index_gifs_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "images_hash"
+    t.string "label"
+    t.string "description"
+    t.string "gif_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "impressions", force: :cascade do |t|
