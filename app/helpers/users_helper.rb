@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module UsersHelper
+
+
+  # Must Fix the Bug
   include GravatarImageTag
   def avatar_url(user, size)
     if gravatar_image_url(user.email).present?
