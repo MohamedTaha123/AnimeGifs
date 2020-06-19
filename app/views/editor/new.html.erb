@@ -2,7 +2,7 @@
     <h1 class= "text-center"> Convert Your Project Images To One Gif</h1>
 
     <%= simple_form_for(@image, url: new_path) do |form| %>
-        <%= form.file_field :images_hash ,multiple: true, direct_upload: true%>
+        <%= form.file_field :images_hash ,multiple: true%>
         <%= form.input :description %>
         <%= form.input :label %>
         <%= form.button :submit, "Convert" , class: "btn btn-lg btn-round btn-dark", data: {disable_with: "Loading..." } %>
