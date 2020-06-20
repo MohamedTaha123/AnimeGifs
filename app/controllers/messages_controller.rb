@@ -16,6 +16,17 @@ class MessagesController < ApplicationController
     end
   end
 
+  def remove
+    @chatroom = Chatroom.friendly.find(
+      params[:chatroom_id]
+    )
+    @message = Message.find(params[:id])
+    @message.destroy
+    respond_to do |format|
+      format.html { redirect_to chatroom_path(@chatroom, anchor: "message-#{@chatroom.messages.last.id}") }
+    end
+  end
+
   private
 
   def message_params

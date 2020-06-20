@@ -6,4 +6,6 @@ class ChatroomController < ApplicationController
     @chatroom = Chatroom.friendly.find(params[:id])
     @message = Message.new
   end
+
+
 end

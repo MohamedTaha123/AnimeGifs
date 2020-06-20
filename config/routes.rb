@@ -3,10 +3,9 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-
-  post 'convert/:image_id', to: 'editor#convert'
-  get 'new', to: 'editor#new'
-  post 'new' , to: 'editor#create'
+  # post 'convert/:image_id', to: 'editor#convert'
+  # get 'new', to: 'editor#new'
+  # post 'new' , to: 'editor#create'
   resources :conversations, only: %i[create index] do
     resources :chats, only: %i[create new]
   end
@@ -20,7 +19,11 @@ Rails.application.routes.draw do
     end
   end
   resources :chatroom, only: :show do
-    resources :messages, only: :create
+    resources :messages, only: %i[create] do
+      member do 
+        delete 'remove' , to: 'messages#remove'
+      end
+    end
   end
 
   namespace :admin do
