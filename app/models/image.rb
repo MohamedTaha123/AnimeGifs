@@ -6,7 +6,7 @@
 #
 #  id          :bigint           not null, primary key
 #  description :string
-#  images_hash :string
+#  images_hash :json
 #  label       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -16,7 +16,7 @@
 class Image < ApplicationRecord
   before_create :randomize_id
   # has_many_attached :images_hash
-  mount_uploader :images_hash, ImagesHashUploader
+  mount_uploaders :images_hash, ImagesHashUploader
   validates :images_hash, presence: true
 
   def randomize_id

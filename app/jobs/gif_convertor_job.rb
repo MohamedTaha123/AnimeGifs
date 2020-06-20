@@ -4,13 +4,27 @@ class GifConvertorJob < ApplicationJob
   queue_as :default
   require 'rmagick'
 
-  def perform(new_image)
+  def perform(nwi, current_user)
     # Do something later
-    anim = Magick::ImageList.new(new_image.images_hash)
+    anim = Magick::ImageList.new(
+      *browse_images(nwi.images_hash)
+    )
+
     anim.delay = 200
     anim.iterations = 2
-    anim.write('test_gif.gif')
-    Gif.create(image: 'test_gif.gif', description: new_image.description , label: new_image.label)
-    exit
+    puts anim
+    new_gif = anim.write('test_gif.gif')
+    Gif.create!(id: nwi.gif_id, image: new_gif, user_id: current_user.id,
+                tags_list: %w[1 2 3],
+                description: nwi.description, label: nwi.label)
+  end
+
+  def browse_images(images)
+    data = images.map do |img|
+      File.basename(img.url)
+    end
+    data
+  rescue StandardError => e
+    puts e.to_s
   end
 end
