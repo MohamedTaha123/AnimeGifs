@@ -22,8 +22,12 @@ class MessagesController < ApplicationController
     )
     @message = Message.find(params[:id])
     @message.destroy
+
     respond_to do |format|
-      format.html { redirect_to chatroom_path(@chatroom, anchor: "message-#{@chatroom.messages.last.id}") }
+      format.html do
+        redirect_to chatroom_path(@chatroom,
+                                  anchor: "message-#{@message.id}"), alert: 'Deleted'
+      end
     end
   end
 

@@ -42,7 +42,8 @@ class User < ApplicationRecord
   acts_as_voter
   acts_as_followable
   acts_as_follower
-
+  acts_as_reader
+  
   has_many :gifs, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy

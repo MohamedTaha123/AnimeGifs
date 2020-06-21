@@ -7,11 +7,23 @@
          @Anonymous
       <% end %>
     </span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+    <small>
+      <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
+       
+    </small>
+    <% if !current_user.have_read?(message) %>
+       <span class="badge badge-pill badge-info">unread</span>
+  
+    <% end %>
+    <% if message.user == current_user%>
+      <%= link_to  remove_chatroom_message_path(message.chatroom, message) , method: :delete, data: {confirm: 'Wanna delete it ?'}  do %>
+        <i class="far fa-trash-alt fa-lg" style="color:red;"></i>
+      <% end %>
+    <% end %>
   </i>
-  <p><%= markdown(message.content) %></p>
-  <% if message.user == current_user%>
-    <%= link_to 'Remove', remove_chatroom_message_path(message.chatroom, message) , method: :delete, data: {confirm: 'Wanna delete it ?'} , class: 'btn btn-sm'%>
-  <% end %>
+  <p>
+    <%= markdown(message.content) %>
+  </p>
+ 
 </div>
 

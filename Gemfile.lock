@@ -463,6 +463,8 @@ GEM
       thread_safe (~> 0.1)
     unicode_utils (1.4.0)
     uniform_notifier (1.13.0)
+    unread (0.11.0)
+      activerecord (>= 3)
     valid_email2 (3.2.2)
       activemodel (>= 3.2)
       mail (~> 2.5)
@@ -561,6 +563,7 @@ DEPENDENCIES
   stimulus_reflex (~> 3.2)
   turbolinks (~> 5)
   tzinfo-data
+  unread
   valid_email2
   web-console (>= 3.3.0)
   webdrivers

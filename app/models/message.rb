@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: messages
@@ -11,8 +13,17 @@
 #
 
 class Message < ApplicationRecord
-    belongs_to :user 
-    belongs_to :chatroom
-    validates_presence_of :content, on: :create
-    accepts_nested_attributes_for :user
+  before_create :randomize_id
+  belongs_to :user
+  belongs_to :chatroom
+  validates_presence_of :content, on: :create
+  accepts_nested_attributes_for :user
+  acts_as_readable on: :created_at
+
+  # Randomize Id
+  def randomize_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000)
+    end while Message.where(id: id).exists?
+  end
 end

@@ -101,6 +101,7 @@ gem 'simple_form_fancy_uploads'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'stimulus_reflex', '~> 3.2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'unread'
 gem 'valid_email2'
 gem 'whenever', require: false
 gem 'yaml_db'
