@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       put 'unfollow', to: 'gifs#unfollow'
     end
   end
-  resources :chatroom, only: :show do
+  resources :chatroom, only: %i[ show create new ] do
     resources :messages, only: %i[create] do
       member do 
         delete 'remove' , to: 'messages#remove'

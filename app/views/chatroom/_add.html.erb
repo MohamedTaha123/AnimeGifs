@@ -1,0 +1,12 @@
+<%= simple_form_for(@chatroom,  :url => {:controller => "chatroom", :action => "create"}) do |f| %>
+    <div class="text-center">
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    </div>
+    
+     <%= f.input :name , placeholder: 'Name', hint: 'Please Avoid existing rooms' ,class: 'form-control'%>
+     <%= f.select :language, options_for_select([["Ruby", "ruby"], ["Python", "python"], ["JavaScript", "javascript"], ["CoffeeScript", "coffeescript"], ["CSS", "css"], ["HTML", "html"]]), class: 'form-control' %>
+    <div class="text-center">
+        <%= f.button :submit , "Add" , class: 'btn  btn-default' %>
+    </div>
+<% end %>

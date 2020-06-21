@@ -20,4 +20,7 @@ class Chatroom < ApplicationRecord
   has_many :messages
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  validates :language, :name , presence: true 
+  validates_uniqueness_of :name, on: :create, message: "Already Exists"
 end

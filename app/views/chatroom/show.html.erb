@@ -2,20 +2,24 @@
 
     <div class="d-flex ">
       <div class="list-group w-200px bg-black br-light">
+       
+        <%= link_to 'Add a Room', new_chatroom_path, class: 'btn  btn-info', method: :get %>
+        <br>
         <% Chatroom.all.each do |chatroom| %>
           <%= link_to "##{chatroom.name}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
          
         <% end %>
+     
       </div>
 
 
       <div class="chatroom">
-        <h4>
+        <h1>
           #<%= @chatroom.name %>
             <% if @chatroom.messages.where.not(user_id: current_user.id).unread_by(current_user).any? %>
-              <span class="badge badge-pill badge-info"> <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).count %>  Unread messages</span>
+              <span class="badge badge-pill badge-info"> <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).count %>  unread messages</span>
             <% end %>
-        </h4>
+        </h1>
    
         <div>
           <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
