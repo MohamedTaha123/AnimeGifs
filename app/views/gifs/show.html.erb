@@ -3,8 +3,12 @@
     <div class="col-4">
     
           <a href="#!">
-            <%=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
-
+            <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
+             <% if @gif.user.avatar.present? %>
+                <%= image_tag github_avatar_url(@gif.user, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;"  %>
+              <% else %>
+                <%= image_tag gravatar_image_url(@gif.user.email, size: 40),  class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;"  %>
+              <% end %>
           </a>
           <div class="pt-4 text-center">
             <h5 class="h3 title text-white font-weight-bold">
