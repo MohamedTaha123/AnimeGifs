@@ -1,10 +1,10 @@
 <li>
     <% if comment.user.avatar.present? %>
-        <%= image_tag github_avatar_url(comment.user, size: 40), class: "rounded-circle "  %>
+        <%= image_tag github_avatar_url(comment.user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
     <% else %>
-        <%= image_tag gravatar_image_url(comment.user.email, size: 40),  class: "rounded-circle"  %>
+        <%= image_tag gravatar_image_url(comment.user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
     <% end %>
-    @<%= comment.user.name.mentionable %> :
+    - @<%= comment.user.name.mentionable %> - :
     <%= comment.body %> 
     -
      <small style="color: gold;">Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
@@ -13,7 +13,7 @@
         <%= f.input :body, as: :text, placeholder: "Add a Reply" %><br />
         <%= f.submit "Reply"  , class: 'btn btn-sm btn-red'%>
     <% end %>
-
+    <br>
     <ul>
         <%= render comment.comments.includes([:comments]) %>
     </ul>

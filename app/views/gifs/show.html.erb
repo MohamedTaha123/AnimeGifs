@@ -45,22 +45,21 @@
     <div class="col-8">
       <dl class="dl-horizontal">
         <dt>
-            
-              <% if user_signed_in?  %>
-                <% if current_user.id != @gif.user_id%>
-                  <div id="like_<%= @gif.id %>" >
-                    <%= like_button_for @gif %>
-                  </div>
-                <% else %>
-                  <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
-                <% end %>
-              <% else %>
-                <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-info"%>
-              <% end %>
               <%= @gif.label %> GIF by <%= @gif.user.name%>
               <%= render 'gifs/likes', gif: @gif %>
             
         </dt>
+        <% if user_signed_in?  %>
+          <% if current_user.id != @gif.user_id%>
+            <div id="like_<%= @gif.id %>" >
+               <%= like_button_for @gif %>
+            </div>
+          <% else %>
+            <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-default"%>
+         <% end %>
         <br>
         <dd><%= image_tag(@gif.image.url) %></dd>
 
