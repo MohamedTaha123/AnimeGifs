@@ -29,11 +29,10 @@
             <div class="card-body">
               
               <h6 class="card-title">
-                <%#= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
                 <% if trending.user.avatar.present? %>
                   <%= image_tag github_avatar_url(trending.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
                 <% else %>
-                  <img src="data:image/png;base64,<%=  avatarly_url(trending.user,32) %>" class="rounded-circle" alt="">
+                <%= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
                 <% end %>
 
                 @<%= trending.user.name.mentionable.capitalize %> 
@@ -62,7 +61,7 @@
              <% if gif.user.avatar.present? %>
                 <%= image_tag github_avatar_url(gif.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
               <% else %>
-                <img src="data:image/png;base64,<%=  avatarly_url(gif.user,32) %>" class="rounded-circle" alt="">
+                <%= image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
               <% end %>
               <small class="text-muted  font-weight-bold font-italic"> <%= gif.user.name.mentionable.capitalize %> <%= gif.label%> </small>
               
