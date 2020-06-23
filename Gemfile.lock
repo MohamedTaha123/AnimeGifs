@@ -333,6 +333,8 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.3)
       nio4r (~> 2.0)
+    pygments.rb (1.2.1)
+      multi_json (>= 1.0.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -546,6 +548,7 @@ DEPENDENCIES
   pg
   public_activity
   puma (~> 4.1)
+  pygments.rb
   rails (~> 6.0.2, >= 6.0.2.2)
   ransack!
   redcarpet (~> 3.5)

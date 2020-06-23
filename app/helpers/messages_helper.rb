@@ -9,10 +9,11 @@ module MessagesHelper
   end
 
   def coderay(text)
-    text.gsub(/\<code( lang="(.+?)")?\>(.+?)\<\/code\>/m) do
-      CodeRay.scan($3, $2).div(:css => :class)
+    text.gsub(%r{\<code( lang="(.+?)")?\>(.+?)\</code\>}m) do
+      CodeRay.scan(Regexp.last_match(3), Regexp.last_match(2)).div(css: :class)
     end
   end
+
   def markdown(text)
     rndr = MarkdownRenderer.new(filter_html: true, hard_wrap: true)
     options = {
