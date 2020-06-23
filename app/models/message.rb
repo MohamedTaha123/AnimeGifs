@@ -19,7 +19,7 @@ class Message < ApplicationRecord
   validates_presence_of :content, on: :create
   accepts_nested_attributes_for :user
   acts_as_readable on: :created_at
-
+  validates_length_of :content, within: 10..500, on: :create
   # Randomize Id
   def randomize_id
     begin

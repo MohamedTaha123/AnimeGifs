@@ -9,7 +9,7 @@
     -
      <small style="color: gold;">Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 
-    <%= simple_form_for [comment, Comment.new] do |f| %>
+    <%= simple_form_for [comment, Comment.new] , validate: true do |f| %>
         <%= f.input :body, as: :text, placeholder: "Add a Reply" %><br />
         <%= f.submit "Reply"  , class: 'btn btn-sm btn-red'%>
     <% end %>

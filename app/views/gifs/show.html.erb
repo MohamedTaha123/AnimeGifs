@@ -89,7 +89,7 @@
             <% else %>
               <%= link_to 'Sign in to leave a comment', new_user_session_path, class: 'btn btn-sm btn-default' %>
             <% end %>
-            <%= simple_form_for [@gif, Comment.new] do |f| %>
+            <%= simple_form_for [@gif, Comment.new], validate: true do |f| %>
             <%= f.input :body,as: :text, placeholder: "Add a comment" %><br/>
             <%= f.submit "Add Comment" , class: 'btn btn-sm btn-dark'%>
           <% end %>
