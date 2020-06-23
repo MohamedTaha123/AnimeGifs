@@ -3,6 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
   # post 'convert/:image_id', to: 'editor#convert'
   # get 'new', to: 'editor#new'
   # post 'new' , to: 'editor#create'
@@ -17,6 +18,10 @@ Rails.application.routes.draw do
       put 'follow', to: 'gifs#follow'
       put 'unfollow', to: 'gifs#unfollow'
     end
+    resources :comments
+  end
+  resources :comments do
+    resources :comments
   end
   resources :chatroom, only: %i[ show create new ] do
     resources :messages, only: %i[create] do

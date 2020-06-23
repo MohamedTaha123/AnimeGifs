@@ -48,7 +48,7 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy
   has_many :messages
-
+  has_many :comments
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
   validates :github_url, presence: false, on: :update, length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true

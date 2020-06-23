@@ -16,7 +16,7 @@
              
               <% if user_signed_in? %>
                 <% if current_user.id == @gif.user_id %>
-                    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primamry btn-sm"%>
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
                 <%else %>
                   <div id="follow_<%= @gif.user.id %>" >
                     <%= follow_button_for @gif.user %>
@@ -77,7 +77,27 @@
             </button>
           <% end %>
           </dd>
-        
+
+         <h3 class="text font-weight-bold"><%= @gif.comments.count %> Comment(s) :</h3>
+            <% if user_signed_in? %>
+              <% if current_user.avatar.present? %>
+                <%= image_tag github_avatar_url(current_user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+              <% else %>
+                <%= image_tag gravatar_image_url(current_user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+              <% end %>
+              - @ <%= current_user.name.mentionable %> -
+            
+            <% else %>
+              <%= link_to 'Sign in to leave a comment', new_user_session_path, class: 'btn btn-sm btn-default' %>
+            <% end %>
+            <%= simple_form_for [@gif, Comment.new] do |f| %>
+            <%= f.input :body,as: :text, placeholder: "Add a comment" %><br/>
+            <%= f.submit "Add Comment" , class: 'btn btn-sm btn-dark'%>
+          <% end %>
+        <br>
+        <ul>
+          <%= render @gif.comments %>
+        </ul>
       </dl>
       
     </div>

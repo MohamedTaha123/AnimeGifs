@@ -27,6 +27,8 @@
 
 class Gif < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commentable
+
   extend FriendlyId
   friendly_id :label, use: :slugged
   acts_as_votable
@@ -41,7 +43,7 @@ class Gif < ApplicationRecord
   validates_size_of :image, maximum: 2.megabytes, message: 'should be less than 2MB'
 
   validates :label, :description, presence: true
-  validates :description, length: { minimum: 15 , maximum: 50}
+  validates :description, length: { minimum: 15 , maximum: 200}
   validates :tag_list, presence: true
   validate :has_at_least_one_tag
 
