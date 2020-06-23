@@ -6,12 +6,14 @@ class GifsController < ApplicationController
   before_action :load_activities, only: %i[index show new edit]
   impressionist actions: [:show]
   include CableReady::Broadcaster
+  include TagsHelper
   # GET /gifs
   # GET /gifs.json
   def index
     @q = Gif.ransack(params[:q])
     @gifs = @q.result(distinct: true).includes([:user])
     @trending = @q.result(distinct: true).includes([:user]).last(5).reverse
+    @most_used = tag_names
   end
 
   # GET /gifs/1
