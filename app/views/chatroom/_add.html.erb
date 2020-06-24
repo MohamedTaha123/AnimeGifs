@@ -1,4 +1,4 @@
-<%= simple_form_for(@chatroom,  :url => {:controller => "chatroom", :action => "create"}) do |f| %>
+<%= simple_form_for(@chatroom,  :url => {:controller => "chatroom", :action => "create"}, validate: true) do |f| %>
     <div class="text-center">
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

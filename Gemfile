@@ -54,10 +54,10 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'database_cleaner'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  gem 'database_cleaner'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
@@ -97,6 +97,7 @@ gem 'public_activity'
 gem 'pygments.rb'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'redcarpet', '~> 3.5'
+gem 'shareable'
 gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_form_fancy_uploads'

@@ -1,6 +1,11 @@
 <div class="message-container" id="message-<%= message.id %>">
   <i class="author">
     <span>
+       <% if message.user.avatar.present? %>
+        <%= image_tag github_avatar_url(message.user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+       <% else %>
+        <%= image_tag gravatar_image_url(message.user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+      <% end %>
       <% if message.user.present? %>
          @<%= message.user.name.mentionable %>
       <% else %>
@@ -18,13 +23,15 @@
       <% end %>
     <% end %>
   </i>
-  <p>
+  <div>
+   
       <% if message.attachement.present? %>
          <%= image_tag message.attachement.url(:thumb) %>
       <% end %>
-     <%= raw markdown(message.content) %>
-   
-  </p>
+    <h6 class='text-white'>
+     <%=  raw markdown(message.content) %>
+    </h6>
+  </div>
  
 </div>
 
