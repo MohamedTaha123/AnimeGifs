@@ -20,7 +20,7 @@
   </i>
   <p>
       <% if message.attachement.present? %>
-         <%= image_tag message.attachement.url %>
+         <%= image_tag message.attachement.url(:thumb) %>
       <% end %>
      <%= raw markdown(message.content) %>
    

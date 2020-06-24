@@ -33,7 +33,7 @@
           <%= simple_form_for [ @chatroom, @message ], validate: true do |f| %>
              <div class="choose_file">
                 <span><i class="far fa-image"></i></span>
-                <%= f.input :attachement, label: false, hint: 'Upload a Photo'  %>
+                <%= f.input :attachement, label: false  %>
              </div>
             
             <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" , hint: "Markdown is Supported."   %>

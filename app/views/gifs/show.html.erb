@@ -61,7 +61,7 @@
           <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-default"%>
          <% end %>
         <br>
-        <dd><%= image_tag(@gif.image.url) %></dd>
+        <dd><%= image_tag(@gif.image.url(:thumb)) %></dd>
 
         <dt>Description:</dt>
         <dd><%= @gif.description %></dd>
