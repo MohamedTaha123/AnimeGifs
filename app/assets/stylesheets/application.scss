@@ -42,3 +42,13 @@ $black: #000;
 @import "chatroom_components/index";
 
 
+.choose_file{
+    position:relative;
+    display:inline-block;    
+}
+.choose_file input[type="file"]{
+    -webkit-appearance:none; 
+    position:absolute;
+    top:0; left:0;
+    opacity:0; 
+}

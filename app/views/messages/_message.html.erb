@@ -19,7 +19,9 @@
     <% end %>
   </i>
   <p>
-    
+      <% if message.attachement.present? %>
+         <%= image_tag message.attachement.url %>
+      <% end %>
      <%= raw markdown(message.content) %>
    
   </p>
