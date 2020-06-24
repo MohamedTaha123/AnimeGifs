@@ -43,7 +43,7 @@ class User < ApplicationRecord
   acts_as_followable
   acts_as_follower
   acts_as_reader
-  
+
   has_many :gifs, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy
@@ -56,8 +56,6 @@ class User < ApplicationRecord
   validates :github_url, uniqueness: { scope: :id }
   validates :facebook_url, uniqueness: { scope: :id }
   # validates_presence_of :little_description, on: :update
- 
- 
 
   # alternative callback for omniauth
   def self.from_omniauth(auth)
@@ -81,5 +79,13 @@ class User < ApplicationRecord
   # provide a custom message for a deleted account
   def inactive_message
     !deleted_at ? super : :deleted_account
+  end
+
+  def online?
+    if  last_seen_at > 15.minutes.ago
+      true
+    else
+      false
+    end
   end
 end

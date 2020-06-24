@@ -15,6 +15,7 @@
 #  first_name                 :string
 #  github_url                 :string
 #  last_name                  :string
+#  last_seen_at               :datetime
 #  little_description         :string
 #  remember_created_at        :datetime
 #  reset_password_sent_at     :datetime

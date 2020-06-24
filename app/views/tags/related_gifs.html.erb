@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-8">
+        <h2 class="text font-weight-bold" style="font-weight: bolder; box-shadow: 10px 10px red;" >
+            Gifs Related To :  <%= @related_tag.upcase %>
+        </h2>
+        <br>
+        <div class="card-columns">
+            <% @related_gifs.includes([:user]).each do |single| %>
+            <div class="card  bg-dark  border-0 h-100">
+            <%= link_to  gif_path(single) do %>
+            <%=  image_tag(single.image.url(:thumb), class: "card-img-top" )%>
+            <% end %>
+            <div class="card-body">
+
+                <h6 class="card-title">
+                <% if single.user.avatar.present? %>
+                    <%= image_tag github_avatar_url(single.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
+                <% else %>
+                    <%= image_tag gravatar_image_url(single.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+                <% end %>
+
+                @<%= single.user.name.mentionable.capitalize %>
+
+                </h6>
+                <p class="card-text font-weight-bold"><%= single.description %></p>
+                <p class="card-text">
+                <small class="text-muted">
+                    Created <%= time_ago_in_words(single.created_at) %></small>
+                </p>
+            </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="col-4">
+
+    </div>
+</div>

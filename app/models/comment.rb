@@ -20,5 +20,5 @@ class Comment < ApplicationRecord
   has_many :comments, as: :commentable
   belongs_to :user
 
-  validates_length_of :body, within: 5..20, on: :create
+  validates_length_of :body, within: 5..100, on: :create
 end

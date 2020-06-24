@@ -8,4 +8,15 @@ class TagsController < ApplicationController
   rescue StandardError => e
     puts e.to_s
   end
+
+  def related_gifs
+    @related_tag = params[:tag] 
+    if @related_tag.present?
+      @related_gifs = Gif.tagged_with(
+        @related_tag
+      )
+    end
+  rescue StandardError => e
+    puts e.to_s
+  end
 end
