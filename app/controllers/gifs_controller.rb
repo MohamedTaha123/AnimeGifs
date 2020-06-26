@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GifsController < ApplicationController
-  before_action :set_gif, only: %i[show edit update destroy like unlike follow unfollow]
+  before_action :set_gif, only: %i[show edit update destroy like unlike ]
   before_action :authenticate_user!, except: %i[index show]
   before_action :load_activities, only: %i[index show new edit]
   impressionist actions: [:show]
@@ -94,26 +94,6 @@ class GifsController < ApplicationController
     end
   end
 
-  def follow
-    @user = @gif.user
-    current_user.follow(@user)
-    Notification.create!(recipient: @gif.user, actor: current_user, action: 'follow', notifiable: @user)
-    # ActionCable.server.broadcast('welcome_channel', "You Start Following #{@user.name}.")
-    # ActionCable.server.broadcast('welcome_channel', "#{current_user} Start Following You.")
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
-  end
-
-  def unfollow
-    @user = @gif.user
-    current_user.stop_following(@user)
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
-  end
 
   private
 
