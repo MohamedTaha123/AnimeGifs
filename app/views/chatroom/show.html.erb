@@ -14,12 +14,12 @@
 
 
       <div class="chatroom">
-        <h1 class=" font-weight-bold">
+        <h3 class=" font-weight-bold">
           #<%= @chatroom.name %>
             <% if @chatroom.messages.where.not(user_id: current_user.id).unread_by(current_user).any? %>
               <span class="badge badge-pill badge-info"> <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).count %>  unread messages</span>
             <% end %>
-        </h1>
+        </h3>
    
         <div>
           <div id="messages" data-chatroom-id="<%= @chatroom.id %>">

@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   end
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
+  get '/about', to: 'home#about'
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end

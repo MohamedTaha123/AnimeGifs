@@ -8,8 +8,11 @@
 
 <body>
   <%= render 'shared/navbar' %>
+  
   <div class="container">
-     
+    
+     <%= render 'shared/back' %>
+      
       <%= yield %>
      <div class="notifications bottom-right">
         <%= render 'shared/notices' %>
