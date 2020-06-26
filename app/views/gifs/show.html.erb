@@ -18,8 +18,10 @@
                 <% if current_user.id == @gif.user_id %>
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
                 <%else %>
+                 
                   <div id="follow_<%= @gif.user.id %>" >
-                    <%= follow_button_for @gif.user %>
+                    <%#= follow_button_for( @gif) %>
+                    <%= follow_button_for_v2(@gif) %>
                   </div>
                 <% end %>
               <% end %>

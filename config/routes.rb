@@ -21,6 +21,12 @@ Rails.application.routes.draw do
       put 'unfollow', to: 'gifs#unfollow'
     end
     resources :comments
+    resources :followers do
+      member do
+        put 'follow', to: 'followers#follow'
+        put 'unfollow', to: 'followers#unfollow'
+      end
+    end
   end
   resources :comments do
     resources :comments

@@ -19,7 +19,7 @@ class GifsController < ApplicationController
   # GET /gifs/1
   # GET /gifs/1.json
   def show
-    @gif = Gif.friendly.find(params[:id])
+    @gif = Gif.find(params[:id])
     impressionist(@gif)
   rescue StandardError => e
     puts e.to_s

@@ -1,1 +1,1 @@
-$("#follow_<%= @gif.user.id %>").html('<%= button_to unfollow_gif_path(@gif.user),  class: "btn btn-info btn-sm",method: :put, remote: true do "Followed" end %>');
+$("#follow_<%= @gif.user.id %>").html('<%= link_to follow_gif_follower_path(@gif, @gif.user),  class: "btn btn-info btn-sm",method: :put, remote: true do "Followed" end %>');
