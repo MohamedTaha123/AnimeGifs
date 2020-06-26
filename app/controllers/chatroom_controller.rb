@@ -5,6 +5,7 @@ class ChatroomController < ApplicationController
   def show
     @chatroom = Chatroom.friendly.find(params[:id])
     @message = Message.new
+    @new_chatroom = Chatroom.new
   end
 
   def new 

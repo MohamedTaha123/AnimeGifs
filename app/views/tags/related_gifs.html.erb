@@ -4,33 +4,58 @@
             Gifs Related To :  <%= @related_tag.upcase %>
         </h2>
         <br>
-        <div class="card-columns" >
-            <% @related_gifs.includes([:user]).each do |single| %>
-            <div class="card  bg-dark  border-0 h-100">
-            <%= link_to  gif_path(single) do %>
-            <%=  image_tag(single.image.url(:thumb), class: "card-img-top" )%>
-            <% end %>
-            <div class="card-body">
-
-                <h6 class="card-title">
-                <% if single.user.avatar.present? %>
-                    <%= image_tag github_avatar_url(single.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
-                <% else %>
-                    <%= image_tag gravatar_image_url(single.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+        <% if @related_gifs.present?%>
+            <div class="card-columns" >
+                <% @related_gifs.includes([:user]).each do |single| %>
+                <div class="card  bg-dark  border-0 h-100">
+                <%= link_to  gif_path(single) do %>
+                <%=  image_tag(single.image.url(:thumb), class: "card-img-top" )%>
                 <% end %>
+                <div class="card-body">
 
-                @<%= single.user.name.mentionable.capitalize %>
+                    <h6 class="card-title">
+                    <% if single.user.avatar.present? %>
+                        <%= image_tag github_avatar_url(single.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
+                    <% else %>
+                        <%= image_tag gravatar_image_url(single.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+                    <% end %>
 
-                </h6>
-                <p class="card-text font-weight-bold"><%= single.description %></p>
-                <p class="card-text">
-                <small class="text-muted">
-                    Created <%= time_ago_in_words(single.created_at) %></small>
-                </p>
+                    @<%= single.user.name.mentionable.capitalize %>
+
+                    </h6>
+                    <p class="card-text font-weight-bold"><%= single.description %></p>
+                    <p class="card-text">
+                    <small class="text-muted">
+                        Created <%= time_ago_in_words(single.created_at) %></small>
+                    </p>
+                </div>
+                </div>
+                <% end %>
+            </div>
+        <% else %>
+            <h3 class="text-center font-weight-bold">No Related Gifs to <%= @related_tag.upcase %> </h3>
+            <hr class="dotted">
+            <h3 class="text-center">
+                <%= link_to 'New Gif','#',  data: {toggle: "modal", target: "#NewGif"}, class: 'btn btn-lg btn-dark' %>
+            </h3>
+            <!-- New Gif Modal -->
+            <div class="modal fade"  id="NewGif" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog"  role="document">
+                <div class="modal-content" style= "background-color: #FFFFF0;">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="exampleModalLabel"># NEW GIF</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <%= render 'gifs/form'%>
+                </div>
+              
+                </div>
             </div>
             </div>
-            <% end %>
-        </div>
+        <% end %>
     </div>
     <div class="col-sm-4">
         <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>

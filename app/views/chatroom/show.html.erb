@@ -4,6 +4,7 @@
       <div class="list-group w-200px bg-black br-light">
        
         <%= link_to 'Add a Room', new_chatroom_path, class: 'btn  btn-default', method: :get %>
+        
         <br>
         <% Chatroom.all.each do |chatroom| %>
           <%= link_to "##{chatroom.name}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
@@ -32,12 +33,11 @@
 
           <%= simple_form_for [ @chatroom, @message ], validate: true do |f| %>
              <div class="choose_file">
-                Upload a Photo
-                <span><i class="far fa-image"></i></span>
+                <span><i class="far fa-image fa-lg" style="color: #8FBC8F;"></i></span>
                 <%= f.input :attachement, label: false  %>
              </div>
             
-            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" , hint: "Markdown is Supported."   %>
+            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" ,class: 'form-control' ,hint: "Markdown is Supported."   %>
               
             <%= f.button :submit , 'Send', class: 'btn btn-sm float-right', style: 'background-color: #E9967A', disable_with: 'Submiting...' %>
             

@@ -4,9 +4,9 @@
     <i class="author">
       <span>
         <% if message.user.avatar.present? %>
-          <%= image_tag github_avatar_url(message.user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+          <%= image_tag github_avatar_url(message.user, size: 40),height: 30, width: 30, class: "rounded-circle "  %>
         <% else %>
-          <%= image_tag gravatar_image_url(message.user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+          <%= image_tag gravatar_image_url(message.user.email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
         <% end %>
         <% if !message.user.last_seen_at.nil? %>
           <% if message.user.online?  %>
@@ -34,18 +34,17 @@
     </i>
     <div>
         <% if message.attachement.present? %>
-          <%#= image_tag message.attachement.url(:thumb), id: 'myImg', style: "width:100%;max-width:300px", :options => { "data-toggle" => "modal", "data-target" => 'ShowImage'} %>
           <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="" style="width:100%;max-width:300px">
           <!-- The Modal -->
-          <div id="ShowImage" class="modal">
+          <div id="ShowImage" class="modal-img">
             <span class="close-modal" style="color: white;">&times;</span>
-            <img class="modal-content" id="ImgShown">
+            <img class="modal-content-img" id="ImgShown">
          
             <div id="caption"></div>
           </div>
         <% end %>
       <h6 class='text-white'>
-      <%=  raw markdown(message.content) %>
+      <%=   markdown(message.content) %>
       </h6>
     </div>
   

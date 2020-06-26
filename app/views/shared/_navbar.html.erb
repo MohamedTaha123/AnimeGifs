@@ -82,13 +82,13 @@
             <%= link_to "Admin Area", admin_root_path, class: "dropdown-item" %>
             <% end %>
             
-            <%= link_to dashboard_index_path, class: "dropdown-item"  do %>
-               <span><i class="fas fa-home fa-lg" style="color:#DDDDDD;" aria-hidden="true"></i></span>
+            <%= link_to dashboard_index_path, class: "dropdown-item font-weight-bold"  do %>
+               <span><i class="fas fa-home fa-lg" style="color: purple;" aria-hidden="true"></i></span>
                 Dashboard
             <% end %>
           
-            <%= link_to  edit_user_registration_path, class: "dropdown-item"  do %>
-              <span><i class="fas fa-sliders-h" style="color:#DDDDDD;"></i></span> Settings
+            <%= link_to  edit_user_registration_path, class: "dropdown-item font-weight-bold"  do %>
+              <span><i class="fas fa-sliders-h fa-lg" style="color: gold;"></i></span> Settings
             <% end %>
             <div class="dropdown-divider"></div>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

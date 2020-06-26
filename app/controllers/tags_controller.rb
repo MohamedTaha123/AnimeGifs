@@ -10,6 +10,7 @@ class TagsController < ApplicationController
   end
 
   def related_gifs
+    @gif = Gif.new
     @most_used = tag_names
     @related_tag = params[:tag] 
     if @related_tag.present?
