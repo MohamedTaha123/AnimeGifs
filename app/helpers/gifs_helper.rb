@@ -47,23 +47,6 @@ module GifsHelper
     end
   end
 
-  def follow_button_for_v2(gif)
-    if current_user.nil?
-      link_to follow_gif_follower_path(gif, gif.user), method: :put, class: 'btn btn-info btn-sm' do
-        'Follow'
-      end
-    else
-      if current_user.following?(gif.user)
-        link_to unfollow_gif_follower_path(gif, gif.user), method: :put, class: 'btn btn-info btn-sm', remote: true do
-          'Followed'
-        end
-      else
-        link_to follow_gif_follower_path(gif, gif.user), method: :put, class: 'btn btn-info btn-sm', remote: true do
-          'Follow'
-        end
-      end
-    end
-  end
 
   private
 
