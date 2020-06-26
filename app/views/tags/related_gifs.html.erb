@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-8">
+    <div class="col-sm-8" >
         <h2 class="text font-weight-bold" style="font-weight: bolder; box-shadow: 10px 10px red;" >
             Gifs Related To :  <%= @related_tag.upcase %>
         </h2>
         <br>
-        <div class="card-columns">
+        <div class="card-columns" >
             <% @related_gifs.includes([:user]).each do |single| %>
             <div class="card  bg-dark  border-0 h-100">
             <%= link_to  gif_path(single) do %>
@@ -32,7 +32,7 @@
             <% end %>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-sm-4">
         <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>
         <br>
         <div class="list-group" style="background: red; box-shadow: 10px 10px purple;">

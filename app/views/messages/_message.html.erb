@@ -35,7 +35,7 @@
     <div>
         <% if message.attachement.present? %>
           <%#= image_tag message.attachement.url(:thumb), id: 'myImg', style: "width:100%;max-width:300px", :options => { "data-toggle" => "modal", "data-target" => 'ShowImage'} %>
-          <img id="myImg" src="<%= message.attachement.url(:thumb) %>" alt="" style="width:100%;max-width:300px">
+          <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="" style="width:100%;max-width:300px">
           <!-- The Modal -->
           <div id="ShowImage" class="modal">
             <span class="close-modal" style="color: white;">&times;</span>
@@ -56,7 +56,7 @@
 var modal = document.getElementById("ShowImage");
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
+var img = document.getElementById("myImg_<%= message.id %>");
 var modalImg = document.getElementById("ImgShown");
 var captionText = document.getElementById("caption");
 

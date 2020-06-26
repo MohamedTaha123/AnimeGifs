@@ -16,6 +16,8 @@ class FollowersController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
+  rescue StandardError => e 
+    puts e.to_s
   end
 
   def unfollow
@@ -28,5 +30,7 @@ class FollowersController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
+  rescue StandardError => e 
+    puts e.to_s
   end
 end
