@@ -79,7 +79,7 @@
                       <% if gif.impressions_count.present? %>
                         <%= gif.impressions_count %> views
                       <% else %>
-                        No views
+                        No views Yet
                       <% end %>
                       
                   </div>
@@ -101,14 +101,14 @@
         <li class="list-group-item">
           
           <h4 class="text-center font-weight-bold">
-            #<%= link_to tag.upcase, tagged_path(tag: tag ) %>
+            <%= link_to "##{tag.upcase}", tagged_path(tag: tag ),class: 'text-light bg-dark' %>
 
           </h4>
           <hr class="dashed" style="border-top: 3px dashed #bbb;">
 
         </li>
       <% end %>
-      </ul>
+      
     </div>
   </div>
 </div>
