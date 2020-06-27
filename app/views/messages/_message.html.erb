@@ -34,7 +34,7 @@
     </i>
     <div>
         <% if message.attachement.present? %>
-          <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="" style="width:100%;max-width:300px">
+          <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="" class="rounded" style="width:100%;max-width:300px">
           <!-- The Modal -->
           <div id="ShowImage" class="modal-img">
             <span class="close-modal" style="color: white;">&times;</span>
