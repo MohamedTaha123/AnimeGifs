@@ -4,8 +4,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   # post 'convert/:image_id', to: 'editor#convert'
-  # get 'new', to: 'editor#new'
-  # post 'new' , to: 'editor#create'
+  get 'new', to: 'editor#new'
+  post 'new' , to: 'editor#create'
 
   get 'tags', to: 'tags#index'
   get '/tagged', to: 'tags#related_gifs', as: :tagged

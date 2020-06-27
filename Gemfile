@@ -102,6 +102,7 @@ gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'simple_form_fancy_uploads'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
+gem 'skeptick'
 gem 'stimulus_reflex', '~> 3.2'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'unread'
