@@ -28,6 +28,7 @@
 class Gif < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable
+  before_create :default_name
 
   extend FriendlyId
   friendly_id :label, use: :slugged
@@ -49,5 +50,13 @@ class Gif < ApplicationRecord
 
   def has_at_least_one_tag
     errors.add(:tag_list, 'must have at least one tag') unless tag_list.present?
+  end
+
+  
+
+  # validates :image_path, :presence => true
+
+  def default_name
+    self.image ||= File.basename(image.filename, '.*').titleize if image
   end
 end

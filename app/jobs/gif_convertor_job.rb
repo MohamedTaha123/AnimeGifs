@@ -16,7 +16,8 @@ class GifConvertorJob < ApplicationJob
       write new_gif
     end
     command.run
-    Gif.create!(id: nwi.gif_id, remote_image_url: seed_image(new_gif), user_id: current_user.id,
+    puts new_gif.to_path
+    Gif.create!(id: nwi.gif_id, remote_image_url: File.basename(new_gif.to_path), user_id: current_user.id,
                 tag_list: %w[1 2 3],
                 description: nwi.description, label: nwi.label)
   end
@@ -34,4 +35,5 @@ class GifConvertorJob < ApplicationJob
       File.join(file_path)
     )
   end
+
 end
