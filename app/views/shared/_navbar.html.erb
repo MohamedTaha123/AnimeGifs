@@ -91,7 +91,9 @@
               <span><i class="fas fa-sliders-h fa-lg" style="color: gold;"></i></span> Settings
             <% end %>
             <div class="dropdown-divider"></div>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to  destroy_user_session_path, method: :delete, class: "dropdown-item font-weight-bold" do %>
+              <span><i class="fas fa-sign-out-alt fa-lg" style="color: red;"></i></span> Sign Out
+            <% end %>
           </div>
         </li>
 
