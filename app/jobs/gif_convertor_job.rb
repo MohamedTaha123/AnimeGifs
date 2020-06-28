@@ -17,9 +17,9 @@ class GifConvertorJob < ApplicationJob
     end
     command.run
     puts new_gif.to_path
-    Gif.create!(id: nwi.gif_id, remote_image_url: File.basename(new_gif.to_path), user_id: current_user.id,
+    Gif.new(id: nwi.gif_id, image: URI.parse(new_gif.to_path), user_id: current_user.id,
                 tag_list: %w[1 2 3],
-                description: nwi.description, label: nwi.label)
+                description: nwi.description, label: nwi.label).save!
   end
 
   def browse_images(images)
