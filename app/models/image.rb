@@ -18,7 +18,8 @@ class Image < ApplicationRecord
   # has_many_attached :images_hash
   mount_uploaders :images_hash, ImagesHashUploader
   validates :images_hash, presence: true
-
+  validates :description , presence: true
+  validates :label, presence: true
   def randomize_id
     begin
       self.gif_id = SecureRandom.random_number(1_000_000)

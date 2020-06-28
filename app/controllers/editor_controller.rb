@@ -9,11 +9,11 @@ class EditorController < ApplicationController
   end
 
   def create
-    @image = Image.create!(images_params)
+    @image = Image.create(images_params)
     GifConvertorJob.perform_now(@image, current_user)
     respond_to do |format|
       if @image.save
-        format.html { redirect_to new_path, notice: 'Image Saved' }
+        format.html { redirect_to new_path }
 
       else
         format.html { redirect_to new_path, alert: 'Can\'t Process' }

@@ -1,13 +1,21 @@
-<div class="text-center">
-    <h1 class= "text-center"> Convert Your Project Images To One Gif</h1>
-
-    <%= simple_form_for(@image, url: new_path) do |form| %>
-        <%= form.file_field :images_hash ,multiple: true%>
-        <%= form.input :description %>
-        <%= form.input :label %>
-        <%= form.button :submit, "Convert" , class: "btn btn-lg btn-round btn-dark", data: {disable_with: "Loading..." } %>
-
-    <% end %>
-
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col-6">
+        
+        <h1 class= "text-center font-weight-bold"> Gif Maker</h1>
     
+            <%= simple_form_for(@image, url: new_path, validate: true) do |form| %>
+                <%= form.file_field :images_hash ,multiple: true%>
+                <%= form.input :description , placeholder: "little description"%>
+                <%= form.input :label , placeholder: "label"%>
+                <%= form.button :submit, "Make Gif" , class: "btn btn-lg btn-dark", data: {disable_with: "Please wait..." } %>
+
+            <% end %>
+    
+        
+        </div>
+ 
+    <div class="col">
+    </div>
 </div>
