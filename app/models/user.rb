@@ -50,11 +50,13 @@ class User < ApplicationRecord
   acts_as_reader
   serialize :repos_hash, JSON
 
+  # Scopes
+
   has_many :gifs, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy
-  has_many :messages , dependent: :destroy
-  has_many :comments , dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
   validates :github_url, presence: false, on: :update, length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true
@@ -71,7 +73,6 @@ class User < ApplicationRecord
       user.username = auth.info.login
       user.name = auth.info.name
     end
-    
   end
 
   # instead of deleting, indicate the user requested a delete & timestamp it
@@ -95,5 +96,13 @@ class User < ApplicationRecord
 
   def process_find_repos_and_assign_job
     FindReposAndAssignJob.perform_now(self)
+  end
+
+  def user_repos
+    if services.present? && services.find_by_provider('github').present?
+      repos_hash.map do |repo|
+        repo
+      end
+    end
   end
 end

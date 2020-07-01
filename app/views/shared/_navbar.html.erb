@@ -43,15 +43,15 @@
           <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to  new_path , class: "nav-link btn","data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Gif Maker" do %>
-            <i class="far fa-images"></i> Gif Maker
+          <%= link_to  new_path , class: "nav-link","data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Gif Maker" do %>
+            <i class="far fa-images" style="color: #9932CC;"></i> Gif Maker
           <% end %>
             
           
         </li>
         <li class="nav-item">
-          <%= link_to new_gif_path , class: "nav-link btn glow-on-hover", "data-toggle": "tooltip", "data-placement": "bottom" ,"title": "New Gif" do %>
-            Upload a Gif
+          <%= link_to new_gif_path , class: "nav-link ", "data-toggle": "tooltip", "data-placement": "bottom" ,"title": "New Gif" do %>
+            <i class="far fa-file-image " style="color: #FAFAD2;"></i> Upload a Gif
           <% end %>
         </li>
          

@@ -1,0 +1,30 @@
+
+
+     <% @user_repos.each do |repo| %>
+    <div style="width: 20rem; max-width: 100%;">
+        <div class="card card-stats" >
+            <!-- Card body -->
+            <div class="card-body">
+
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-black font-weight-bold mb-0" ><%= repo['name']%></h5>
+                    <span class="h2 font-weight-bold mb-0" style="color: gold;"> <%= repo['stargazers_count'] %> Stars</span>
+                </div>
+            
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <%= repo['description'] if repo['description'].present? %>
+                   
+                 
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <% end %>
+
+
+
+   
+ 

@@ -1,4 +1,4 @@
 
-    <i class="fas fa-users" style="color: cyan;"></i> - Followers  :  <%= current_user.followers.count if current_user.followers.present? %> -
+    <i class="fas fa-users" style="color: cyan;"></i> - Followers  :  <%= current_user.followers.count ? current_user.followers.count : 0   if !current_user.followers.count.nil? %> -
     <i class="far fa-eye" style="color: #F08080;"></i> - Viewers : <%= @viewers if !@viewers.nil?  %>
      
