@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: messages
@@ -14,5 +16,23 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#new' do
+    it { should belong_to(:user) }
+    it { should belong_to(:chatroom) }
+    it { should validate_presence_of(:content).on(:create) }
+    it { should validate_length_of(:content).is_at_most(500) }
+    it { should validate_length_of(:content).is_at_least(10) }
+  end
+  describe '#conditionals' do
+    context 'attachement present' do
+      before { subject.attachement.present? }
+      it { should validate_presence_of(:content) }
+    end
+    context 'attachement not present' do
+      before do
+        !subject.attachement.present?
+      end
+      it { should validate_presence_of(:content).on(:create) }
+    end
+  end
 end
