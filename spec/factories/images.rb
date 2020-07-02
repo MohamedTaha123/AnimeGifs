@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: images
@@ -11,11 +13,11 @@
 #  gif_id      :string
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
-    images_hash "MyString"
-    label "MyString"
-    description "MyString"
-    gif_id "MyString"
+    images_hash { 'MyString' }
+    label { 'MyString' }
+    description { 'MyString' }
+    gif_id { 'MyString' }
   end
 end

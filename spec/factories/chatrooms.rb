@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: chatrooms
@@ -14,8 +16,9 @@
 #  index_chatrooms_on_slug  (slug) UNIQUE
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :chatroom do
-    name "MyString"
+    # name 'MyString'
+    # language 'ruby'
   end
 end

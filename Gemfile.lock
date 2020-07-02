@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 49feb023d93670f521ec5aee90004c2e4aa62c2f
+  revision: 7309c9d59f1f73e7875635c083f7d8958e0c9f3a
   branch: master
   specs:
     faker (2.13.0)
@@ -210,7 +210,7 @@ GEM
     devise_masquerade (1.2.0)
       devise (>= 4.7.0)
       railties (>= 5.2.0)
-    diff-lcs (1.4.3)
+    diff-lcs (1.4.4)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
@@ -221,11 +221,11 @@ GEM
       rails (>= 4.2.0)
       responders
     execjs (2.7.0)
-    factory_girl (4.9.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
-      railties (>= 3.0.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.0.0)
+      factory_bot (~> 6.0.0)
+      railties (>= 5.0.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     fastimage (2.1.7)
@@ -543,7 +543,7 @@ DEPENDENCIES
   devise_masquerade (~> 1.2)
   dotenv-rails
   exception_handler (~> 0.8.0.0)
-  factory_girl_rails
+  factory_bot_rails
   faker!
   font-awesome-sass (~> 5.6, >= 5.6.1)
   friendly_id (~> 5.2, >= 5.2.5)

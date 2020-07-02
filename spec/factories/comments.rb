@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -15,9 +17,9 @@
 #  index_comments_on_commentable_type_and_commentable_id  (commentable_type,commentable_id)
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :comment do
-    body "MyText"
+    body { 'MyText' }
     commentable nil
   end
 end

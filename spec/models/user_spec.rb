@@ -36,19 +36,19 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe '#new' do
     it 'returns a new instance of user' do
-      expect(FactoryGirl.create(:user)).to be_valid
+      expect(FactoryBot.create(:user)).to be_valid
     end
     it 'is invalid without a name' do
-      expect(FactoryGirl.build(:user, name: nil)).to_not be_valid
+      expect(FactoryBot.build(:user, name: nil)).to_not be_valid
     end
     it 'is invalid without an email' do
-      expect(FactoryGirl.build(:user, email: nil)).to_not be_valid
+      expect(FactoryBot.build(:user, email: nil)).to_not be_valid
     end
     it 'is invalid without a password' do
-      expect(FactoryGirl.build(:user, password: nil)).to_not be_valid
+      expect(FactoryBot.build(:user, password: nil)).to_not be_valid
     end
     it 'is invalid if email format is wrong' do
-      expect(FactoryGirl.build(:user, email: 'testemail')).to_not be_valid
+      expect(FactoryBot.build(:user, email: 'testemail')).to_not be_valid
     end
     it { should allow_value('https://github.com/test').for(:github_url) }
     it { should allow_value('https://facobook.com/test').for(:facebook_url) }

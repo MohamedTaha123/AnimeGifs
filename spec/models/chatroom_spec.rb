@@ -17,5 +17,17 @@
 require 'rails_helper'
 
 RSpec.describe Chatroom, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#new' do
+    it 'should not pass without a name' do
+      expect(FactoryBot.build(:chatroom, name: nil)).to_not be_valid 
+    end
+    it 'should not pass without language' do
+      expect(FactoryBot.build(:chatroom, language: nil)).to_not be_valid
+    end
+    
+    it { should validate_uniqueness_of(:name).with_message('Already Exists') }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:language) }
+    it { should have_many(:messages) } 
+  end
 end

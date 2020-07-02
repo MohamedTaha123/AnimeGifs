@@ -21,12 +21,11 @@
 #  index_follows_on_follower_type_and_follower_id      (follower_type,follower_id)
 #
 
-
-FactoryGirl.define do
-  factory :follow do |f|
-    f.follower_id 1
-    f.followable_id 2
-    f.followable_type 'User'
-    f.follower_type 'User'
+FactoryBot.define do
+  factory :follow do
+    follower_id { 1 }
+    followable_id { 2 }
+    followable_type { 'User' }
+    follower_type { 'User' }
   end
 end

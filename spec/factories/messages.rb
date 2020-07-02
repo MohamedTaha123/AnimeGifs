@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: messages
@@ -11,8 +13,8 @@
 #  user_id     :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :message do
-    content "MyString"
+    content { 'MyString' }
   end
 end

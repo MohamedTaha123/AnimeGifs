@@ -27,7 +27,7 @@
 
 
 require 'faker'
-FactoryGirl.define do
+FactoryBot.define do
   factory :gif do
     description { Faker::Lorem.sentence }
     label { Faker::Lorem.sentence }
