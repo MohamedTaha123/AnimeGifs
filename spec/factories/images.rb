@@ -18,6 +18,6 @@ FactoryBot.define do
     images_hash { 'MyString' }
     label { 'MyString' }
     description { 'MyString' }
-    gif_id { 'MyString' }
+    gif_id { 1222}
   end
 end

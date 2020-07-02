@@ -14,5 +14,13 @@
 require 'rails_helper'
 
 RSpec.describe Image, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#new' do
+    it { should validate_presence_of(:images_hash) }
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:label) }
+    it 'should not accept a image without gif_id' do
+      
+      expect(:gif_id).to_not be_nil 
+    end
+  end
 end

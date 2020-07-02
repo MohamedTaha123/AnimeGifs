@@ -35,4 +35,8 @@ RSpec.describe Message, type: :model do
       it { should validate_presence_of(:content).on(:create) }
     end
   end
+  context "accept a nested resources" do
+    should accept_nested_attributes_for(:user)
+  end
+  
 end

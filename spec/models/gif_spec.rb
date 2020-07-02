@@ -69,4 +69,7 @@ RSpec.describe Gif, type: :model do
       is_expected.to have_many(:tags)
     end
   end
+  describe '#relations' do
+    it { should have_many(:comments) } 
+  end
 end
