@@ -17,7 +17,7 @@
 #
 
 class Chatroom < ApplicationRecord
-  has_many :messages
+  has_many :messages, dependent: :destroy
   extend FriendlyId
   friendly_id :name, use: :slugged
 
