@@ -13,6 +13,7 @@ require 'support/database_cleaner'
 require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
+require_relative 'support/controller_macros'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -29,7 +30,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :request
+  config.extend ControllerMacros, type: :request
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
