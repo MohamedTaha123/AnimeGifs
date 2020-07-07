@@ -30,7 +30,7 @@ require 'faker'
 FactoryBot.define do
   factory :gif do
     description { Faker::Lorem.sentence }
-    label { Faker::Lorem.sentence }
+    label { 'gif1' }
     user_id { Faker::Number.between(from: 0, to: 1024) }
     # user_id { create :user}
     tag_list { %w[ruby js scss] }
