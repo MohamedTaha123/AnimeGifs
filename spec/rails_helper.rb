@@ -30,8 +30,17 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.include Devise::TestHelpers, type: :request
-  config.extend ControllerMacros, type: :request
+  config.include ApplicationHelper
+  config.include ActionMailer::TestHelper
+  config.include ActiveJob::TestHelper
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include FactoryBot::Syntax::Methods
+  
+
+
+
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.

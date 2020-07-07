@@ -3,12 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Chatrooms', type: :request do
-  
-  it 'create a chatroom and redirect to chatroom page' do
-    get 'chatroom/new'
-    expect(response).to render_template(:new)
-    post '/chatroom', params: { chatroom: { name: 'Ruby', language: 'Ruby' } }
-    expect(response).to render_template(:show)
-    expect(response.body).to  include('Room Created')
+  let(:user) { create(:user) }
+  before do
+    sign_in user
+  end
+  it 'should create a chatroom ' do
+    new_name = 'Ruby'
+    post '/chatroom', params: {
+      chatroom: { name: new_name, language: 'javascritpt' }
+    }
+    expect(response).to have_http_status(:found)
+    expect(Chatroom.last.name).to  eq('Ruby')
   end
 end
