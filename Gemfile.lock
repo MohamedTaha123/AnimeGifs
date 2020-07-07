@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 7309c9d59f1f73e7875635c083f7d8958e0c9f3a
+  revision: 035ca12a84646ce21725a1aab9167d542823e64f
   branch: master
   specs:
     faker (2.13.0)
@@ -158,7 +158,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.1.3)
-    cable_ready (4.2.0)
+    cable_ready (4.3.0)
       rails (>= 5.2)
     capybara (3.33.0)
       addressable
@@ -305,7 +305,7 @@ GEM
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
     oauth2 (1.4.4)
