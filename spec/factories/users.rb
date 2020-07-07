@@ -36,7 +36,7 @@ FactoryBot.define do
   factory :user do
     name { Faker::Internet.user_name(4..20).gsub(/[.]/, '') }
     email { Faker::Internet.email }
-    password { Faker::Internet.password(8, 20) }
+    password { Faker::Internet.password(min_length: 8, max_length: 20) }
     facebook_url { 'https://facebook.com/test' }
     github_url { 'https://github.com/test' }
     little_description { Faker::Lorem.sentence }

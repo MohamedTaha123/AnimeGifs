@@ -15,6 +15,8 @@ RSpec.describe 'Chatrooms', type: :request do
     expect(response).to have_http_status(:found)
     expect(Chatroom.last.name).to  eq('Ruby')
   end
+ 
+
   it 'should show a chatroom' do
     new_name = 'Ruby'
     post '/chatroom', params: {

@@ -46,7 +46,7 @@ RSpec.describe Gif, type: :model do
       expect(FactoryBot.build(:gif, description: 'a')).to_not be_valid
     end
     it 'should not pass with too long description' do
-      expect(FactoryBot.build(:gif, description: Faker::Lorem.characters(51))).to_not be_valid
+      expect(FactoryBot.build(:gif, description: Faker::Lorem.characters(number: 51))).to_not be_valid
     end
     it 'should have tag_list' do
       expect(FactoryBot.build(:gif, tag_list: '')).to_not be_valid
