@@ -53,9 +53,10 @@
         <%= @gif.description %>
         
       </p>
-
-      <%= image_tag(@gif.image.url, style: 'width: 100%; box-shadow: 2px 2px yellow;', alt: "#{@gif.label}") %>
-        <hr class="dashed">
+      
+     
+      <%= image_tag(@gif.image.url, style: 'width: 100%; box-shadow: 2px 2px cyan;', alt: "#{@gif.label}") %>
+      <figcaption class="figure-caption " style=" background-color: black; color: white; font-style: italic; padding: 2px; text-align: left;">
        <%= render 'gifs/likes', gif: @gif %>
        <% if user_signed_in?  %>
           <% if current_user.id != @gif.user_id%>
@@ -69,8 +70,8 @@
           <%= link_to "Sign in To Like/Unlike" ,new_user_session_path, class:" btn btn-sm btn-default"%>
         <% end %>
         <br>
-        <%#=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] %>
-      
+        <%=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] %>
+      </figcaption>
        
         <dt> <h4 class="font-weight-bold">Tags:</h4> </dt>
         <dd>
