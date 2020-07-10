@@ -7,3 +7,4 @@
 
 <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' unless Rails.env.test? %>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= component 'pwa/manifest', url: request.base_url %>
