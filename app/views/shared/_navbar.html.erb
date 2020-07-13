@@ -40,7 +40,7 @@
         
        
         <li class="nav-item">
-          <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
+          <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)} btn btn-sm" %></li>
         <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to  new_path , class: "nav-link btn","data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Gif Maker" do %>
@@ -50,18 +50,18 @@
           
         </li>
         <li class="nav-item">
-          <%= link_to new_gif_path , class: "nav-link btn glow-on-hover", "data-toggle": "tooltip", "data-placement": "bottom" ,"title": "New Gif" do %>
-              <i class="far fa-file-image " style="color: #FAFAD2;"></i>Upload a Gif
+          <%= link_to new_gif_path , class: "nav-link btn", "data-toggle": "tooltip", "data-placement": "bottom" ,"title": "Upload a Gif" do %>
+              <i class="far fa-file-image " style="color: green;"></i> Upload a Gif
           <% end %>
         </li>
          
         <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link" do %>
-            <i class="far fa-bell fa-lg" aria-hidden="true">
+          <%= link_to notifications_path, class: "nav-link btn" do %>
+            <i class="far fa-bell fa-lg" style="color: gold;" aria-hidden="true">
               <% if @notifications.unread.present? %>
-                <span class=" badge badge-md badge-pill badge-floating badge-warning border-white"><%= @notifications.unread.count%></span>
+                <span class="badge badge-sm badge-pill badge-floating  border-white" style="color: red;"><%= @notifications.unread.count%></span>
               <% else %>
-                <span class="badge badge-md badge-pill badge-floating badge-warning border-white">0</span>
+                <span class=" badge badge-sm badge-pill badge-floating  border-white" style="color: red;">0</span>
               <% end %>
             </i>
             
@@ -70,13 +70,13 @@
        
            
          <li class="nav-item">
-          <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link" %>
+          <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link btn btn-sm btn-round" %>
          </li>
       
         
 
         <li class="nav-item dropdown">
-          <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
+          <%= link_to "#", id: "navbar-dropdown", class: "nav-link btn btn-sm dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
             <% if current_user.avatar.present? %>
               <%= image_tag github_avatar_url(current_user, size: 40), height: 25, width: 25, class: "rounded-circle" %>
             <% else %>
@@ -109,8 +109,8 @@
           <%= link_to  "New GIF", new_gif_path, class:"nav-link btn btn-sm btn-round " %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn btn-sm", style: "border: solid; color: #feceab;" %></li>
-        <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link " %></li>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn btn-sm btn-round", style: "border: solid; border-radius: 10px; color: #fbd46d;" %></li>
+        <li class="nav-item"><%= link_to "Log in", new_user_session_path, class: "nav-link btn btn-sm " %></li>
         <% end %>
       </ul>
     </div>
