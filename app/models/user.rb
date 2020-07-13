@@ -92,7 +92,14 @@ class User < ApplicationRecord
   def online?
     last_seen_at > 15.minutes.ago
   end
-
+  # Get User Repos Scope
+  def user_repos
+    if services.present? && services.find_by_provider('github').present?
+      repos_hash.map do |repo|
+        repo
+      end
+    end
+  end
   def process_find_repos_and_assign_job
     FindReposAndAssignJob.perform_now(self)
   end

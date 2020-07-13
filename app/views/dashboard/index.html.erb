@@ -1,9 +1,11 @@
 <% if @user_repos.present? %>
-  <div class="card-columns">
-    <%= render 'user_repos', locals: { user_repos: @user_repos} %>
+  <div class="container">
+    <div class="card-columns">
+      <%= render 'user_repos', locals: { user_repos: @user_repos} %>
+    </div>
   </div>
 <% else %>
-  <h1 class="text-center font-weight-bold" style="color: red;">
+  <h1 class="text-center font-weight-bold" style="color: #feceab;">
     
     No Repositories to show !!
     
