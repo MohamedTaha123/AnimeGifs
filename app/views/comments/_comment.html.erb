@@ -5,7 +5,7 @@
         <%= image_tag gravatar_image_url(comment.user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
     <% end %>
     - @<%= comment.user.name.mentionable %> - :
-    <%= comment.body %> 
+    <b style="color: white;"><%= comment.body %> </b>
     -
      <small style="color: gold;">Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 
