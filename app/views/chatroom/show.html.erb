@@ -33,7 +33,10 @@
 
           <%= simple_form_for [ @chatroom, @message ], validate: true do |f| %>
              <div class="choose_file">
-                <span><i class="far fa-image fa-lg" style="color: #8FBC8F;"></i></span>
+                <span>
+                  <i class="far fa-image fa-2x" style="color: #8FBC8F;"></i>
+                </span>
+                
                 <%= f.input :attachement, label: false  %>
              </div>
             
