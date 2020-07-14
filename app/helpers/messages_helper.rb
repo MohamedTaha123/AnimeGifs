@@ -29,6 +29,20 @@ module MessagesHelper
     markdown_to_html.render(text).html_safe
   end
 
+  def markdown_classic(text)
+    renderer = Redcarpet::Render::HTML.new(hard_wrap: false, filter_html: true)
+    options = {
+      autolink: true,
+      no_intra_emphasis: true,
+      fenced_code_blocks: true,
+      lax_html_blocks: true,
+      strikethrough: true,
+      superscript: true
+    }
+    Redcarpet::Markdown.new(renderer, options).render(text).html_safe
+    #syntax_highlighter(Redcarpet::Markdown.new(rndr, options)).html_safe
+  end
+
   def syntax_highlighter(html)
     doc = Nokogiri::HTML(html)
     doc.search('//pre[@lang]').each do |pre|

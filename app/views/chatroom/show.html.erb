@@ -31,7 +31,7 @@
             <% end %>
           </div>
 
-          <%= simple_form_for [ @chatroom, @message ], validate: true do |f| %>
+          <%= simple_form_for [ @chatroom, @message ] do |f| %>
              <div class="choose_file">
                 <span>
                   <i class="far fa-image fa-2x" style="color: #8FBC8F;"></i>
@@ -40,8 +40,8 @@
                 <%= f.input :attachement, label: false  %>
              </div>
             
-            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" ,class: 'form-control' ,hint: "Markdown is Supported."   %>
-              
+            <%= f.input :content, as: :text, label: false, placeholder: "Message ##{@chatroom.name}" ,class: 'form-control' ,hint: "Markdown is Supported."  %>
+               
             <%= f.button :submit , 'Send', class: 'btn btn-sm float-right', style: 'background-color: #E9967A', disable_with: 'Submiting...' %>
             
           <% end %>
