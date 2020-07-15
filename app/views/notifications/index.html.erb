@@ -10,8 +10,8 @@
         <li>
           <strong><%= notification.created_at.strftime("%b %d") %> :</strong>
           <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
-          <%#= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm'%>
-          <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-info' %>
+          <%= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id}%>
+          <%#= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-info' %>
         </li>
       </div>
     </div>

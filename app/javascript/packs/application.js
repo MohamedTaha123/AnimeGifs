@@ -11,7 +11,7 @@ require("local-time").start();
 require("jquery");
 require('@client-side-validations/client-side-validations');
 require('@client-side-validations/simple-form/dist/simple-form.bootstrap4');
-import ProgressiveWebApp from 'pwa-rails';
+
 import $ from 'jquery';
 
 global.$ = jQuery;
@@ -27,9 +27,7 @@ $(document).on("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover()
 });
 
-document.addEventListener('turbolinks:load', () => {
-  var progressiveWebApp = new ProgressiveWebApp();
-});
+
 
 require("trix")
 require("@rails/actiontext");

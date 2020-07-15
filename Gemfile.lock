@@ -299,19 +299,12 @@ GEM
     minitest (5.14.1)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
-    mozaic (2.0.1)
-      activesupport (>= 5.0)
-      nestive-rails (~> 1.0)
-      railties (>= 5.0)
     msgpack (1.3.3)
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     name_of_person (1.1.1)
       activesupport (>= 5.2.0)
-    nestive-rails (1.0.2)
-      actionview (>= 5.0)
-      railties (>= 5.0)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -354,9 +347,6 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
-    pwa (4.0.6)
-      mozaic (~> 2.0)
-      railties (>= 5.0)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
     rack (2.2.3)
@@ -602,7 +592,6 @@ DEPENDENCIES
   pg
   public_activity
   puma (~> 4.1)
-  pwa
   pygments.rb
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-controller-testing
