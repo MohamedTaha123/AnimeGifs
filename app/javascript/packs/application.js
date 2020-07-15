@@ -13,7 +13,7 @@ require('@client-side-validations/client-side-validations');
 require('@client-side-validations/simple-form/dist/simple-form.bootstrap4');
 
 import $ from 'jquery';
-
+import  '../../assets/javascripts/serviceworker-companion.js' ;
 global.$ = jQuery;
 
 window.Rails = Rails;

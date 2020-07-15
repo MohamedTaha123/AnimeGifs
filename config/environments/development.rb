@@ -72,4 +72,6 @@ Rails.application.configure do
     Bullet.skip_html_injection = false
    
   end
+  ## Add Ngrok Support for testing pwa app
+  config.hosts << /[a-z0-9]+\.ngrok\.io/
 end
