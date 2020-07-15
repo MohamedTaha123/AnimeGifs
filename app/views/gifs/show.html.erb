@@ -1,7 +1,7 @@
 <%= render 'shared/back' %>
 <div class="row">
-  <div class="col-4">
-    <div style=" box-shadow: 5px 5px #A52A2A;">
+  <div class="col-sm-4">
+    <div style=" box-shadow: 1px 1px #A52A2A;">
       <a href="#!">
         <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
         <% if @gif.user.avatar.present? %>
@@ -20,7 +20,7 @@
             <%else %>
 
             <div id="follow_<%= @gif.user.id %>">
-              <%#= follow_button_for( @gif) %>
+              
               <%= follow_button_for_v2(@gif) %>
             </div>
             <% end %>
@@ -41,12 +41,17 @@
           <% end %>
 
         </div>
+
       </div>
     </div>
+
+    
+    <%= render 'user_informations' %>
+ 
   </div>
-  <div class="col-8">
+  <div class="col-sm-8" >
   
-    <div class="container">
+    <div class="container" style=" box-shadow: 5px 5px #A52A2A;">
       <h5 class="text-white text-align font-weight-bold"> GIF by @<%= @gif.user.name%> </h5> 
       <p class="text-align font-weight-bold" style="color: orange;">
         <%= @gif.description %>

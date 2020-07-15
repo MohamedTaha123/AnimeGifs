@@ -1,0 +1,23 @@
+<b>Followers: </b>
+<% if @gif.user.followers.count < 3 %>
+    <% @gif.user.followers.each do |item| %>
+        <% if item.avatar.present? %>
+            <%= image_tag github_avatar_url(item, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+        <% else %>
+            <%= image_tag gravatar_image_url(item.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+        <% end %>
+    <% end %>
+<% else %>
+     <% @gif.user.followers.first(3).each do |item| %>
+        <% if item.avatar.present? %>
+            <%= image_tag github_avatar_url(item, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+        <% else %>
+            <%= image_tag gravatar_image_url(item.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+        <% end %> 
+    <% end %>
+   <b>...</b>
+<% end %>
+<style>
+
+
+</style>
