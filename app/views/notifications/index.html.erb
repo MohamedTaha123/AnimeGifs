@@ -1,30 +1,26 @@
-
-
 <% if @notifications.present? %>
-  <h1>Notifications     
-    <span><%= button_to 'Mark All As Read', '', data: {reflex: 'click->NotificationsReflex#mark_all_as_read'}, class: 'btn btn-warning btn-sm' %></span>
-  </h1>
-    <% @notifications.each do |notification| %>
-        <ul>   
-                  <div class="card">
-                    <div class="card-body">
-                    
-                    <li>
-                    <strong><%= notification.created_at.strftime("%b %d") %> :</strong>
-                    <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
-                    <%#= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm'%>
-                        <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-info' %>
-                    </li>
-                    </div>
-                  </div>
-                
-              
-         
-        </ul>
+<h1>Notifications
+  <span><%= button_to 'Mark All As Read', '', data: {reflex: 'click->NotificationsReflex#mark_all_as_read'}, class: 'btn btn-warning btn-sm' %></span>
+</h1>
+<% @notifications.each do |notification| %>
+  <ul>
+    <div class="card">
+      <div class="card-body">
 
-    <% end %>
+        <li>
+          <strong><%= notification.created_at.strftime("%b %d") %> :</strong>
+          <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
+          <%#= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm'%>
+          <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-info' %>
+        </li>
+      </div>
+    </div>
+
+
+
+  </ul>
+
+  <% end %>
 <% else %>
-  <h1 class="text-center font-weight-bold">No Notifications</h1>
+<h1 class="text-center font-weight-bold">No Notifications</h1>
 <% end %>
-
-

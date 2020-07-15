@@ -9,7 +9,7 @@ class GifConvertorJob < ApplicationJob
     # Skeptick & MiniMagick  Api
     new_gif = Rails.public_path.join('uploads','gif', "new_gif_#{nwi.id}.gif")
     command = convert(browse_images(nwi.images_hash)) do
-      set :delay, '20'
+      set :delay, '8000'
       set :loop, '0'
       set :resize, '20%'
       write new_gif
