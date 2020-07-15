@@ -1,20 +1,7 @@
 
 <div class="container-fluid content-row">
   
-  <%= search_form_for @q do |f| %>
-  
-    <div class="row justify-content-center">
-      <div class="col">
-          <%= f.search_field :label_cont, class: "form-search form-control-alternative", placeholder: 'Search all the GIFs'  %>
-
-      </div>
-      <div class="col-auto">
-        <%= f.button :submit,   class: "btn btn-info btn-round" do %>
-          <i class="fas fa-search"></i> 
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'search_gifs' %>
   <br>
     <% if user_signed_in? %>
       <%= render "metrics/metrics"%>
@@ -25,75 +12,12 @@
       <h2 style="font-weight: bolder; box-shadow: 10px 10px red;">Trending GIFs</h2>
       <br>
       <div class="card-columns">
-        <% @trending.each do |trending| %>
-        
-          <div class="card  bg-dark  border-0 h-100">
-            <%= link_to  gif_path(trending) do %>
-            <%=  image_tag(trending.image.url(:thumb), class: "card-img-top" )%>
-            <% end %>
-            <div class="card-body">
-              
-              <h6 class="card-title">
-                <% if trending.user.avatar.present? %>
-                  <%= image_tag github_avatar_url(trending.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
-                <% else %>
-                <%= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
-                <% end %>
-
-                @<%= trending.user.name.mentionable.capitalize %> 
-               
-              </h6> 
-              <p class="card-text font-weight-bold"><%= trending.description %></p>
-              <p class="card-text">
-              <small class="text-muted">
-                Created  <%= time_ago_in_words(trending.created_at) %></small>
-              </p>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'trending' %>
       </div>
       <h2 style="font-weight: bolder; box-shadow: 10px 10px cyan;">All GIFs</h2>
       <br>
       <div class="card-columns" id="gifs">
-
-        <% @gifs.each do |gif| %>
-        <div class="card bg-dark  border-0 h-100">
-          <%= link_to  gif_path(gif) do %>
-            <%=  image_tag(gif.image.url(:thumb), class: "card-img" )%>
-          <% end %>
-          <div class="card-body">
-            
-            <h6 class="card-title">
-             <% if gif.user.avatar.present? %>
-                <%= image_tag github_avatar_url(gif.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
-              <% else %>
-                <%= image_tag gravatar_image_url(gif.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
-              <% end %>
-              <small class="text-muted  font-weight-bold font-italic"> <%= gif.user.name.mentionable.capitalize %> <%= gif.label%> </small>
-              
-            </h6> 
-            <p class="card-text font-weight-bold font-italic">
-              <%= gif.description %>
-              <small class="text-muted">
-                <div class= "row">
-                  <div class="col">
-                    <%= time_ago_in_words(gif.created_at) %> 
-                  </div>
-                  <div class="col">
-                      <% if gif.impressions_count.present? %>
-                        <%= gif.impressions_count %> views
-                      <% else %>
-                        No views Yet
-                      <% end %>
-                      
-                  </div>
-                </div>
-              </small>
-            </p>
-          </div>
-        </div>
-      
-        <% end %>
+        <%= render 'all' %>
       </div>
     </div>
     
@@ -101,17 +25,7 @@
       <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>
       <br>
       <div class="list-group" style="background: red; box-shadow: 10px 10px purple;">
-      <% @most_used.each do |tag| %>
-        <li class="list-group-item">
-          
-          <h4 class="text-center font-weight-bold">
-            <%= link_to "##{tag.upcase}", tagged_path(tag: tag ),class: 'text-info bg-dark' %>
-
-          </h4>
-          <hr class="dashed" style="border-top: 3px dashed #bbb;">
-
-        </li>
-      <% end %>
+      <%= render 'most_used_tags' %>
       
     </div>
   </div>

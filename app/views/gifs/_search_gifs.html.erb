@@ -1,0 +1,14 @@
+<%= search_form_for @q do |f| %>
+  
+    <div class="row justify-content-center">
+      <div class="col">
+          <%= f.search_field :label_cont, class: "form-search form-control-alternative", placeholder: 'Search all the GIFs'  %>
+
+      </div>
+      <div class="col-auto">
+        <%= f.button :submit,   class: "btn btn-info btn-round" do %>
+          <i class="fas fa-search"></i> 
+        <% end %>
+      </div>
+    </div>
+  <% end %>

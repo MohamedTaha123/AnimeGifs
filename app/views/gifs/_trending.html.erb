@@ -1,0 +1,26 @@
+ <% @trending.each do |trending| %>
+
+ <div class="card  bg-dark  border-0 h-100">
+   <%= link_to  gif_path(trending) do %>
+   <%=  image_tag(trending.image.url(:thumb), class: "card-img-top" )%>
+   <% end %>
+   <div class="card-body">
+
+     <h6 class="card-title">
+       <% if trending.user.avatar.present? %>
+       <%= image_tag github_avatar_url(trending.user, size: 40),height: 30, width: 30, class: "rounded-circle" %>
+       <% else %>
+       <%= image_tag gravatar_image_url(trending.user.email, size: 40), height: 30, width: 30, class: "rounded-circle" %>
+       <% end %>
+
+       @<%= trending.user.name.mentionable.capitalize %>
+
+     </h6>
+     <p class="card-text font-weight-bold"><%= trending.description %></p>
+     <p class="card-text">
+       <small class="text-muted">
+         Created <%= time_ago_in_words(trending.created_at) %></small>
+     </p>
+   </div>
+ </div>
+ <% end %>
