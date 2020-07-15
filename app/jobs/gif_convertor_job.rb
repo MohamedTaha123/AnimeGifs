@@ -9,14 +9,15 @@ class GifConvertorJob < ApplicationJob
     # Skeptick & MiniMagick  Api
     new_gif = Rails.public_path.join('uploads','gif', "new_gif_#{nwi.id}.gif")
     command = convert(browse_images(nwi.images_hash)) do
-      set :delay, '400'
+      set :delay, '20'
       set :loop, '0'
+      set :resize, '20%'
       write new_gif
     end
     command.run
-    Gif.new(id: nwi.gif_id, image: parse(new_gif.to_path), user_id: current_user.id,
-                tag_list: %w[1 2 3],
-                description: nwi.description, label: nwi.label).save
+    Gif.create!(id: nwi.gif_id, image: parse(new_gif.to_path), user_id: current_user.id,
+                tag_list: nwi.tag_list,
+                description: nwi.description, label: nwi.label)
   rescue StandardError => e 
     puts e.to_s
   end

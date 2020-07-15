@@ -6,6 +6,7 @@
 #  description :string
 #  images_hash :json
 #  label       :string
+#  tag_list    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  gif_id      :string

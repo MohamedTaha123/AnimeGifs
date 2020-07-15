@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col">
+    <div class="col-sm">
     </div>
-    <div class="col-6">
+    <div class="col-sm-6">
         
         <h1 class= "text-center font-weight-bold"> Gif Maker</h1>
     
@@ -9,6 +9,8 @@
                 <%= form.file_field :images_hash ,multiple: true%>
                 <%= form.input :description , placeholder: "little description"%>
                 <%= form.input :label , placeholder: "label"%>
+                <%= form.input :tag_list, value: form.object.tag_list.join(", "), class: "form-control",placeholder: "Tag list (comma separated)", hint: 'Example: Ruby On Rails,Js' %>
+
                 <%= form.button :submit, "Make Gif" , class: "btn btn-lg btn-dark", data: {disable_with: "Please wait..." } %>
 
             <% end %>
@@ -16,6 +18,6 @@
         
         </div>
  
-    <div class="col">
+    <div class="col-sm">
     </div>
 </div>

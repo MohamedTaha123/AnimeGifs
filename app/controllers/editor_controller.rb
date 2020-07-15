@@ -39,6 +39,6 @@ class EditorController < ApplicationController
   private
 
   def images_params
-    params.require(:image).permit(:label, :description, images_hash: [])
+    params.require(:image).permit(:label, :description, :tag_list,images_hash: [])
   end
 end
