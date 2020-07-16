@@ -1,17 +1,17 @@
 <% if @notifications.present? %>
-<h1>Notifications
+<h1 class="text-center font-weight-bold">Notifications
   <span><%= button_to 'Mark All As Read', '', data: {reflex: 'click->NotificationsReflex#mark_all_as_read'}, class: 'btn btn-warning btn-sm' %></span>
 </h1>
 <% @notifications.each do |notification| %>
   <ul>
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" style="background-color: black;">
 
         <li>
-          <strong><%= notification.created_at.strftime("%b %d") %> :</strong>
+          <b><%= notification.created_at.strftime("%b %d") %> :</b>
           <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
-          <%= check_box_tag nil, nil, notification.read_at, data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id}%>
-          <%#= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-info' %>
+  
+          <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-outline-info' %>
         </li>
       </div>
     </div>
@@ -22,5 +22,5 @@
 
   <% end %>
 <% else %>
-<h1 class="text-center font-weight-bold">No Notifications</h1>
+<h1 class="text-center font-weight-bold">No New Notifications</h1>
 <% end %>

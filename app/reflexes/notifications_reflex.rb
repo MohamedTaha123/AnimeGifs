@@ -22,8 +22,8 @@ class NotificationsReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com
 
   def mark_as_read
-    notification = Notification.find(element.dataset[:id])
-    notification.update(read_at: (notification.read_at ? nil : Time.now))
+    notification = Notification.find( element.dataset[:id])
+    notification.update!(read_at: (notification.read_at ? nil : Time.now))
   end
   def mark_as_unread
     notification = Notification.find(element.dataset[:id])
