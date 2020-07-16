@@ -1,7 +1,7 @@
 <%= render 'shared/back' %>
 <div class="row">
   <div class="col-sm-4">
-    <div style=" box-shadow: 1px 1px #A52A2A;">
+    <div >
       <a href="#!">
         <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
         <% if @gif.user.avatar.present? %>
@@ -16,7 +16,7 @@
 
           <% if user_signed_in? %>
             <% if current_user.id == @gif.user_id %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
+              <%= link_to "Edit My Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
             <%else %>
 
             <div id="follow_<%= @gif.user.id %>">
@@ -44,10 +44,10 @@
 
       </div>
     </div>
-
+    <br>
     
     <%= render 'user_informations' %>
- 
+    <br>
   </div>
   <div class="col-sm-8" >
   
@@ -78,7 +78,7 @@
       <figcaption class="figure-caption " style=" background-color: black; color: white; font-style: italic; padding: 2px; text-align: left;">
        <%= render 'gifs/likes', gif: @gif %>
     
-        <%#=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] , class: "badge"%>
+        <%=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] , class: "badge"%>
       </figcaption>
 
        
