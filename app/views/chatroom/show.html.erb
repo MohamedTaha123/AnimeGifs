@@ -4,47 +4,19 @@
       <div class="list-group w-200px bg-black br-light">
        
         <%#= link_to 'Add a Room', new_chatroom_path, class: 'btn  btn-default', method: :get %>
-        
-        <br>
-        <% Chatroom.all.each do |chatroom| %>
-          <%= link_to "##{chatroom.name}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
-         
-        <% end %>
-     
+        <%= render 'all_chatrooms' %> 
       </div>
 
 
       <div class="chatroom">
         <h3 class=" font-weight-bold">
-          #<%= @chatroom.name %>
-            <% if @chatroom.messages.where.not(user_id: current_user.id).unread_by(current_user).any? %>
-              <span class="badge badge-pill badge-info"> <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).count %>  unread messages</span>
-            <% end %>
+          <%= render 'chatroom_description' %>
         </h3>
    
         <div>
-          <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-            <% if @chatroom.messages.present? %>
-              <% @chatroom.messages.includes([:user]).each do |message| %>
-                <%= render "messages/message", message: message %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <%= simple_form_for [ @chatroom, @message ] do |f| %>
-             <div class="choose_file">
-                <span>
-                  <i class="far fa-image fa-2x" style="color: #8FBC8F;"></i>
-                </span>
-                
-                <%= f.input :attachement, label: false  %>
-             </div>
-            
-            <%= f.input :content, as: :text, label: false, placeholder: "Message ##{@chatroom.name}" ,class: 'form-control' ,hint: "Markdown is Supported."  %>
-               
-            <%= f.button :submit , 'Send', class: 'btn btn-sm float-right', style: 'background-color: #E9967A', disable_with: 'Submiting...' %>
-            
-          <% end %>
+          
+          <%= render 'chatroom_messages' %>
+          <%= render 'chatroom_new_message' %>
         </div>
       </div>
     </div>

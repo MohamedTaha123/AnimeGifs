@@ -1,0 +1,7 @@
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% if @chatroom.messages.present? %>
+    <% @chatroom.messages.includes([:user]).each do |message| %>
+        <%= render "messages/message", message: message %>
+    <% end %>
+  <% end %>
+</div>

@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .author {
     span {
-      font-style: normal;
+      font-style: oblique;
       font-weight: bold;
+      max-width: 100%;
     }
   
     small {
       color: $gray-500;
+      max-width: 100%;
     }
   }

@@ -1,26 +1,26 @@
 <% if @notifications.present? %>
-<h1 class="text-center font-weight-bold">Notifications
-  <span><%= button_to 'Mark All As Read', '', data: {reflex: 'click->NotificationsReflex#mark_all_as_read'}, class: 'btn btn-warning btn-sm' %></span>
-</h1>
-<% @notifications.each do |notification| %>
-  <ul>
-    <div class="card">
-      <div class="card-body" style="background-color: black;">
+  <h1 class="text-center font-weight-bold">Notifications
+    <span><%= button_to 'Mark All As Read', '', data: {reflex: 'click->NotificationsReflex#mark_all_as_read'}, class: 'btn btn-warning btn-sm' %></span>
+  </h1>
+  <% @notifications.each do |notification| %>
+    <ul>
+      <div class="card">
+        <div class="card-body" style="background-color: black;">
 
-        <li>
-          <b><%= notification.created_at.strftime("%b %d") %> :</b>
-          <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
-  
-          <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-outline-info' %>
-        </li>
+          <li>
+            <b><%= notification.created_at.strftime("%b %d") %> :</b>
+            <%= render "notifications/#{notification.notifiable_type.underscore}/#{notification.action.underscore}", actor: notification.actor, notifiable: notification.notifiable , action: notification.action %>
+    
+            <%= button_to 'Mark As Read', '',data: { reflex: 'click->NotificationsReflex#mark_as_read', id: notification.id} , class: 'btn btn-sm btn-outline-info' %>
+          </li>
+        </div>
       </div>
-    </div>
 
 
 
-  </ul>
+    </ul>
 
-  <% end %>
+    <% end %>
 <% else %>
-<h1 class="text-center font-weight-bold">No New Notifications</h1>
+  <h1 class="text-center font-weight-bold">No New Notifications</h1>
 <% end %>
