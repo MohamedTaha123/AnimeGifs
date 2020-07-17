@@ -4,7 +4,7 @@
                 <%= like_button_for @gif %>
               </div>
             <% else %>
-              <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
+              <%= link_to 'Delete', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
             <% end %>
           <% else %>
           <b>
