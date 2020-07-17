@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class NotificationsReflex < ApplicationReflex
+class MessageReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -11,6 +11,7 @@ class NotificationsReflex < ApplicationReflex
   #   - session - the ActionDispatch::Session store for the current visitor
   #   - url - the URL of the page that triggered the reflex
   #   - element - a Hash like object that represents the HTML element that triggered the reflex
+  #   - params - parameters from the element's closest form (if any)
   #
   # Example:
   #
@@ -21,16 +22,15 @@ class NotificationsReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com
 
-  def mark_as_read
-    notif_id= element[:data_id]
-    notification = Notification.find( notif_id)
-    notification.update!(read_at: (notification.read_at ? nil : Time.now))
+  def edit
+    @edit_id = element.dataset[:id].to_i
   end
-  def mark_as_unread
-    notification = Notification.find(element.dataset[:id])
-    notification.update(read_at:  nil)
+
+  def cancel_edit
+    @edit_id = nil
   end
-  def mark_all_as_read
-    Notification.where(recipient_id: element[:data_id]).update_all read_at: Time.now 
+  def update
+    Message.find_by( id: element.dataset[:id])&.update content: element[:value]
   end
+
 end
