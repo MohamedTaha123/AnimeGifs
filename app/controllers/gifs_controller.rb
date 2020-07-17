@@ -94,7 +94,7 @@ class GifsController < ApplicationController
       format.js
     end
   end
-
+  
 
   private
 

@@ -1,0 +1,7 @@
+ <h4 class="font-weight-bold">Tags:</h4>
+ <div style="max-width: 100%;">
+   <% @gif.tag_list.each do |tl| %>
+   <%= link_to "#{tl.upcase}", tagged_path(tag: tl) ,class: 'badge badge-lg', style: 'background-color: #EF2D56; color: white; border-radius: 100px;'%>
+
+   <% end %>
+ </div>

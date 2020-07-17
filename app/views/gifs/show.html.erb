@@ -1,118 +1,37 @@
-<%= render 'shared/back' %>
+<%= render 'back' %>
 <div class="row">
   <div class="col-sm-4">
-    <div >
-      <a href="#!">
-        <%#=  image_tag gravatar_image_url(@gif.user.email, size: 40), class: "rounded-circle img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;" %>
-        <% if @gif.user.avatar.present? %>
-          <%= image_tag github_avatar_url(@gif.user, size: 40), class: " img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;"  %>
-        <% else %>
-          <%= image_tag gravatar_image_url(@gif.user.email, size: 40),  class: " img-center img-fluid shadow shadow-lg--hover",style: "width: 140px;"  %>
-        <% end %>
-      </a>
-      <div class="pt-4 text-center">
-        <h5 class="h3 title text-white font-weight-bold">
-          <span class="d-block mb-1"><%= @gif.user.name %></span>
+    <div class="card bg-transparent">
 
-          <% if user_signed_in? %>
-            <% if current_user.id == @gif.user_id %>
-              <%= link_to "Edit My Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
-            <%else %>
-
-            <div id="follow_<%= @gif.user.id %>">
-              
-              <%= follow_button_for_v2(@gif) %>
-            </div>
-            <% end %>
-          <% end %>
-
-        </h5>
-        <div class="mt-3">
-
-          <% if @gif.user.github_url.present? %>
-          <a href="<%= @gif.user.github_url %>" target="_blank" class="btn btn-github btn-icon-only rounded-circle">
-            <i class="fab fa-github"></i>
-          </a>
-          <% end %>
-          <% if @gif.user.facebook_url.present? %>
-          <a href="<%= @gif.user.facebook_url %>" target="_blank" class="btn btn-facebook btn-icon-only rounded-circle">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <% end %>
-
-        </div>
-
+      <%= render 'show_user_gravatar' %>
+      <div class="container">
+        <%= render 'show_user_others_profiles' %>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+          <div class="text-center">
+          <%= render 'user_informations' %>
+          </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       </div>
     </div>
-    <br>
-    
-    <%= render 'user_informations' %>
-    <br>
   </div>
   <div class="col-sm-8" >
   
     <div class="container" style=" box-shadow: 5px 5px #A52A2A;">
-      <h5 class="text-white text-align font-weight-bold"> GIF by @<%= @gif.user.name%> </h5> 
+      <h5 class="text-white text-align font-weight-bold">
+         GIF by @<%= @gif.user.name%> 
+         
+      </h5> 
+
       <p class="text-align font-weight-bold" style="color: orange;">
         <%= @gif.description %>
+        <%= render 'show_like_gif' %>
       </p>
-      <div class="container-image">
-        <%= image_tag(@gif.image.url, style: 'width: 100%; box-shadow: 2px 2px cyan;', alt: "#{@gif.label}") %>
-       <div class="top-left">
-          <% if user_signed_in?  %>
-            <% if current_user.id != @gif.user_id%>
-              <div id="like_<%= @gif.id %>">
-                <%= like_button_for @gif %>
-              </div>
-            <% else %>
-              <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
-            <% end %>
-          <% else %>
-          <b>
-            <%= link_to "Sign in " ,new_user_session_path %>
-            To Like/Unlike
-          </b>
-        <% end %>
-       </div>
-      </div>
-      <figcaption class="figure-caption " style=" background-color: black; color: white; font-style: italic; padding: 2px; text-align: left;">
-       <%= render 'gifs/likes', gif: @gif %>
-    
-        <%=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] , class: "badge"%>
-      </figcaption>
+      <%= render 'show_image_full' %>
 
-       
-        
-     
-        <h4 class="font-weight-bold">Tags:</h4> 
-        <div style="max-width: 100%;">
-          <% @gif.tag_list.each do |tl| %>
-            <%= link_to "#{tl.upcase}", tagged_path(tag: tl) ,class: 'badge badge-lg', style: 'background-color: #EF2D56; color: white; border-radius: 100px;'%>
-         
-          <% end %>
-        </div>
       
-      <h3 class="text font-weight-bold"><%= @gif.comments.count %> Comment(s) :</h3>
-      <% if user_signed_in? %>
-        <% if current_user.avatar.present? %>
-          <%= image_tag github_avatar_url(current_user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
-        <% else %>
-          <%= image_tag gravatar_image_url(current_user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
-        <% end %>
-          <b>- @ <%= current_user.name.mentionable %> - </b>
-      <%= simple_form_for [@gif, Comment.new], validate: true do |f| %>
-        <%= f.input :body,as: :text, placeholder: "Add a comment"  %><br />
-        <%= f.submit "Submit" , class: 'btn btn-sm btn-dark'%>
-      <% end %>
-      <br>
-      <ul>
-        <%= render @gif.comments %>
-      </ul>
-      <% else %>
-        <b>
-          <%= link_to 'Sign in ', new_user_session_path %> to leave a comment
-        </b>
-      <% end %>
+      <%= render 'show_tags_list' %>
+      
+      <%= render 'show_comments_section' %>
       
     </div>
   </div>

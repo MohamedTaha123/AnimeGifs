@@ -1,0 +1,7 @@
+  <% @gif.user.followers.each do |item| %>
+    <% if item.avatar.present? %>
+        <%= image_tag github_avatar_url(item, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+    <% else %>
+        <%= image_tag gravatar_image_url(item.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+    <% end %>
+  <% end %>

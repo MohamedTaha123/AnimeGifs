@@ -1,0 +1,14 @@
+ <% if user_signed_in?  %>
+            <% if current_user.id != @gif.user_id%>
+              <div id="like_<%= @gif.id %>">
+                <%= like_button_for @gif %>
+              </div>
+            <% else %>
+              <%= link_to 'Remove', gif_path(@gif) , class:'btn btn-sm btn-round btn-danger', method: :delete, data: {confirm: "Are you sure?"}%>
+            <% end %>
+          <% else %>
+          <b>
+            <%= link_to "Sign in " ,new_user_session_path %>
+            To Like/Unlike
+          </b>
+ <% end %>

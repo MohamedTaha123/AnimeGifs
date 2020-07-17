@@ -1,0 +1,10 @@
+ <div class="container-image">
+   <%= image_tag(@gif.image.url, style: 'width: 100%; box-shadow: 2px 2px cyan;', alt: "#{@gif.label}") %>
+
+ </div>
+ <figcaption class="figure-caption "
+   style=" background-color: black; color: white; font-style: italic; padding: 2px; text-align: left;">
+   <%= render 'gifs/likes', gif: @gif %>
+
+   <%#=  render_shareable  :buttons=> ['pinterest', 'facebook', 'tumblr'] , class: "badge"%>
+ </figcaption>

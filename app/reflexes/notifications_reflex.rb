@@ -24,12 +24,9 @@ class NotificationsReflex < ApplicationReflex
   def mark_as_read
     notif_id= element[:data_id]
     notification = Notification.find( notif_id)
-    notification.update!(read_at: (notification.read_at ? nil : Time.now))
+    notification.update(read_at: (notification.read_at ? nil : Time.now))
   end
-  def mark_as_unread
-    notification = Notification.find(element.dataset[:id])
-    notification.update(read_at:  nil)
-  end
+
   def mark_all_as_read
     Notification.where(recipient_id: element[:data_id]).update_all read_at: Time.now 
   end
