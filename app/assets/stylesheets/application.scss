@@ -1,4 +1,3 @@
-
 //= require actiontext
 
 // Brand Colors
@@ -41,113 +40,137 @@ $black: #000;
 @import "ui.scss";
 @import "chatroom_components/index";
 
-.choose_file{
-    position:relative;
-    display:inline-block;    
+.choose_file {
+  position: relative;
+  display: inline-block;
 }
-.choose_file input[type="file"]{
-    -webkit-appearance:none; 
-    position:absolute;
-    top:0; left:0;
-    opacity:0; 
+
+.choose_file input[type="file"] {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 
 .dot {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    display: inline-block;
-  }
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
 
-  #myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  #myImg:hover {opacity: 0.7;}
-  
-  /* The Modal (background) */
-  .modal-img {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
-  
-  /* Modal Content (image) */
-  .modal-content-img {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 500px;
-  }
-  
-  /* Caption of Modal Image */
-  #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-  }
-  
-  /* Add Animation */
-  .modal-content-img, #caption {  
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-  }
-  
-  @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
-  }
-  
-  @keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-  }
-  
-  /* The Close Button */
-  .close-modal {
-    position: absolute;
-    top: 70px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .close-modal:hover,
-  .close-modal:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* 100% Image Width on Smaller Screens */
-  @media only screen and (max-width: 700px){
-    .modal-content {
-      width: 100%;
-    }
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {
+  opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal-img {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content-img {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 500px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content-img,
+#caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0)
   }
 
+  to {
+    -webkit-transform: scale(1)
+  }
+}
 
-  /* Bottom left text */
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+/* The Close Button */
+.close-modal {
+  position: absolute;
+  top: 70px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+/* Bottom left text */
 .bottom-left {
   position: absolute;
   bottom: 8px;
@@ -188,39 +211,143 @@ $black: #000;
 /* ie6 inline block fix*/
 /* ie7 inline block fix*/
 nav.share {
-	display: inline-block;
-	div {
-		float: left;
-	}
-	iframe {
-		border: 0;
-		margin-top: 0;
-		padding-top: 0;
-	}
+  display: inline-block;
+
+  div {
+    float: left;
+  }
+
+  iframe {
+    border: 0;
+    margin-top: 0;
+    padding-top: 0;
+  }
 }
+
 #___plusone_0 {
-	font-size: default !important;
+  font-size: default !important;
 }
+
 .fb_iframe_widget {
-	span {
-		vertical-align: top;
-	}
+  span {
+    vertical-align: top;
+  }
 }
+
 .fb_edge_widget_with_comment {
-	vertical-align: top;
+  vertical-align: top;
 }
+
 .fb-like {
-	display: inline-block;
+  display: inline-block;
 }
+
 * {
-	html {
-		.fb-like {
-			display: inline;
-		}
-	}
+  html {
+    .fb-like {
+      display: inline;
+    }
+  }
 }
+
 *+html {
-	.fb-like {
-		display: inline;
-	}
+  .fb-like {
+    display: inline;
+  }
+}
+
+// Private Chat
+
+.chat-conv {
+  height: 100vh;
+
+  #messages {
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 200px;
+    padding-top: 20px;
+  }
+
+  .navbar {
+    border-bottom: 1px solid #eeeeee;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+  }
+
+  .message {
+    min-height: 59px;
+
+    .content-container {
+      display: inline-block;
+
+      .content {
+        background-color: #eeeeee;
+        padding: 8px 16px;
+        border-radius: 20px;
+      }
+
+      .author {
+        font-size: 0.8rem;
+        color: #777777;
+        margin-left: 10px;
+      }
+    }
+
+    &.me {
+      .content-container {
+        float: right;
+
+        .content {
+          background-color: #00d9ff;
+          color: white;
+        }
+      }
+    }
+  }
+
+}
+
+.card.no-outline {
+  border: none;
+}
+
+.conv-link {
+  &:hover {
+    text-decoration: none;
+  }
+
+  .conv-card {
+    transition: background-color 0.5s ease;
+    border-radius: 20px;
+
+    &:hover {
+      background-color: #eeeeee;
+    }
+
+    &.active {
+      background-color: black;
+
+      .name {
+        color: white;
+      }
+
+      .member-count {
+        color: #e0e0e0;
+      }
+    }
+
+    .name {
+      font-weight: bold;
+      color: black;
+    }
+
+    .member-count {
+      color: #777777;
+      font-weight: light;
+    }
+  }
+}
+
+.conv-sidebar {
+  border-right: 1px solid #eeeeee;
 }

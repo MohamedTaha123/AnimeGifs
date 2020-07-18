@@ -16,17 +16,27 @@ document.addEventListener('turbolinks:load', () => {
     },
 
     received(data) {
-
-      var node = document.createElement("P");
-
-      console.log(data);
-
+      const user_element = document.getElementById('user-id');
+      const user_id = Number(user_element.getAttribute('data-user-id'));
+      /*  var node = document.createElement("P"); */
+      /* 
       var textnode = document.createTextNode(data.content);
 
-      node.appendChild(textnode);
+      node.appendChild(textnode); */
 
-      document.getElementById("new_message").appendChild(node);
-      document.getElementById('chat_message').value = ''
+      /*  document.getElementById("messages").appendChild(node);
+       document.getElementById('chat_message').value = '' */
+     
+
+      let html;
+
+      if (user_id === data.content.user_id) {
+        html = data.mine
+      } else {
+        html = data.theirs
+      }
+      const messageContainer = document.getElementById('messages')
+      messageContainer.innerHTML = messageContainer.innerHTML + html
     }
   });
 

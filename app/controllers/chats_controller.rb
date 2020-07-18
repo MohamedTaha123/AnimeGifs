@@ -19,7 +19,7 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    # @chats = @conversation.recipient.chats.all
+    @conversations = Conversation.all
     @chats = @conversation.chats.where('user_id = ? OR user_id = ?', @conversation.recipient, @conversation.sender)
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
@@ -35,12 +35,8 @@ class ChatsController < ApplicationController
     @chat.user = current_user
     respond_to do |format|
       if @chat.save
-        # ChatRelayJob.perform_later(@conversation, current_user, @chat)
-        ActionCable.server.broadcast "chatroom_channel_#{@chat.conversation_id}",
-                                     content: @chat.message,
-                                     conversation_id: @chat.conversation_id            
+        SendPrivateMessageJob.perform_later(@chat)    
         format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
-        #format.js
       else
         format.html { render :new }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
