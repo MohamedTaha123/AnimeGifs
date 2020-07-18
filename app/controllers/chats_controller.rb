@@ -39,8 +39,8 @@ class ChatsController < ApplicationController
         ActionCable.server.broadcast "chatroom_channel_#{@chat.conversation_id}",
                                      content: @chat.message,
                                      conversation_id: @chat.conversation_id            
-        #format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
-        format.js
+        format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
+        #format.js
       else
         format.html { render :new }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
