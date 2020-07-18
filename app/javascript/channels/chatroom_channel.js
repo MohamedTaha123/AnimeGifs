@@ -1,17 +1,27 @@
-import consumer from "./consumer";
+import consumer from "./consumer"
 
-document.addEventListener('turbolinks:load', () => {
-  const messagesContainer = document.getElementById('messages');
-  if (messagesContainer) {
-    const id = messagesContainer.dataset.chatroomId;
+consumer.subscriptions.create({
+  channel: "ChatroomChannel",
+}, {
+  connected() {
+    // Called when the subscription is ready for use on the server
+  },
 
-    consumer.subscriptions.create({
-      channel: "ChatroomChannel",
-      id: id
-    }, {
-      received(data) {
-        messagesContainer.insertAdjacentHTML('beforeend', data); // called when data is broadcast in the cable
-      }
-    });
+  disconnected() {
+    // Called when the subscription has been terminated by the server
+  },
+
+  received(data) {
+
+    var node = document.createElement("P");
+
+
+
+    var textnode = document.createTextNode(data.content.message);
+
+    node.appendChild(textnode);
+
+    document.getElementById("new_message").appendChild(node);
+    document.getElementById('chat_message').value = ''
   }
 });

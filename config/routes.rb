@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'tags', to: 'tags#index'
   get '/tagged', to: 'tags#related_gifs', as: :tagged
-  resources :conversations, only: %i[create index] do
+  resources :conversations, only: %i[create  index] do
     resources :chats, only: %i[create new]
   end
   get 'dashboard/index'
