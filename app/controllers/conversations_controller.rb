@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   def index
     @users = User.where.not(id: current_user.id)
     # @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
-    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
+    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:recipient, :sender])
   end
 
   def create
@@ -30,6 +30,6 @@ class ConversationsController < ApplicationController
   private
 
   def conversation_params
-    params.require(:conversation).permit(:sender_id, :recipient_id)
+    params.permit(:sender_id, :recipient_id)
   end
 end

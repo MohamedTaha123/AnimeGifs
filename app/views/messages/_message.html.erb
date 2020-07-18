@@ -18,7 +18,13 @@
         <% end %>
 
         <% if message.user.present? %>
-          @<%= message.user.name.mentionable %>
+          
+          <% if message.user == current_user %>
+            @ Me
+          <% else %>
+            @<%= link_to message.user.name.mentionable,conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
+          <% end %>
+          
         <% else %>
           @Anonymous
         <% end %>
