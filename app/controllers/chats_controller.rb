@@ -19,7 +19,8 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    @conversations = Conversation.all
+    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
+
     @chats = @conversation.chats.where('user_id = ? OR user_id = ?', @conversation.recipient, @conversation.sender)
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id

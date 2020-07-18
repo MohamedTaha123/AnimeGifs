@@ -1,5 +1,5 @@
 class SendPrivateMessageJob < ApplicationJob
-  queue_as :default
+  queue_as :sidekiq
 
   def perform(chat)
     mine = ApplicationController.render(
