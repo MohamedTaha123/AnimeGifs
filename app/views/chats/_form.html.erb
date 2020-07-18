@@ -1,5 +1,5 @@
 
-<%= simple_form_for([@conversation, @chat] ) do |f| %>
+<%= simple_form_for([@conversation, @chat] ,remote: true) do |f| %>
   <div class="notifications bottom-left">
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -7,7 +7,7 @@
    <div class="input-group">
     <%= f.text_field :message, placeholder: "Type your message here...", class: 'form-control' %>
     <div class="input-group-append">
-      <%= f.submit "Send Message", class: "btn btn-sm btn-primary" %>
+      <%= f.submit "Send Message", class: "btn btn-sm btn-primary", id: 'chat-btn' %>
     </div>
   </div>
 <% end %>

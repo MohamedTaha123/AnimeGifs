@@ -36,7 +36,8 @@ class ChatsController < ApplicationController
     respond_to do |format|
       if @chat.save
         SendPrivateMessageJob.perform_later(@chat)    
-        format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
+        #format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
+        format.js
       else
         format.html { render :new }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
