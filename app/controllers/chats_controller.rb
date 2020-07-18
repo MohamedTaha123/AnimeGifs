@@ -36,8 +36,9 @@ class ChatsController < ApplicationController
     respond_to do |format|
       if @chat.save
         # ChatRelayJob.perform_later(@conversation, current_user, @chat)
-        ActionCable.server.broadcast "chat_#{@conversation.id}",
-                                     content: @chat            
+        ActionCable.server.broadcast "chatroom_channel_#{@chat.conversation_id}",
+                                     content: @chat.message,
+                                     conversation_id: @chat.conversation_id            
         #format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
         format.js
       else

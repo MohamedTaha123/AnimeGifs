@@ -1,19 +1,19 @@
-<h1>New Chat</h1>
-<div id="<%= @conversation.id %>">
-    <% if @chats.present? %>
-        <% @chats.each do |chat| %>
-            <p id="<%=chat.id%>">
-                <%= chat.message %>
-                <h6 class="font-weight-bolder"> 
-                    <%= chat.chat_time%>
-                </h6>
-            </p>
-        
-        <% end %>
+<div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
+
+<h1>New Chat for <%= @conversation.id %></h1>
+
+<% if @chats.present? %>
+    <% @chats.each do |chat| %>
+        <p id="<%=chat.id%>">
+        <%= chat.message %>
+        <h6 class="font-weight-bolder">
+            <%= chat.chat_time%>
+        </h6>
+        </p>
+
     <% end %>
+<% end %>
 
-    <div id="new_message"></div>
+<div id="new_message"></div>
 
-    <%= render 'form', chat: @chat %>
-
-</div>
+<%= render 'form', chat: @chat %>

@@ -1,27 +1,33 @@
 import consumer from "./consumer"
+document.addEventListener('turbolinks:load', () => {
+  const conversation_element = document.getElementById('conversation-id');
+  const conversation_id = conversation_element.getAttribute('data-conversation-id');
 
-consumer.subscriptions.create({
-  channel: "ChatroomChannel",
-}, {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+  consumer.subscriptions.create({
+    channel: "ChatroomChannel",
+    conversation_id: conversation_id
+  }, {
+    connected() {
+      console.log("connected to " + conversation_id);
+    },
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+    disconnected() {
+      console.log('disconnected from ' + conversation_id);
+    },
 
-  received(data) {
+    received(data) {
 
-    var node = document.createElement("P");
+      var node = document.createElement("P");
 
+      console.log(data);
 
+      var textnode = document.createTextNode(data.content);
 
-    var textnode = document.createTextNode(data.content.message);
+      node.appendChild(textnode);
 
-    node.appendChild(textnode);
+      document.getElementById("new_message").appendChild(node);
+      document.getElementById('chat_message').value = ''
+    }
+  });
 
-    document.getElementById("new_message").appendChild(node);
-    document.getElementById('chat_message').value = ''
-  }
-});
+})
