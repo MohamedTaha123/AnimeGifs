@@ -3,12 +3,12 @@
   <div class="col-sm-4">
     <div class="card bg-transparent">
 
-      <%= render 'show_user_gravatar' %>
+      <%= render 'show_user_gravatar', cached: true %>
       <div class="container">
-        <%= render 'show_user_others_profiles' %>
+        <%= render 'show_user_others_profiles', cached: true %>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
           
-          <%= render 'user_informations' %>
+          <%= render 'user_informations', cached: true %>
          
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       </div>
@@ -24,14 +24,14 @@
 
       <p class="text-align font-weight-bold" style="color: orange;">
         <%= @gif.description %>
-        <%= render 'show_like_gif' %>
+        <%= render 'show_like_gif', cached: true %>
       </p>
-      <%= render 'show_image_full' %>
+      <%= render 'show_image_full' , cached: true%>
 
       
-      <%= render 'show_tags_list' %>
+      <%= render 'show_tags_list', cached: true %>
       
-      <%= render 'show_comments_section' %>
+      <%= render 'show_comments_section', cached: true %>
       
     </div>
   </div>

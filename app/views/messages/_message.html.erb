@@ -1,91 +1,98 @@
 
-<div class="container-sm" >
-  <div class="message-container" id="message-<%= message.id %>" style="max-width: 100%;">
-    <i class="author">
-      <span>
-        <% if message.user.avatar.present? %>
-          <%= image_tag github_avatar_url(message.user, size: 40),height: 30, width: 30, class: "rounded-circle "  %>
-        <% else %>
-          <%= image_tag gravatar_image_url(message.user.email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
-        <% end %>
 
-        <% if !message.user.last_seen_at.nil? %>
-          <% if message.user.online?  %>
-            <span class="dot" style= "background-color: green;"></span>
+  <div class="container-sm" data-chatroom-id="chatroom_<%= @chatroom.id %>" >
+    <div class="message-container" id="message-<%= message.id %>" style="max-width: 100%;">
+      <i class="author">
+        <span>
+          <% if message.user.avatar.present? %>
+            <%= image_tag github_avatar_url(message.user, size: 40),height: 30, width: 30, class: "rounded-circle "  %>
           <% else %>
-            <span class="dot" style= "background-color: red;"></span>
+            <%= image_tag gravatar_image_url(message.user.email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
           <% end %>
-        <% end %>
 
-        <% if message.user.present? %>
-          
-          <% if message.user == current_user %>
-            @ Me
+          <% if !message.user.last_seen_at.nil? %>
+            <% if message.user.online?  %>
+              <span class="dot" style= "background-color: green;"></span>
+            <% else %>
+              <span class="dot" style= "background-color: red;"></span>
+            <% end %>
+          <% end %>
+
+          <% if message.user.present? %>
+            
+            <% if message.user == current_user %>
+              @ Me
+            <% else %>
+              @<%= link_to message.user.name.mentionable,conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
+            <% end %>
+            
           <% else %>
-            @<%= link_to message.user.name.mentionable,conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
+            @Anonymous
           <% end %>
-          
-        <% else %>
-          @Anonymous
-        <% end %>
 
-      </span>
-      <small>
-        <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
-      
-  
-      <% if message.user == current_user%>
-        <%= link_to  remove_chatroom_message_path(message.chatroom, message) , method: :delete  do %>
-          <i class="far fa-trash-alt fa-lg" style="color:red;"></i>
-        <% end %>
-      <% end %>
-      </small>
-    </i>
+        </span>
+        <small>
+          <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
+        
     
-    <div style="max-width:100%;">
-        <% if message.attachement.present? %>
-          <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="By <%= message.user.name %>" class="rounded" style="max-width:100%;">
-          <!-- The Modal -->
-          <div id="ShowImage" class="modal-img">
-            <span class="close-modal" style="color: white;">&times;</span>
-            <img class="modal-content-img" id="ImgShown">
-         
-            <div id="caption"></div>
-          </div>
+        <% if message.user == current_user%>
+          <%= link_to  remove_chatroom_message_path(message.chatroom, message) , method: :delete  do %>
+            <i class="far fa-trash-alt fa-lg" style="color:red;"></i>
+          <% end %>
         <% end %>
-        <%= markdown_classic(message.content) %>
-     
+        </small>
+      </i>
+      
+      <div style="max-width:100%;">
+          <% if message.attachement.present? %>
+            <img id="myImg_<%= message.id %>" src="<%= message.attachement.url(:thumb) %>" alt="By <%= message.user.name %>" class="rounded" style="max-width:100%;">
+            <!-- The Modal -->
+            <div id="ShowImage" class="modal-img">
+              <span class="close-modal" style="color: white;">&times;</span>
+              <img class="modal-content-img" id="ImgShown">
+          
+              <div id="caption"></div>
+            </div>
+          <% end %>
+          <%= markdown_classic(message.content) %>
+      
+      </div>
+    
     </div>
-  
   </div>
-</div>
+
 <script>
-// Get the modal
-var modal = document.getElementById("ShowImage");
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg_<%= message.id %>");
-var modalImg = document.getElementById("ImgShown");
-var captionText = document.getElementById("caption");
+ 
+  document.addEventListener('turbolinks:load', () => {
+     
+      // Get the modal
+      var modal = document.getElementById("ShowImage");
+      
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById("myImg_<%= message.id %>");
+      var modalImg = document.getElementById("ImgShown");
+      var captionText = document.getElementById("caption");
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close-modal")[0];
 
-
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close-modal")[0];
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() { 
         modal.style.display = "none";
-    }
-} 
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+      } 
+
+  })
+    
+
 
 </script>

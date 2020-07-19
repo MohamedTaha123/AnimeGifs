@@ -1,5 +1,5 @@
 
-<%= simple_form_for([@conversation, @chat] ,remote: true) do |f| %>
+<%= simple_form_for([@conversation, @chat] ,remote: true, validate: true) do |f| %>
   <div class="notifications bottom-left">
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

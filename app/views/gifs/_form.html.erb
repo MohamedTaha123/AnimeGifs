@@ -1,4 +1,4 @@
-<%= simple_form_for(@gif,remote: true , validate: true) do |f| %>
+<%= simple_form_for(@gif, remote: true , validate: true) do |f| %>
 <div class="text-center">
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -7,7 +7,7 @@
 <div class="form-inputs">
   <div class="form-group">
       
-      <%= f.file_field :image,as: :image_preview, hint: 'Upload a Gif',class: 'form-control '  %>
+      <%= f.file_field :image,as: :image_preview, hint: 'Upload a Gif'  %>
   </div>
   
   <div class="form-group">
@@ -16,12 +16,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :description, as: :text, placeholder: "Little Description", class: "form-control" %>
+    <%= f.input :description,as: :text, placeholder: "Little Description"%>
   </div>
 
   <div class="form-group">
   
-    <%= f.input :tag_list, value: f.object.tag_list.join(", "), class: "form-control",placeholder: "Tag list (comma separated)", hint: 'Example: Ruby On Rails,Js' %>
+    <%= f.input :tag_list, value: f.object.tag_list.join(", "),placeholder: "Tag list (comma separated)", hint: 'Example: Ruby On Rails,Js' %>
     
   </div>
   

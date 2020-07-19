@@ -1,6 +1,6 @@
 <div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
 <div id="user-id" data-user-id="<%= current_user.id %>"></div>
-<div class="container-fluid">
+
     <div class="row">
         <div class="col-3 convs-sidebar">
             <div class="card  no-outline">
@@ -35,6 +35,13 @@
                 <nav class="navbar-chat navbar-dark">
                     <span class="navbar-brand" href="#">
                         <b>
+                            
+                            <% if @conversation.opposed_user(current_user).avatar.present? %>
+                                <%= image_tag github_avatar_url(@conversation.opposed_user(current_user), size: 40),height: 30, width: 30, class: "rounded-circle "  %>
+                            <% else %>
+                                <%= image_tag gravatar_image_url(@conversation.opposed_user(current_user).email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
+                            <% end %>
+                            -
                              @<%= @conversation.opposed_user(current_user).name.mentionable %>
                              <% if !@conversation.opposed_user(current_user).last_seen_at.nil? %>
                                 <% if @conversation.opposed_user(current_user).online?  %>
@@ -46,13 +53,13 @@
                         </b>
                     </span>
                   
-                    <small><%= @conversation.chats.uniq.count %> Messages</small>
+                    <small>Started <%= time_ago_in_words(@conversation.created_at) %> </small>
                 </nav>
                 <% if @chats.includes([:user]).present? %>
             
                         <div id="messages">
                             <% @chats.each do |chat| %>
-                                <p id="<%=chat.id%>">
+                                
                                 <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
                                     <div class="content-container">
                                         <div class="content">
@@ -66,16 +73,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                </p>
+                           
 
                             <% end %>
                         </div>
                 <% else %>
-                        <div id="messages">
+                        
                             <h1 class="text-center font-weight-bold">
                                 No Messages To Show !!
                             </h1>
-                        </div>
+                       
                 <% end %>
 
                 
@@ -85,4 +92,3 @@
             </div>
         </div>
     </div>
-</div>

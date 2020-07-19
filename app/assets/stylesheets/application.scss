@@ -37,9 +37,11 @@ $black: #000;
 @import 'conversations.scss';
 @import 'gifs.scss';
 @import "./actiontext.scss";
-@import 'bootstrap/glyphicons';
 @import "ui.scss";
 @import "chatroom_components/index";
+
+
+
 
 .choose_file {
   position: relative;
@@ -206,54 +208,24 @@ $black: #000;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+// Notification Badge
+.notification {
 
-/* shareable's nav tag */
-/* if using medium sized buttons */
-/* ie6 inline block fix*/
-/* ie7 inline block fix*/
-nav.share {
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
   display: inline-block;
-
-  div {
-    float: left;
-  }
-
-  iframe {
-    border: 0;
-    margin-top: 0;
-    padding-top: 0;
-  }
+  border-radius: 2px;
 }
 
-#___plusone_0 {
-  font-size: default !important;
-}
 
-.fb_iframe_widget {
-  span {
-    vertical-align: top;
-  }
-}
 
-.fb_edge_widget_with_comment {
-  vertical-align: top;
+.notification .badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
 }
-
-.fb-like {
-  display: inline-block;
-}
-
-* {
-  html {
-    .fb-like {
-      display: inline;
-    }
-  }
-}
-
-*+html {
-  .fb-like {
-    display: inline;
-  }
-}
-
