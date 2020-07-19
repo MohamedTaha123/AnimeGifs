@@ -2,23 +2,17 @@
 
     <div class="d-flex ">
       <div class="list-group w-200px bg-black br-light">
-       
-        <%#= link_to 'Add a Room', new_chatroom_path, class: 'btn  btn-default', method: :get %>
-        <%= render 'all_chatrooms' %> 
+          <%= render 'all_chatrooms' %> 
       </div>
 
 
       <div class="chatroom">
-        
           <%= render 'chatroom_description' %>
-        
-   
-        <div>
+      <div>
           
-          <%= render 'chatroom_messages' %>
-          <%= render 'chatroom_new_message' %>
-        </div>
-      </div>
+      <%= render 'chatroom_messages' %>
+      <%= render 'chatroom_new_message' %>
+     
     </div>
 
 

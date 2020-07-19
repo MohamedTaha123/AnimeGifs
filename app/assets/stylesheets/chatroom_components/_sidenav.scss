@@ -4,7 +4,7 @@
   }
   
   .list-group-item.active {
-    background-color: transparentize($color: teal, $amount: 0);
+    background-color: transparentize($color: rgb(119, 0, 119), $amount: 0);
     border-color: initial;
     color: #2d2222;
     font-weight: bold;

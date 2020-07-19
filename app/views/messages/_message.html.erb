@@ -20,10 +20,11 @@
 
           <% if message.user.present? %>
             
-            <% if message.user.id == current_user.id %>
-              @ Me
-            <% else %>
+            <% if current_user.present? && message.user.id != current_user.id %>
+            
               @ <%= link_to message.user.name.mentionable,conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
+            <% else %>
+              @ Me
             <% end %>
             
           <% else %>

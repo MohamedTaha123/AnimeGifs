@@ -15,7 +15,7 @@
       padding-top: 20px;
     }
   
-    .navbar-chat {
+    .navbar {
       border-bottom: 1px solid #eeeeee;
       margin-left: -15px;
       width: calc(100% + 30px);
@@ -51,7 +51,22 @@
         }
       }
     }
-  
+    .chat-box {
+      position: absolute;
+      bottom: -10px;
+      padding: 20px;
+      width: 100%;
+      margin-left: -15px;
+      border-top: 1px solid #eeeeee;
+      input[type=text] {
+        height: 45px;
+        font-size: 18px;
+        padding: 8px;
+      }
+      .btn {
+        height: 45px;
+      }
+    }
   }
   
   .card.no-outline {

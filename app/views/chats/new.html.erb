@@ -4,15 +4,13 @@
         <div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
         <div class="row">
-            <div class="col-3 convs-sidebar">
-                <div class="card  no-outline">
+            <div class="col-sm-3 convs-sidebar">
+                <div class="card no-outline">
                     <div class="card-body">
                         <small>Logged in as</small><br>
                         <b><%= current_user.name %><br></b>
                     </div>
                 </div>
-                <hr>
-                
                 <hr>
                 <% if @conversations.includes([:sender, :recipient]).present? %>
                     <% @conversations.includes([:sender,:recipient]).each do |conv| %>
@@ -30,14 +28,14 @@
                 
             
             </div>
-            <div class="col-9">
+            <div class="col-sm-9">
                 
                 
                 <div class="chat-conv">
-                    <nav class="navbar-chat navbar-dark">
+                    <nav class="navbar navbar-black">
                         <span class="navbar-brand" href="#">
                             <b>
-                                
+                                -  
                                 <% if @conversation.opposed_user(current_user).avatar.present? %>
                                     <%= image_tag github_avatar_url(@conversation.opposed_user(current_user), size: 40),height: 30, width: 30, class: "rounded-circle "  %>
                                 <% else %>
@@ -78,10 +76,13 @@
                             
 
                                 <% end %>
+                               
                             </div>
             
                     <% end %>
-                    <%= render 'form', chat: @chat %>
+                    <div class="chat-box">
+                        <%= render 'form', chat: @chat %>
+                    </div>
                 </div>
             </div>
         </div>
