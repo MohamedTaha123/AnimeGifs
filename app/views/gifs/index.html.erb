@@ -2,10 +2,7 @@
 <div class="container-fluid content-row">
   
   <%= render 'search_gifs' %>
-  <br>
-    <% if user_signed_in? %>
-      <%= render "metrics/metrics"%>
-    <% end %>
+ 
   <br>
   <div class="row">
     <div class="col-sm-8">
@@ -22,6 +19,13 @@
     </div>
     
     <div class="col-sm-4">
+       <% if user_signed_in? %>
+        <h3 class="font-weight-bold" style="box-shadow: 10px 10px #FFFACD;">
+          Your Profile :
+        </h3>
+        <br>
+          <%= render "metrics/metrics"%>
+        <% end %>
       <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>
       <br>
       <div class="list-group" style="background: red; box-shadow: 10px 10px purple;">
