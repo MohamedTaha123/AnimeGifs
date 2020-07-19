@@ -17,14 +17,10 @@
               <span class="dot" style= "background-color: red;"></span>
             <% end %>
           <% end %>
-
-          
-          <% if user_signed_in? && params[:user_id].present? %>
-            <% if current_user.id != message.user_id  %>
-              <%= link_to "@#{message.user.name.mentionable}",conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
-            <% end %>
+          <% unless current_user.id === message.user_id  %>
+            <%= link_to "@#{message.user.name.mentionable}",conversations_path(sender_id: current_user.id, recipient_id: message.user.id), method: :post %>
           <% end %>
-          
+         
             
     
     
@@ -33,7 +29,7 @@
           <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
         
     
-        <% if   current_user.id == message.user_id%>
+        <% if current_user.id == message.user_id%>
           <%= link_to  remove_chatroom_message_path(message.chatroom, message) , method: :delete  do %>
             <i class="far fa-trash-alt fa-lg" style="color:red;"></i>
           <% end %>
