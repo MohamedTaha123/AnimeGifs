@@ -56,18 +56,15 @@
         </li>
          
         <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link notification" do %>
-              <span><i class="far fa-bell fa-lg" style="color: white;" aria-hidden="true"></i></span>
-              <% if @notifications.unread.present? %>
-                <span class="badge" ><%= @notifications.unread.count%></span>
-              <% else %>
-                <span class="badge">0</span>
-              <% end %>
- 
-            
+          <%= link_to notifications_path, class: "nav-link  notification " do %>
+                <i class="fa fa-bell fa-lg">
+                  <% if @notifications.unread.present? %>
+                    <span class="badge badge-xs" ><%= @notifications.unread.count%></span>
+                  <% end %>
+                </i>                 
           <% end %>
         </li>
-       
+        
            
          <li class="nav-item">
           <%= link_to 'Join Room', chatroom_path(get_chat_room(current_user)), class: "nav-link btn btn-sm btn-round" %>
