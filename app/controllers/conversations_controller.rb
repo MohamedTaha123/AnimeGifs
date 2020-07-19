@@ -14,16 +14,6 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
-    ActionCable.server.broadcast(
-      # Broadcast to user/receiver private channel
-      "current_user_#{@conversation.sender_id}", 
-      content: @conversation
-    )
-    ActionCable.server.broadcast(
-      # Broadcast to user/receiver private channel
-      "current_user_#{@conversation.recipient_id}", 
-      content: @conversation
-    )
     redirect_to new_conversation_chat_path(@conversation)
   end
 

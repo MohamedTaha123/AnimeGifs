@@ -34,12 +34,12 @@ $black: #000;
 @import "bootstrap_notify";
 @import 'jumpstart/announcements.scss';
 @import 'jumpstart/sticky-footer.scss';
-@import 'conversations.scss';
+
 @import 'gifs.scss';
 @import "./actiontext.scss";
 @import "ui.scss";
 @import "chatroom_components/index";
-
+@import 'conversations.scss';
 
 
 

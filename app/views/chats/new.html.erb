@@ -1,94 +1,88 @@
-<div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
-<div id="user-id" data-user-id="<%= current_user.id %>"></div>
 
-    <div class="row">
-        <div class="col-3 convs-sidebar">
-            <div class="card  no-outline">
-                <div class="card-body">
-                    <small>Logged in as</small><br>
-                    <b><%= current_user.name %><br></b>
+    <div class="container-fluid">
+        <div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
+        <div id="user-id" data-user-id="<%= current_user.id %>"></div>
+
+        <div class="row">
+            <div class="col-3 convs-sidebar">
+                <div class="card  no-outline">
+                    <div class="card-body">
+                        <small>Logged in as</small><br>
+                        <b><%= current_user.name %><br></b>
+                    </div>
                 </div>
-            </div>
-            <hr>
-            
-            <hr>
-            <% if @conversations.includes([:sender, :recipient]).present? %>
-                <% @conversations.includes([:sender,:recipient]).each do |conv| %>
-                    <%= link_to  new_conversation_chat_path(conv), class: 'conv-link' do %>
-                        <% active_class = (@conversation == conv) ? 'active' : '' %>
-                            <div class="card no-outline mb-2 conv-card <%= active_class %>">
-                                <div class="card-body">
-                                    <span class='name'><%= conv.opposed_user(current_user).name %></span><br>
-                                </div>
-                            </div>
-                    <% end %>
-                <% end %>
-          
-            <% end %>
-            
-           
-        </div>
-        <div class="col-9">
-            
-            
-            <div class="chat-conv">
-                <nav class="navbar-chat navbar-dark">
-                    <span class="navbar-brand" href="#">
-                        <b>
-                            
-                            <% if @conversation.opposed_user(current_user).avatar.present? %>
-                                <%= image_tag github_avatar_url(@conversation.opposed_user(current_user), size: 40),height: 30, width: 30, class: "rounded-circle "  %>
-                            <% else %>
-                                <%= image_tag gravatar_image_url(@conversation.opposed_user(current_user).email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
-                            <% end %>
-                            -
-                             @<%= @conversation.opposed_user(current_user).name.mentionable %>
-                             <% if !@conversation.opposed_user(current_user).last_seen_at.nil? %>
-                                <% if @conversation.opposed_user(current_user).online?  %>
-                                    <span class="dot" style= "background-color: green;"></span>
-                                <% else %>
-                                    <span class="dot" style= "background-color: red;"></span>
-                                <% end %>
-                            <% end %>
-                        </b>
-                    </span>
-                  
-                    <small>Started <%= time_ago_in_words(@conversation.created_at) %> </small>
-                </nav>
-                <% if @chats.includes([:user]).present? %>
-            
-                        <div id="messages">
-                            <% @chats.each do |chat| %>
-                                
-                                <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
-                                    <div class="content-container">
-                                        <div class="content">
-                                            <%= chat.message %>
-                                        </div>
-                                        <div class="author">
-                                            <%= chat.user.name %>
-                                            <b>
-                                                <%= chat.chat_time%>
-                                            </b>
-                                        </div>
+                <hr>
+                
+                <hr>
+                <% if @conversations.includes([:sender, :recipient]).present? %>
+                    <% @conversations.includes([:sender,:recipient]).each do |conv| %>
+                        <%= link_to  new_conversation_chat_path(conv), class: 'conv-link' do %>
+                            <% active_class = (@conversation == conv) ? 'active' : '' %>
+                                <div class="card no-outline mb-2 conv-card <%= active_class %>">
+                                    <div class="card-body">
+                                        <span class='name'><%= conv.opposed_user(current_user).name %></span><br>
                                     </div>
                                 </div>
-                           
-
-                            <% end %>
-                        </div>
-                <% else %>
-                        
-                            <h1 class="text-center font-weight-bold">
-                                No Messages To Show !!
-                            </h1>
-                       
+                        <% end %>
+                    <% end %>
+            
                 <% end %>
+                
+            
+            </div>
+            <div class="col-9">
+                
+                
+                <div class="chat-conv">
+                    <nav class="navbar-chat navbar-dark">
+                        <span class="navbar-brand" href="#">
+                            <b>
+                                
+                                <% if @conversation.opposed_user(current_user).avatar.present? %>
+                                    <%= image_tag github_avatar_url(@conversation.opposed_user(current_user), size: 40),height: 30, width: 30, class: "rounded-circle "  %>
+                                <% else %>
+                                    <%= image_tag gravatar_image_url(@conversation.opposed_user(current_user).email, size: 40),height: 30, width: 30,  class: "rounded-circle"  %>
+                                <% end %>
+                                -
+                                @<%= @conversation.opposed_user(current_user).name.mentionable %>
+                                <% if !@conversation.opposed_user(current_user).last_seen_at.nil? %>
+                                    <% if @conversation.opposed_user(current_user).online?  %>
+                                        <span class="dot" style= "background-color: green;"></span>
+                                    <% else %>
+                                        <span class="dot" style= "background-color: red;"></span>
+                                    <% end %>
+                                <% end %>
+                            </b>
+                        </span>
+                    
+                        <small>Started <%= time_ago_in_words(@conversation.created_at) %> </small>
+                    </nav>
+                    <% if @chats.includes([:user]).present? %>
+                
+                            <div id="messages">
+                                <% @chats.each do |chat| %>
+                                    
+                                    <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
+                                        <div class="content-container">
+                                            <div class="content">
+                                                <%= chat.message %>
+                                            </div>
+                                            <div class="author">
+                                                <%= chat.user.name %>
+                                                <b>
+                                                    <%= chat.chat_time%>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
 
-                
-                
-                <%= render 'form', chat: @chat %>
-                
+                                <% end %>
+                            </div>
+            
+                    <% end %>
+                    <%= render 'form', chat: @chat %>
+                </div>
             </div>
         </div>
     </div>
