@@ -21,6 +21,7 @@
 #  repos_hash                 :text
 #  reset_password_sent_at     :datetime
 #  reset_password_token       :string
+#  session_token              :string
 #  username                   :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
@@ -91,6 +92,15 @@ class User < ApplicationRecord
 
   def online?
     last_seen_at > 15.minutes.ago
+  end
+  # Fix Session Storage(Cookies)
+  def authenticatable_salt
+    "#{super}#{session_token}"
+  end
+
+  def invalidate_all_sessions!
+    puts "starttinggggggggggggg"
+    self.update_attribute(:session_token, SecureRandom.hex)
   end
   # Get User Repos Scope
   def user_repos
