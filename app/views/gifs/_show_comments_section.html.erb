@@ -1,4 +1,4 @@
-   <h3 class="text font-weight-bold"><%= @gif.comments.count %> Comment(s) :</h3>
+   <h3 class="text font-weight-bold"><%= @gif.comments.size %> Comment(s) :</h3>
    <% if user_signed_in? %>
    <% if current_user.avatar.present? %>
    <%= image_tag github_avatar_url(current_user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>

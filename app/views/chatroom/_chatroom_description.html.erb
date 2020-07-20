@@ -3,7 +3,7 @@
 
     <% if @chatroom.messages.where.not(user_id: current_user.id).unread_by(current_user).any? %>
         <span class="badge badge-sm" style="color: black; background-color: gold;">
-            <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).count %> unread messages
+            <%= @chatroom.messages.unread_by(current_user).where.not(user_id: current_user.id).pluck(:user_id).size %> unread messages
         </span>
     <% end %>
 </b>

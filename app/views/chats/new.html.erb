@@ -1,7 +1,7 @@
-
-    <div class="container-fluid">
-        <div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
-        <div id="user-id" data-user-id="<%= current_user.id %>"></div>
+<div id="conversation-id" data-conversation-id="<%= @conversation.id %>"></div>
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
+<div class="container-fluid">
+        
 
         <div class="row">
             <div class="col-sm-3 convs-sidebar">
@@ -34,6 +34,7 @@
                 
                 
                 <div class="chat-conv">
+                    
                     <nav class="navbar navbar-black">
                         <span class="navbar-brand" href="#">
                             <b>
@@ -62,19 +63,7 @@
                     <div id="messages">
                         <% @chats.includes([:user]).each do |chat| %>
                                     
-                            <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
-                                <div class="content-container">
-                                    <div class="content">
-                                        <%= chat.message %>
-                                    </div>
-                                    <div class="author">
-                                        <%= chat.user.name %>
-                                        <b>
-                                            <%= chat.chat_time%>
-                                        </b>
-                                    </div>
-                                </div>
-                            </div>
+                           <%= render 'chat', chat: chat %>
                         <% end %>
                                
                     </div>
@@ -85,4 +74,4 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>

@@ -21,7 +21,7 @@ class ChatsController < ApplicationController
   def new
     @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
 
-    @chats = @conversation.chats.where('user_id = ? OR user_id = ?', @conversation.recipient, @conversation.sender)
+    @chats = @conversation.chats.order('created_at ASC')
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
   end
@@ -37,8 +37,9 @@ class ChatsController < ApplicationController
     respond_to do |format|
       if @chat.save
         SendPrivateMessageJob.perform_later(@chat)    
-        #format.html { redirect_to new_conversation_chat_path(@conversation, anchor: "chat-#{@chat.id}")}
-        format.js
+        format.html { redirect_to new_conversation_chat_path(@conversation)}
+        # format.js
+       
       else
         format.html { render :new }
         format.json { render json: @chat.errors, status: :unprocessable_entity }

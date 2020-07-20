@@ -28,15 +28,22 @@ document.addEventListener('turbolinks:load', () => {
        document.getElementById('chat_message').value = '' */
      
 
-      let html;
+  /*     let html;
 
       if (user_id === data.content.user_id) {
         html = data.mine
       } else {
         html = data.theirs
-      }
+      } 
       const messageContainer = document.getElementById('messages')
-      messageContainer.innerHTML = messageContainer.innerHTML + html
+      messageContainer.innerHTML = messageContainer.innerHTML + html */
+     console.log(data);
+     if (user_id != data.content.user_id) {
+        let html = data.theirs;
+        const messageContainer = document.getElementById('messages')
+        messageContainer.innerHTML = messageContainer.innerHTML + html
+      }  
+     
     }
   });
 

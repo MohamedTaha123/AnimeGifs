@@ -12,6 +12,6 @@ class SendPrivateMessageJob < ApplicationJob
       locals: { chat: chat }
     )
 
-    ActionCable.server.broadcast "chatroom_channel_#{chat.conversation_id}", mine: mine, theirs: theirs, content: chat
+    ActionCable.server.broadcast "chatroom_channel_#{chat.conversation_id}", theirs: theirs, content: chat
   end
 end
