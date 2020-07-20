@@ -11,7 +11,9 @@
                         <b><%= current_user.name %><br></b>
                     </div>
                 </div>
-                <hr>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                <%= link_to 'All Conversations', conversations_path, class: "btn btn-block btn-primary" %>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                 <% if @conversations.includes([:sender, :recipient]).present? %>
                     <% @conversations.includes([:sender,:recipient]).each do |conv| %>
                         <%= link_to  new_conversation_chat_path(conv), class: 'conv-link' do %>
@@ -28,7 +30,7 @@
                 
             
             </div>
-            <div class="col-sm-9">
+            <div class="col-lg-9">
                 
                 
                 <div class="chat-conv">
@@ -55,31 +57,28 @@
                     
                         <small>Started <%= time_ago_in_words(@conversation.created_at) %> </small>
                     </nav>
-                    <% if @chats.includes([:user]).present? %>
+                   
                 
-                            <div id="messages">
-                                <% @chats.each do |chat| %>
+                    <div id="messages">
+                        <% @chats.includes([:user]).each do |chat| %>
                                     
-                                    <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
-                                        <div class="content-container">
-                                            <div class="content">
-                                                <%= chat.message %>
-                                            </div>
-                                            <div class="author">
-                                                <%= chat.user.name %>
-                                                <b>
-                                                    <%= chat.chat_time%>
-                                                </b>
-                                            </div>
-                                        </div>
+                            <div class="message mb-2 <%= 'me' if chat.user == current_user %> ">
+                                <div class="content-container">
+                                    <div class="content">
+                                        <%= chat.message %>
                                     </div>
-                            
-
-                                <% end %>
-                               
+                                    <div class="author">
+                                        <%= chat.user.name %>
+                                        <b>
+                                            <%= chat.chat_time%>
+                                        </b>
+                                    </div>
+                                </div>
                             </div>
+                        <% end %>
+                               
+                    </div>
             
-                    <% end %>
                     <div class="chat-box">
                         <%= render 'form', chat: @chat %>
                     </div>
