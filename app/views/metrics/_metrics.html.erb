@@ -2,7 +2,7 @@
 <b> Followers : </b>
 <b style="color: cyan;">
     <% if current_user.followers.present? %>
-        <%= current_user.followers.count %>
+        <%= current_user.followers.pluck(:id).count %>
     <% else %>
         0
     <% end %>
