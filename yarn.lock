@@ -793,6 +793,13 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz#fcb113d1aca4b471b709e8c9c168674fbd6e06d9"
   integrity sha512-xKOeQEl5O47GPZYIMToj6uuA2syyFlq9EMSl2ui0uytjY9xbe8XS0pexNWmxrdcCyNGyDmLyYw5FtKsalBUeOg==
 
+"@minthesize/futurism@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@minthesize/futurism/-/futurism-0.1.4.tgz#360645a0f8d5a022bd7cb3a796006a4ac394747a"
+  integrity sha512-hisI6o64Biabj+XzVW995uhFLePR0X4WF93iFuXU4Z8Nt7lf0kYhUYZASSpKjyfRc+ziMSactj8FOVvzOJo8Ag==
+  dependencies:
+    cable_ready "^4.3.0"
+
 "@rails/actioncable@>= 6.0":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
@@ -1631,6 +1638,13 @@ bytes@3.1.0:
   integrity sha512-F6hJBSsEjN2voJiUZoM05cplB49AIaXk3oHVZptPG2bbw+HLbiR3jU3SSslnm4VIKSfPzfvPHlyU16kuiro6JA==
   dependencies:
     morphdom "^2.5.12"
+
+cable_ready@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/cable_ready/-/cable_ready-4.3.0.tgz#69c6c6963a60d7891f43c7530e343007a00a50b3"
+  integrity sha512-/hjwgdwMoe2hE5KKunsuWXDTr26GzwR7CovdFKHdSHD/yZTFFIv/eY27slMiXUEb57X12GHdliSM59rftTKpoQ==
+  dependencies:
+    morphdom "^2.6.1"
 
 cacache@^12.0.2:
   version "12.0.4"
@@ -4582,7 +4596,7 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "^1.2.5"
 
-morphdom@^2.5.12:
+morphdom@^2.5.12, morphdom@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/morphdom/-/morphdom-2.6.1.tgz#e868e24f989fa3183004b159aed643e628b4306e"
   integrity sha512-Y8YRbAEP3eKykroIBWrjcfMw7mmwJfjhqdpSvoqinu8Y702nAwikpXcNFDiIkyvfCLxLM9Wu95RZqo4a9jFBaA==
