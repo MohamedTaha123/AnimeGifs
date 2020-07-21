@@ -1,23 +1,19 @@
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  port: <%= ENV['DATABASE_PORT'] || '5432' %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000  
+
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_development
-  host: localhost
-  pool: 5
-  username: animagifadmin
-  password: trytofindme288741
-
+  <<: *default
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_test
-  host: localhost
-  pool: 5
-  username: animagifadmin
-  password: trytofindme288741
-
-  production:
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+production:
+  <<: *default
