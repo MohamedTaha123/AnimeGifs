@@ -1,15 +1,12 @@
  <% @most_used.each do |tag| %>
-  <li class="list-group-item">
+ <li class="list-group-item">
 
-    <h4 class="text-center font-weight-bold">
-      <%= link_to "##{tag.upcase}", tagged_path(tag: tag ),class: 'text-info bg-dark' %>
+   <h4 class="text-center font-weight-bold">
+     <%= link_to "##{tag.upcase}", tagged_path(tag: tag ),class: 'text-info bg-dark' %>
 
-    </h4>
-    <hr class="dashed" style="border-top: 3px dashed #bbb;">
+   </h4>
+   <hr class="dashed" style="border-top: 3px dashed #bbb;">
 
-  </li>
-
+ </li>
  <% end %>
-<%= futurize @gifs, extends: :li do %>
-  <h4>Loading</h4>
-<% end %>
+
