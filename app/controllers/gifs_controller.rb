@@ -4,7 +4,6 @@ class GifsController < ApplicationController
   before_action :set_gif, only: %i[show edit update destroy like unlike ]
   before_action :authenticate_user!, except: %i[index show]
   before_action :load_activities, only: %i[index show new edit]
-  impressionist actions: [:show]
   include CableReady::Broadcaster
   include TagsHelper
   # GET /gifs
@@ -20,8 +19,9 @@ class GifsController < ApplicationController
   # GET /gifs/1
   # GET /gifs/1.json
   def show
-    @gif = Gif.find(params[:id])
-    # ImpressionistGifJob.perform_later
+    @gif = Gif.friendly.find(params[:id])
+    # ImpressionistGifJob.set(wait: 2.minutes).perform_later(@gif, message: "Gif #{@gif.id} get viewed")
+    impressionist(@gif, message: "Gif #{@gif.id} was viewed")
   rescue StandardError => e
     puts e.to_s
   end
