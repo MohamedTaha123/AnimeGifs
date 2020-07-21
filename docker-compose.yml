@@ -26,6 +26,10 @@ services:
 
   redis:
     image: redis:5.0.7
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    volumes: 
+        - redis-data:/data
 
   sidekiq:
     build:
@@ -45,6 +49,7 @@ services:
     entrypoint: ./entrypoints/sidekiq-entrypoint.sh
 
 volumes:
-  gem_cache:
-  db_data:
-  node_modules:     
+    gem_cache:
+    db_data:
+    node_modules:    
+    redis-data:
