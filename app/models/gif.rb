@@ -35,6 +35,9 @@ class Gif < ApplicationRecord
   acts_as_votable
   acts_as_taggable
   is_impressionable counter_cache: true, column_name: :impressions_count
+  def to_partial_path
+    'gifs/gif'
+  end
   # include PublicActivity::Model
   # tracked owner: proc { |controller, _model| controller.current_user }
   mount_uploader :image, ImageUploader, mount_on: :image
