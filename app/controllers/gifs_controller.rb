@@ -21,7 +21,7 @@ class GifsController < ApplicationController
   # GET /gifs/1.json
   def show
     @gif = Gif.find(params[:id])
-    impressionist(@gif)
+    # ImpressionistGifJob.perform_later
   rescue StandardError => e
     puts e.to_s
   end
