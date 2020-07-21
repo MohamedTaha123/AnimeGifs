@@ -8,19 +8,32 @@
       <h2 style="font-weight: bolder; box-shadow: 10px 10px red;">Trending GIFs</h2>
       <br>
       <div class="card-columns">
-        <%#= render 'trending' %>
+      
+      <% if user_signed_in? %>
         <%= futurize @trending, extends: :div do %>
-          <h4 class="placeholder">Loading...</h4>
+          <div class="placeholder">Loading...</div>
         <% end %>
+        <% else %>
+        <%= render 'trending' %>
+      <% end %>
+      
+        
+        
       </div>
       <h2 style="font-weight: bolder; box-shadow: 10px 10px cyan;">All GIFs</h2>
       <br>
       <div class="card-columns" id="gifs">
-        <%#= render 'all' %>
         
-        <%= futurize @gifs, extends: :div do %>
-          <h4 class="placeholder">Loading...</h4>
+        <% if user_signed_in? %>
+          <%= futurize @gifs, extends: :div do %>
+            <div class="placeholder">Loading...</div>
+          <% end %>
+        <% else %>
+          <%= render 'all' %>
+
         <% end %>
+        
+        
       </div>
     </div>
     
