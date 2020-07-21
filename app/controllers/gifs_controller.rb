@@ -11,8 +11,8 @@ class GifsController < ApplicationController
   # GET /gifs.json
   def index
     @q = Gif.ransack(params[:q])
-    @gifs = @q.result(distinct: true).includes([:user])
-    @trending = @q.result(distinct: true).includes([:user]).last(5).reverse
+    @gifs = @q.result(distinct: true)
+    @trending = @q.result(distinct: true).last(5).reverse
     @most_used = tag_names
     @viewers = Gif.where(user_id: current_user.id).pluck(:impressions_count).sum(&:to_i) if user_signed_in?
   end
