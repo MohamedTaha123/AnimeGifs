@@ -11,7 +11,6 @@ class GifDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     votes_for: Field::HasMany.with_options(class_name: "ActsAsVotable::Vote"),
     impressions: Field::HasMany,
-    activities: Field::HasMany.with_options(class_name: "::PublicActivity::Activity"),
     id: Field::Number,
     image: Field::String,
     description: Field::String,
@@ -31,7 +30,6 @@ class GifDashboard < Administrate::BaseDashboard
   user
   votes_for
   impressions
-  activities
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
