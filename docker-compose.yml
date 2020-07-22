@@ -2,7 +2,6 @@ version: '3.4'
 
 services:
   app: 
-    image: medtaha123/app:v1
     build:
       context: .
       dockerfile: Dockerfile
@@ -29,8 +28,6 @@ services:
     image: redis:5.0.7
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
-    volumes: 
-        - redis-data:/data
 
   sidekiq:
     build:
@@ -48,21 +45,8 @@ services:
     environment:
       RAILS_ENV: development
     entrypoint: ./entrypoints/sidekiq-entrypoint.sh
-    
-  webpacker:
-    image: medtaha123/app:v1
-    command: ./bin/webpack-dev-server
-    volumes:
-      - gem_cache:/usr/local/bundle/gems
-      - node_modules:/app/node_modules
-    ports:
-      - '3035:3035'
-    environment:
-      - "NODE_ENV=development"
-      - "RAILS_ENV=development"
-      - "WEBPACKER_DEV_SERVER_HOST=0.0.0.0"
+
 volumes:
-    gem_cache:
-    db_data:
-    node_modules:    
-    redis-data:
+  gem_cache:
+  db_data:
+  node_modules:     

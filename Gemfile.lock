@@ -253,6 +253,7 @@ GEM
       multi_json
       request_store (>= 1.0)
     hashie (3.6.0)
+    hiredis (0.6.3)
     i18n (1.8.4)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.8.0)
@@ -587,6 +588,7 @@ DEPENDENCIES
   github_api
   gon (~> 6.3, >= 6.3.2)
   gravatar_image_tag!
+  hiredis
   image_processing (~> 1.2)
   impressionist
   jbuilder (~> 2.7)

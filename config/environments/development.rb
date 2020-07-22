@@ -1,7 +1,7 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
-  config.session_store :cache_store
+  # config.session_store :cache_store
 
 
   # In the development environment your application's code is reloaded on
@@ -27,9 +27,12 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    # config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
 
-    config.cache_store = :null_store
+    # config.cache_store = :null_store
+    ## Redis cache store
+    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
@@ -74,5 +77,7 @@ Rails.application.configure do
   end
   ## Add Ngrok Support for testing pwa app
   config.hosts << /[a-z0-9]+\.ngrok\.io/
-  config.webpacker.check_yarn_integrity = false
+
+  
+  
 end
