@@ -1,7 +1,8 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
-  config.session_store :cache_store,  key: '_my_app_session'
+  # config.cache_store = :redis_cache_store, {url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" }}
+  config.session_store :cache_store
  
 
   # In the development environment your application's code is reloaded on

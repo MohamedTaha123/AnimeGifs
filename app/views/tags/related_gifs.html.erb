@@ -61,17 +61,9 @@
         <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>
         <br>
         <div class="list-group" style="background: red; box-shadow: 10px 10px purple;">
-        <% @most_used.each do |tag| %>
-            <li class="list-group-item">
-            
-            <h4 class="text-center font-weight-bold">
-                <%= link_to "##{tag.upcase}", tagged_path(tag: tag ),class: 'text-light bg-dark' %>
-
-            </h4>
-            <hr class="dashed" style="border-top: 3px dashed #bbb;">
-
-            </li>
-        <% end %>
+        
+        <%= render 'most_used_tags', locals: {tag: tag} %>
+        
 
     </div>
 </div>
