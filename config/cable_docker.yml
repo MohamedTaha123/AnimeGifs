@@ -1,14 +1,14 @@
 development:
-    adapter: redis
-    url: redis://:redis:6379/1
-    channel_prefix: streaming_logs_dev
+  adapter: redis
+  url: redis://:redis:6379/1
+  channel_prefix: streaming_logs_dev
   
-  test:
-    adapter: async
+test:
+  adapter: async
   
-  production:
-    adapter: redis
-    url: "redis://redis:6379/1" } %>
-    channel_prefix: streaming_logs_production
+production:
+  adapter: redis
+  url: "redis://redis:6379/1" } %>
+  channel_prefix: streaming_logs_production
   
   

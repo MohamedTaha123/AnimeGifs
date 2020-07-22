@@ -1,8 +1,8 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
-  # config.session_store :cache_store
-
+  config.session_store :cache_store,  key: '_my_app_session'
+ 
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -27,12 +27,11 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    # config.action_controller.perform_caching = false
-    config.action_controller.perform_caching = true
+    config.action_controller.perform_caching = false
+    # config.action_controller.perform_caching = true
 
-    # config.cache_store = :null_store
+    config.cache_store = :null_store
     ## Redis cache store
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).

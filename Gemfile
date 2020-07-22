@@ -66,6 +66,7 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'activerecord-session_store'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
