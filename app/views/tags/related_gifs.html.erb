@@ -35,9 +35,11 @@
         <% else %>
             <h3 class="text-center font-weight-bold">No Related Gifs to <%= @related_tag.upcase %> </h3>
             <hr class="dotted">
-            <h3 class="text-center">
-                <%= link_to 'New Gif','#',  data: {toggle: "modal", target: "#NewGif"}, class: 'btn btn-lg btn-dark' %>
-            </h3>
+            <% if user_signed_in?%>
+                <h3 class="text-center">
+                    <%= link_to 'New Gif','#',  data: {toggle: "modal", target: "#NewGif"}, class: 'btn btn-lg btn-dark' %>
+                </h3>
+            <% end %>
             <!-- New Gif Modal -->
             <div class="modal fade"  id="NewGif" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog"  role="document">
