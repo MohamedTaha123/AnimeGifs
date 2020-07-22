@@ -16,6 +16,23 @@ GIT
       rake (>= 10.4, < 13.0)
 
 GIT
+  remote: https://github.com/excid3/administrate.git
+  revision: 239ec5bb8c064ca28b010cc5497882493dd4494f
+  branch: jumpstart
+  specs:
+    administrate (0.14.0)
+      actionpack (>= 4.2)
+      actionview (>= 4.2)
+      activerecord (>= 4.2)
+      autoprefixer-rails (>= 6.0)
+      datetime_picker_rails (~> 0.0.7)
+      jquery-rails (>= 4.0)
+      kaminari (>= 1.0)
+      momentjs-rails (~> 2.8)
+      sassc-rails (~> 2.1)
+      selectize-rails (~> 0.6)
+
+GIT
   remote: https://github.com/excid3/devise-bootstrapped.git
   revision: a963d93052ce0069d050e4615fb06e95dc30ac2b
   branch: bootstrap4
@@ -113,17 +130,6 @@ GEM
     acts_as_votable (0.12.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    administrate (0.14.0)
-      actionpack (>= 4.2)
-      actionview (>= 4.2)
-      activerecord (>= 4.2)
-      autoprefixer-rails (>= 6.0)
-      datetime_picker_rails (~> 0.0.7)
-      jquery-rails (>= 4.0)
-      kaminari (>= 1.0)
-      momentjs-rails (~> 2.8)
-      sassc-rails (~> 2.1)
-      selectize-rails (~> 0.6)
     albino (1.3.3)
       posix-spawn (>= 0.3.6)
     ast (2.4.1)
@@ -554,7 +560,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   acts_as_follower!
   acts_as_votable
-  administrate
+  administrate!
   albino
   annotate!
   avatarly
