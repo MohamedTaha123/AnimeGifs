@@ -74,4 +74,5 @@ Rails.application.configure do
   end
   ## Add Ngrok Support for testing pwa app
   config.hosts << /[a-z0-9]+\.ngrok\.io/
+  config.webpacker.check_yarn_integrity = false
 end
