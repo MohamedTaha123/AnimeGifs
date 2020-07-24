@@ -83,7 +83,10 @@
           <% end %>
           <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
             <% if current_user.admin? %>
-            <%= link_to "Admin Area", admin_root_path, class: "dropdown-item" %>
+            <%= link_to admin_root_path, class: "dropdown-item" do %>
+              <span><i class="fas fa-user-shield fa-lg" style="color: black;" aria-hidden="true"></i></span>
+              Admin Area
+            <% end %>
             <% end %>
             
             <%= link_to dashboard_index_path, class: "dropdown-item font-weight-bold"  do %>
