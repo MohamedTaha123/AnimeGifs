@@ -1,11 +1,7 @@
 <i class="fas fa-users" style="color: cyan;"></i> -
 <b> Followers : </b>
 <b style="color: cyan;">
-    <% if current_user.followers.present? %>
-        <%= current_user.followers.pluck(:id).count %>
-    <% else %>
-        0
-    <% end %>
+    <%= current_user.user_followers%>
 </b>
 -
 <i class="far fa-eye" style="color: #F08080;"></i> 

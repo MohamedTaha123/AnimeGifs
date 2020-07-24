@@ -5,7 +5,12 @@ class FindReposAndAssignJob < ApplicationJob
 
   def perform(user)
     new_github_instance = Github.new 
-    user.update(repos_hash: (new_github_instance.repos.list user: user.username))
+    if user.services.present?
+      user.update(repos_hash: (new_github_instance.repos.list user: user.username))
+    elsif user.name.present?
+      user.update(repos_hash: (new_github_instance.repos.list user: user.name))
+    end
+    
     
   rescue StandardError => e
     Rails.logger.error("Error on Job : #{e}")

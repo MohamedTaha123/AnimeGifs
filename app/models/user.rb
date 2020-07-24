@@ -103,13 +103,22 @@ class User < ApplicationRecord
   end
   # Get User Repos Scope
   def user_repos
-    if services.present? && services.find_by_provider('github').present?
+    
       repos_hash.map do |repo|
         repo
       end
-    end
+  
   end
   def process_find_repos_and_assign_job
     FindReposAndAssignJob.perform_now(self)
   end
+
+  # User followers
+  def user_followers
+    Rails.cache.fetch([cache_key, __method__], expires_in: 30.minutes) do
+      return 0 unless self.followers.present?
+      self.followers.pluck(:id).count
+    end
+  end
+  
 end
