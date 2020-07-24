@@ -40,6 +40,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    resources :read_marks
+
+    resources :messages
+
+    resources :chatrooms
     resources :gifs
     resources :users
     resources :services
