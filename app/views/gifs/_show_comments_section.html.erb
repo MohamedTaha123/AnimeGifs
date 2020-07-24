@@ -12,7 +12,7 @@
    <% end %>
    <br>
    <ul>
-     <%= render @gif.comments %>
+     <%= render @gif.comments.includes([:user]) %>
    </ul>
    <% else %>
    <b>
