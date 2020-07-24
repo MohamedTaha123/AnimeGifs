@@ -13,3 +13,4 @@ Sidekiq.configure_client do |config|
     port: ENV['REDIS_PORT'] || '6379'
   }
 end
+

@@ -8,14 +8,7 @@
       <h2 style="font-weight: bolder; box-shadow: 10px 10px red;">Trending GIFs</h2>
       <br>
       <div class="card-columns">
-      
-    
-        <%#= render 'trending' %>
-        <%= futurize partial: 'gifs/gif',collection: @trending, extends: :div do%>
-          <div class="spinner"></div>
-        <% end %>
-        
-        
+        <%= render 'trending' %>
       </div>
       <h2 style="font-weight: bolder; box-shadow: 10px 10px cyan;">All GIFs</h2>
       <br>
