@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: d7de9880588bc6c178ccc8acedc3b727cf9320e2
+  revision: da05dc5dfa2adb9e796c03e357a00f59b6748a65
   branch: master
   specs:
     faker (2.13.0)
@@ -139,7 +139,7 @@ GEM
       rfc822
       rmagick
       unicode_utils
-    bcrypt (3.1.13)
+    bcrypt (3.1.15)
     better_errors (2.7.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -147,7 +147,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.4.6)
+    bootsnap (1.4.7)
       msgpack (~> 1.0)
     bootstrap (4.5.0)
       autoprefixer-rails (>= 9.1.0)
@@ -260,7 +260,7 @@ GEM
       request_store (>= 1.0)
     hashie (3.6.0)
     hiredis (0.6.3)
-    i18n (1.8.4)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.8.0)
     image_processing (1.11.0)
@@ -478,7 +478,7 @@ GEM
       activesupport (>= 3.0.0)
     shoulda-matchers (4.3.0)
       activesupport (>= 4.2.0)
-    sidekiq (6.1.0)
+    sidekiq (6.1.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)

@@ -817,10 +817,10 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.14.0.tgz#a371e91029ebf265015e64f81bfbf7d228c9681f"
   integrity sha512-OfdMsF+ZQgdKHP9jUbmDcRrP0eX90XXrsXIdyjLbkmSBzmMXPABB8eobUJtivaupucYaByz6WNe1PI1JuYm3qA==
 
-"@minthesize/futurism@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@minthesize/futurism/-/futurism-0.1.4.tgz#360645a0f8d5a022bd7cb3a796006a4ac394747a"
-  integrity sha512-hisI6o64Biabj+XzVW995uhFLePR0X4WF93iFuXU4Z8Nt7lf0kYhUYZASSpKjyfRc+ziMSactj8FOVvzOJo8Ag==
+"@minthesize/futurism@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@minthesize/futurism/-/futurism-0.3.0.tgz#190d26507a7245e3644c33063cf6dbd946b02d93"
+  integrity sha512-NXq4U7ZF9k1Z7LrFzRtUuBuTbrdWHf1PZVYZfrQawDlHPU0QaGhbkURajLI7PwdGVmutCy1rDmqk70xbiXac9w==
   dependencies:
     cable_ready "^4.3.0"
 
