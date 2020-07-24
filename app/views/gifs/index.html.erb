@@ -10,9 +10,10 @@
       <div class="card-columns">
       
     
-        <%= render 'trending' %>
-      
-      
+        <%#= render 'trending' %>
+        <%= futurize partial: 'gifs/gif',collection: @trending, extends: :div do%>
+          <div class="spinner"></div>
+        <% end %>
         
         
       </div>

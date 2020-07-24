@@ -21,7 +21,6 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
-    config.action_controller.enable_fragment_cache_logging = true
 
     DEFAULT_EXPIRATION = 1.hour.to_i.freeze
     config.cache_store = :redis_cache_store, { url: ENV["REDIS_URL"], expires_in: DEFAULT_EXPIRATION }
