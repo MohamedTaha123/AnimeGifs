@@ -19,7 +19,6 @@ class GifsController < ApplicationController
   # GET /gifs/1
   # GET /gifs/1.json
   def show
-    @gif = Gif.friendly.find(params[:id])
     # ImpressionistGifJob.set(wait: 2.minutes).perform_later(@gif, message: "Gif #{@gif.id} get viewed")
     impressionist(@gif, message: "Gif #{@gif.id} was viewed")
   rescue StandardError => e
