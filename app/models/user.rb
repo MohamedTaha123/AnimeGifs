@@ -99,7 +99,6 @@ class User < ApplicationRecord
   end
 
   def invalidate_all_sessions!
-    puts "starttinggggggggggggg"
     self.update_attribute(:session_token, SecureRandom.hex)
   end
   # Get User Repos Scope

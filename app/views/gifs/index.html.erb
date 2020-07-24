@@ -8,16 +8,14 @@
       <h2 style="font-weight: bolder; box-shadow: 10px 10px red;">Trending GIFs</h2>
       <br>
       <div class="card-columns">
-        <%= futurize partial: 'gifs/gif', collection: @trending, extends: :div do %>
-          <h4>Loading...</h4>
-        <% end %>
+       <%= render 'trending' %>
       </div>
       
       <h2 style="font-weight: bolder; box-shadow: 10px 10px cyan;">All GIFs</h2>
       <br>
       <div class="card-columns" id="gifs">
         
-          <%= render 'all',cached: true %>    
+       <%= render 'all' %> 
         
       </div>
     </div>
@@ -28,12 +26,12 @@
           Your Profile :
         </h3>
         <br>
-          <%= render "metrics/metrics", cached: true%>
+          <%= render "metrics/metrics" %>
         <% end %>
       <h3 class="font-weight-bold" style="box-shadow: 10px 10px gold;">Tags :</h3>
       <br>
       <div class="list-group" style="background: red; box-shadow: 10px 10px purple;">
-        <%= render 'most_used_tags', cached: true %>
+        <%= render 'most_used_tags' %>
       </div>
     </div>
   </div>
