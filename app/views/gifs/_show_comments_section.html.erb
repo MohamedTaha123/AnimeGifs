@@ -1,21 +1,23 @@
-   <h3 class="text font-weight-bold"><%= @gif.comments.size %> Comment(s) :</h3>
-   <% if user_signed_in? %>
-   <% if current_user.avatar.present? %>
-   <%= image_tag github_avatar_url(current_user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
-   <% else %>
-   <%= image_tag gravatar_image_url(current_user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
-   <% end %>
-   <b>- @ <%= current_user.name.mentionable %> - </b>
-   <%= simple_form_for [@gif, Comment.new], validate: true do |f| %>
-   <%= f.input :body,as: :text, placeholder: "Add a comment"  %><br />
-   <%= f.submit "Submit" , class: 'btn btn-sm btn-dark'%>
-   <% end %>
-   <br>
-   <ul>
-     <%= render @gif.comments.includes([:user]) %>
-   </ul>
-   <% else %>
+ui  <h3 class="text font-weight-bold"><%= @gif.comments.size %> Comment(s) :</h3>
+  <% if user_signed_in? %>
+    <% if current_user.avatar.present? %>
+      <%= image_tag github_avatar_url(current_user, size: 40),height: 40, width: 40, class: "rounded-circle "  %>
+    <% else %>
+      <%= image_tag gravatar_image_url(current_user.email, size: 40),height: 40, width: 40,  class: "rounded-circle"  %>
+    <% end %>
+    <b>- @ <%= current_user.name.mentionable %> - </b>
+    <%= simple_form_for [@gif, Comment.new], validate: true do |f| %>
+      <%= f.input :body,as: :text, placeholder: "Add a comment"  %><br />
+      <%= f.submit "Submit" , class: 'btn btn-sm btn-dark'%>
+    <% end %>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">   
+    <ul>
+      <%= render @gif.comments.includes([:user]) %>
+    </ul>
+  
+  <% else %>
    <b>
      <%= link_to 'Sign in ', new_user_session_path %> to leave a comment
    </b>
-   <% end %>
+  
+  <% end %>
