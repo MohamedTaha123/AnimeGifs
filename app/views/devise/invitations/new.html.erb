@@ -8,7 +8,15 @@
 
   <% resource.class.invite_key_fields.each do |field| -%>
     <div class="form-inputs">
-      <%= f.input field , placeholder: 'Email'%>
+     
+        <span class="ml-3">
+           <h4 class="text-center">
+              <%= image_tag @gravatar_image_url || "" %>
+           </h4>
+        </span>
+     
+
+      <%= f.text_field  field , placeholder: 'Email', data: {reflex: "input->GravatarReflex#perform"}, class: "form-control" %>
     </div>
   <% end -%>
 
