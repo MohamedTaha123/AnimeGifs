@@ -10,7 +10,6 @@
       <%= f.input :body,as: :text, placeholder: "Add a comment"  %><br />
       <%= f.submit "Submit" , class: 'btn btn-sm btn-dark'%>
     <% end %>
-    <hr style="height:2px;border-width:0;color:gray;background-color:gray">   
     <ul>
       <%= render @gif.comments.includes([:user]) %>
     </ul>
