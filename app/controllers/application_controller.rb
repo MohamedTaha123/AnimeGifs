@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name little_description github_url facebook_url avatar])
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:name, :avatar])
+  end
+
   def set_notifications
     @notifications = Notification.where(recipient: current_user).recent
   end
