@@ -19,7 +19,7 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
+    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:recipient])
 
     @chats = @conversation.chats.order('created_at ASC')
     @chat = @conversation.chats.new

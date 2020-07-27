@@ -14,8 +14,8 @@
                 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                 <%= link_to 'All Conversations', conversations_path, class: "btn btn-block btn-primary" %>
                 <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                <% if @conversations.includes([:sender, :recipient]).present? %>
-                    <% @conversations.includes([:sender,:recipient]).each do |conv| %>
+                <% if @conversations.present? %>
+                    <% @conversations.each do |conv| %>
                         <%= link_to  new_conversation_chat_path(conv), class: 'conv-link' do %>
                             <% active_class = (@conversation == conv) ? 'active' : '' %>
                                 <div class="card no-outline mb-2 conv-card <%= active_class %>">
