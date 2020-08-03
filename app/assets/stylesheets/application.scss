@@ -30,11 +30,11 @@ $black: #000;
 @import "font-awesome";
 @import 'nucleo';
 @import 'nucleo-svg';
-//@import 'argon';
-@import 'blk-design-system.scss';
+@import 'argon';
+//@import 'blk-design-system.scss';
 @import "bootstrap_notify";
-/* @import 'jumpstart/announcements.scss';
-@import 'jumpstart/sticky-footer.scss'; */
+@import 'jumpstart/announcements.scss';
+@import 'jumpstart/sticky-footer.scss'; 
 
 @import 'gifs.scss';
 @import "./actiontext.scss";
