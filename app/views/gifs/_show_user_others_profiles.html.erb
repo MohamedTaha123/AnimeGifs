@@ -1,7 +1,7 @@
       <div class="pt-4 text-center">
         <h5 class="h3 title text-white font-weight-bold">
           <span class="d-block mb-1"><%= @gif.user.name %></span>
-
+          <span class="d-block mb-1"><%= @gif.user.little_description %></span>
           <% if user_signed_in? %>
             <% if current_user.id == @gif.user_id %>
               <%= link_to "Edit My Profile", edit_user_registration_path, class: "btn btn-info btn-sm"%>
