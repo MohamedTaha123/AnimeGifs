@@ -35,9 +35,7 @@
 
       <div class="form-group">
         <%= f.submit "Log in", class: "btn btn-outline-danger btn-block btn-lg" %>
-        <%= link_to user_github_omniauth_authorize_path, class: "btn btn-github btn-block btn-lg" do %>
-          Sign in with  <i class="fab fa-github"></i>
-        <% end %>
+         <%= render 'shared/links' %>
       </div>
     <% end %>
   </div>
