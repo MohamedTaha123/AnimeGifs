@@ -3,7 +3,6 @@
 class GifsController < ApplicationController
   before_action :set_gif, only: %i[show edit update destroy like unlike ]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :load_activities, only: %i[index show new edit]
   include CableReady::Broadcaster
   include TagsHelper
   # GET /gifs
