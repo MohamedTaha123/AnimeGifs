@@ -2,3 +2,4 @@
 *.pdf
 /test
 /spec
+/public
