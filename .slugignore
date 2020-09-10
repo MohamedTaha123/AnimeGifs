@@ -2,4 +2,4 @@
 *.pdf
 /test
 /spec
-/public
+/log
