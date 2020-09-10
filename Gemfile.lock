@@ -219,10 +219,6 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.9.0)
-    exception_handler (0.8.0.0)
-      bundler
-      rails (>= 4.2.0)
-      responders
     execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -559,7 +555,6 @@ DEPENDENCIES
   devise_invitable (~> 2.0.0)
   devise_masquerade (~> 1.2)
   dotenv-rails
-  exception_handler (~> 0.8.0.0)
   factory_bot_rails
   faker!
   font-awesome-sass (~> 5.6, >= 5.6.1)
