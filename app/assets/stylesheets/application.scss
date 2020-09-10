@@ -11,12 +11,11 @@
 @import 'argon';
 @import "bootstrap_notify";
 @import 'jumpstart/announcements.scss';
-@import 'jumpstart/sticky-footer.scss'; 
-
-@import 'gifs.scss';
+@import 'jumpstart/sticky-footer.scss';
 @import "./actiontext.scss";
-@import 'conversations.scss';
-@import "ui.scss";
+@import "scaffolds/conversations";
+@import "scaffolds/ui";
+@import "scaffolds/gifs";
 @import "chatroom_components/index";
 
 
