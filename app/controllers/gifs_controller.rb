@@ -97,10 +97,7 @@ class GifsController < ApplicationController
 
   private
 
-  # Activity Load
-  def load_activities
-    @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
-  end
+
 
   # Use callbacks to share common setup or constraints between actions.
   def set_gif
