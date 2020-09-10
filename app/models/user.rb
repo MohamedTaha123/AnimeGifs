@@ -50,7 +50,7 @@ class User < ApplicationRecord
 
  
 
-  devise :invitable, :masqueradable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
+  devise :invitable, :masqueradable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable  :omniauth_providers => [:github]
   has_rich_text :little_description
 
   after_invitation_accepted :process_find_repos_and_assign_job
