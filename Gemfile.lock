@@ -246,7 +246,6 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
-    hiredis (0.6.3)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_optimizer (1.8.0)
@@ -562,7 +561,6 @@ DEPENDENCIES
   futurism (~> 0.4.1)
   github_api
   gravatar_image_tag!
-  hiredis
   image_processing (~> 1.2)
   impressionist
   jbuilder (~> 2.7)
