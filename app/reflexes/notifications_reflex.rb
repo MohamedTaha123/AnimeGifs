@@ -22,12 +22,12 @@ class NotificationsReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com
 
   def mark_as_read
-    notif_id= element[:data_id]
-    notification = Notification.find( notif_id)
+    notif_id = element[:data_id]
+    notification = Notification.find(notif_id)
     notification.update(read_at: (notification.read_at ? nil : Time.now))
   end
 
   def mark_all_as_read
-    Notification.where(recipient_id: element[:data_id]).update_all read_at: Time.now 
+    Notification.where(recipient_id: element[:data_id]).update_all read_at: Time.now
   end
 end

@@ -44,14 +44,14 @@
 #  index_users_on_reset_password_token               (reset_password_token) UNIQUE
 #
 
-require 'faker'
+require "faker"
 FactoryBot.define do
   factory :user do
-    name { Faker::Internet.user_name(4..20).gsub(/[.]/, '') }
+    name { Faker::Internet.user_name(4..20).gsub(/[.]/, "") }
     email { Faker::Internet.email }
     password { Faker::Internet.password(min_length: 8, max_length: 20) }
-    facebook_url { 'https://facebook.com/test' }
-    github_url { 'https://github.com/test' }
+    facebook_url { "https://facebook.com/test" }
+    github_url { "https://github.com/test" }
     little_description { Faker::Lorem.sentence }
   end
 end

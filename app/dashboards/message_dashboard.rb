@@ -15,7 +15,7 @@ class MessageDashboard < Administrate::BaseDashboard
     content: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    attachement: Field::String,
+    attachement: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,34 +24,34 @@ class MessageDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  user
-  chatroom
-  read_marks
-  id
+    user
+    chatroom
+    read_marks
+    id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  user
-  chatroom
-  read_marks
-  id
-  content
-  created_at
-  updated_at
-  attachement
+    user
+    chatroom
+    read_marks
+    id
+    content
+    created_at
+    updated_at
+    attachement
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  user
-  chatroom
-  read_marks
-  content
-  attachement
+    user
+    chatroom
+    read_marks
+    content
+    attachement
   ].freeze
 
   # COLLECTION_FILTERS

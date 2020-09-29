@@ -12,10 +12,10 @@ class TagsController < ApplicationController
   def related_gifs
     @gif = Gif.new
     @most_used = tag_names
-    @related_tag = params[:tag] 
+    @related_tag = params[:tag]
     if @related_tag.present?
       @related_gifs = Gif.tagged_with(
-        @related_tag
+        @related_tag,
       )
     end
   rescue StandardError => e

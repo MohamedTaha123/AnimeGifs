@@ -8,7 +8,7 @@ class ChatsController < ApplicationController
   # GET /chats.json
   def index
     @conversation = Conversation.find(
-      params[:conversation_id]
+      params[:conversation_id],
     )
     @chats = @conversation.chats.all
   end
@@ -19,9 +19,9 @@ class ChatsController < ApplicationController
 
   # GET /chats/new
   def new
-    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:recipient])
+    @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).includes([:recipient])
 
-    @chats = @conversation.chats.order('created_at ASC')
+    @chats = @conversation.chats.order("created_at ASC")
     @chat = @conversation.chats.new
     @chat.conversation_id = @conversation.id
   end
@@ -36,10 +36,10 @@ class ChatsController < ApplicationController
     @chat.user = current_user
     respond_to do |format|
       if @chat.save
-        SendPrivateMessageJob.perform_later(@chat)    
-        format.html { redirect_to new_conversation_chat_path(@conversation)}
+        SendPrivateMessageJob.perform_later(@chat)
+        format.html { redirect_to new_conversation_chat_path(@conversation) }
         # format.js
-       
+
       else
         format.html { render :new }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class ChatsController < ApplicationController
   def update
     respond_to do |format|
       if @chat.update(chat_params)
-        format.html { redirect_to @chat, notice: 'Chat was successfully updated.' }
+        format.html { redirect_to @chat, notice: "Chat was successfully updated." }
         format.json { render :show, status: :ok, location: @chat }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class ChatsController < ApplicationController
   def destroy
     @chat.destroy
     respond_to do |format|
-      format.html { redirect_to chats_url, notice: 'Chat was successfully destroyed.' }
+      format.html { redirect_to chats_url, notice: "Chat was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -80,7 +80,7 @@ class ChatsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.find(
-      params[:conversation_id]
+      params[:conversation_id],
     )
   end
 

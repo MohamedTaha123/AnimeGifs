@@ -17,20 +17,22 @@
 #  index_comments_on_commentable_type_and_commentable_id  (commentable_type,commentable_id)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Comment, type: :model do
-  describe 'relationships' do
-    it { should belong_to(:commentable) }
-    it { should have_many(:comments) }
-    it { should belong_to(:user) }
+  describe "relationships" do
+    it { is_expected.to belong_to(:commentable) }
+    it { is_expected.to have_many(:comments) }
+    it { is_expected.to belong_to(:user) }
+
     it do
-      should validate_length_of(:body).
+      expect(subject).to validate_length_of(:body).
         is_at_most(100).
         on(:create)
     end
+
     it do
-      should validate_length_of(:body).
+      expect(subject).to validate_length_of(:body).
         is_at_least(5).
         on(:create)
     end

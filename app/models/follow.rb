@@ -19,8 +19,7 @@
 #  index_follows_on_follower_type_and_follower_id      (follower_type,follower_id)
 #
 
-class Follow < ActiveRecord::Base
-
+class Follow < ApplicationRecord
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes
 
@@ -29,7 +28,6 @@ class Follow < ActiveRecord::Base
   belongs_to :follower,   polymorphic: true
 
   def block!
-    self.update_attribute(:blocked, true)
+    update_attribute(:blocked, true)
   end
-
 end

@@ -36,27 +36,24 @@ class Gif < ApplicationRecord
   acts_as_taggable
   is_impressionable counter_cache: true, column_name: :impressions_count
 
- 
   mount_uploader :image, ImageUploader, mount_on: :image
   validates_integrity_of :image
   validates_processing_of :image
-  validates_presence_of :image
-  validates_size_of :image, maximum: 2.megabytes, message: 'should be less than 2MB'
+  validates :image, presence: true
+  validates :image, size: { maximum: 2.megabytes, message: "should be less than 2MB" }
 
   validates :label, :description, presence: true
-  validates :description, length: { minimum: 15 , maximum: 200}
+  validates :description, length: { minimum: 15, maximum: 200 }
   validates :tag_list, presence: true
   validate :has_at_least_one_tag
 
   def has_at_least_one_tag
-    errors.add(:tag_list, 'must have at least one tag') unless tag_list.present?
+    errors.add(:tag_list, "must have at least one tag") if tag_list.blank?
   end
-
-  
 
   # validates :image_path, :presence => true
 
   def default_name
-    self.image ||= File.basename(image.filename, '.*').titleize if image
+    self.image ||= File.basename(image.filename, ".*").titleize if image
   end
 end

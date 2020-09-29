@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GifsController < ApplicationController
-  before_action :set_gif, only: %i[show edit update destroy like unlike ]
+  before_action :set_gif, only: %i[show edit update destroy like unlike]
   before_action :authenticate_user!, except: %i[index show]
   include CableReady::Broadcaster
   include TagsHelper
@@ -40,7 +40,7 @@ class GifsController < ApplicationController
 
     respond_to do |format|
       if @gif.save
-        format.html { redirect_to @gif, notice: 'Gif was successfully created.' }
+        format.html { redirect_to @gif, notice: "Gif was successfully created." }
         format.json { render :show, status: :created, location: @gif }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class GifsController < ApplicationController
   def update
     respond_to do |format|
       if @gif.update(gif_params)
-        format.html { redirect_to @gif, notice: 'Gif was successfully updated.' }
+        format.html { redirect_to @gif, notice: "Gif was successfully updated." }
         format.json { render :show, status: :ok, location: @gif }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class GifsController < ApplicationController
   def destroy
     @gif.destroy
     respond_to do |format|
-      format.html { redirect_to gifs_url, notice: 'Gif was successfully destroyed.' }
+      format.html { redirect_to gifs_url, notice: "Gif was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -92,11 +92,8 @@ class GifsController < ApplicationController
       format.js
     end
   end
-  
 
   private
-
-
 
   # Use callbacks to share common setup or constraints between actions.
   def set_gif

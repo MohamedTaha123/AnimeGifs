@@ -29,8 +29,8 @@ class MessageReflex < ApplicationReflex
   def cancel_edit
     @edit_id = nil
   end
-  def update
-    Message.find_by( id: element.dataset[:id])&.update content: element[:value]
-  end
 
+  def update
+    Message.find_by(id: element.dataset[:id])&.update content: element[:value]
+  end
 end

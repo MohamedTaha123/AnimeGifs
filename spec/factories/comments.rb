@@ -19,7 +19,7 @@
 
 FactoryBot.define do
   factory :comment do
-    body { 'MyText' }
-    commentable { }
+    body { "MyText" }
+    commentable {}
   end
 end

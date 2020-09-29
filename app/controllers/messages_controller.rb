@@ -8,17 +8,19 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user_id = current_user.id
     if @message.save
-      ChatroomChannel.broadcast_to(@chatroom, render_to_string(partial: 'message', locals: { message: @message }))
-      redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
+      BroadcastToRoomJob.perform_later(@message)
+      # redirect_to chatroom_path(@message.chatroom, anchor: "message-#{@message.id}")
+      redirect_to chatroom_path(@message.chatroom, anchor: "message-#{@message.id}")
+
     else
       redirect_to chatroom_path(@chatroom)
-
     end
+    # Start BroadcastToRoomJob
   end
 
   def remove
     @chatroom = Chatroom.friendly.find(
-      params[:chatroom_id]
+      params[:chatroom_id],
     )
     @message = Message.find(params[:id])
     @message.destroy
@@ -26,12 +28,10 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to chatroom_path(@chatroom,
-                                  anchor: "message-#{@message.id}"), alert: 'Deleted'
+                                  anchor: "message-#{@message.id}"), alert: "Deleted"
       end
     end
   end
-  
-
 
   private
 

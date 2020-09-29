@@ -1,9 +1,7 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
   # config.cache_store = :redis_cache_store, {url: ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" }}
-  
- 
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -19,18 +17,19 @@ Rails.application.configure do
   config.assets.check_precompiled_asset = false
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     DEFAULT_EXPIRATION = 1.hour.to_i.freeze
-    DEFAULT_CACHE = 'cache'
-    config.cache_store = :redis_cache_store, { 
-                  url: ENV["REDIS_URL"],
-                  namespace: DEFAULT_CACHE,
-                  expires_in: DEFAULT_EXPIRATION }
+    DEFAULT_CACHE = "cache".freeze
+    config.cache_store = :redis_cache_store, {
+      url: ENV["REDIS_URL"],
+      namespace: DEFAULT_CACHE,
+      expires_in: DEFAULT_EXPIRATION
+    }
 
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -76,11 +75,8 @@ Rails.application.configure do
   #   Bullet.rails_logger = true
   #   Bullet.add_footer = true
   #   Bullet.skip_html_injection = false
-   
+
   # end
   ## Add Ngrok Support for testing pwa app
   config.hosts << /[a-z0-9]+\.ngrok\.io/
-
-  
-  
 end

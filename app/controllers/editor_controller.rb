@@ -16,7 +16,7 @@ class EditorController < ApplicationController
         format.html { redirect_to new_path }
 
       else
-        format.html { redirect_to new_path, alert: 'Can\'t Process' }
+        format.html { redirect_to new_path, alert: "Can't Process" }
       end
     end
   end
@@ -28,7 +28,7 @@ class EditorController < ApplicationController
     @image = @gif.images.create(images_params)
     # GifConvertorJob.perform_now(@image, @user)
     if @image.save
-      format.html { redirect_to root_path, notice: 'Converted Successfully' }
+      format.html { redirect_to root_path, notice: "Converted Successfully" }
 
     else
       format.html { redirect_to new_path }
@@ -39,6 +39,6 @@ class EditorController < ApplicationController
   private
 
   def images_params
-    params.require(:image).permit(:label, :description, :tag_list,images_hash: [])
+    params.require(:image).permit(:label, :description, :tag_list, images_hash: [])
   end
 end

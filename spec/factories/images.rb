@@ -16,9 +16,9 @@
 
 FactoryBot.define do
   factory :image do
-    images_hash { 'MyString' }
-    label { 'MyString' }
-    description { 'MyString' }
-    gif_id { 1222}
+    images_hash { "MyString" }
+    label { "MyString" }
+    description { "MyString" }
+    gif_id { 1222 }
   end
 end

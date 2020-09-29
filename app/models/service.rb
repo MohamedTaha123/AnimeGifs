@@ -27,7 +27,7 @@ class Service < ApplicationRecord
   belongs_to :user
 
   Devise.omniauth_configs.keys.each do |provider|
-    scope provider, ->{ where(provider: provider) }
+    scope provider, -> { where(provider: provider) }
   end
 
   def client
@@ -42,7 +42,6 @@ class Service < ApplicationRecord
     send("#{provider}_refresh_token!", super) if expired?
     super
   end
-
 
   def twitter_client
     Twitter::REST::Client.new do |config|

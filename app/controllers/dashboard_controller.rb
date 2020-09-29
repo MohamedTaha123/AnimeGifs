@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
     @followers = current_user.followers.count
 
     @user_repos = current_user.user_repos
-  rescue StandardError => e   
+  rescue StandardError => e
     Rails.logger.error(e)
   end
 end

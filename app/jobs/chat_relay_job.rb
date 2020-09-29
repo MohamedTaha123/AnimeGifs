@@ -8,7 +8,7 @@ class ChatRelayJob < ApplicationJob
     ActionCable.server.broadcast(
       # Broadcast to user/receiver private channel
       "current_user_#{conv.recipient_id}",
-      content
+      content,
     )
   end
 end

@@ -18,10 +18,10 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :chatroom
   mount_uploader :attachement, AttachementUploader
-  validates_presence_of :content,on: :create, unless: -> { attachement.present? }
+  validates :content, presence: { on: :create, unless: -> { attachement.present? } }
   accepts_nested_attributes_for :user
   acts_as_readable on: :created_at
-  validates_length_of :content, within: 10..500, on: :create, unless: -> { attachement.present? }
+  validates :content, length: { within: 10..500, on: :create, unless: -> { attachement.present? } }
   # Randomize Id
   def randomize_id
     begin

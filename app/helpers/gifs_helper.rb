@@ -13,17 +13,17 @@ module GifsHelper
 
   def like_button_for(gif)
     if current_user.nil?
-      button_to like_gif_path(gif.id), method: :put, class: 'btn btn-sm btn-outline-white' do
-        'Like'
+      button_to like_gif_path(gif.id), method: :put, class: "btn btn-sm btn-outline-white" do
+        "Like"
       end
     else
       if current_user.voted_up_on? gif
-        button_to unlike_gif_path(gif.id), method: :put, class: 'btn btn-sm btn-outline-white', remote: true do
-          'Liked'
+        button_to unlike_gif_path(gif.id), method: :put, class: "btn btn-sm btn-outline-white", remote: true do
+          "Liked"
         end
       else
-        button_to like_gif_path(gif.id), method: :put, class: 'btn btn-sm btn-outline-white', remote: true do
-          'Like'
+        button_to like_gif_path(gif.id), method: :put, class: "btn btn-sm btn-outline-white", remote: true do
+          "Like"
         end
       end
     end
@@ -31,22 +31,21 @@ module GifsHelper
 
   def follow_button_for(gif)
     if current_user.nil?
-      link_to follow_gif_path(gif, gif.user), method: :put, class: 'btn btn-info btn-sm' do
-        'Follow'
+      link_to follow_gif_path(gif, gif.user), method: :put, class: "btn btn-info btn-sm" do
+        "Follow"
       end
     else
       if current_user.following?(gif.user)
-        link_to unfollow_gif_path(gif.user), method: :put, class: 'btn btn-info btn-sm', remote: true do
-          'Followed'
+        link_to unfollow_gif_path(gif.user), method: :put, class: "btn btn-info btn-sm", remote: true do
+          "Followed"
         end
       else
-        link_to follow_gif_path(gif.user), method: :put, class: 'btn btn-info btn-sm', remote: true do
-          'Follow'
+        link_to follow_gif_path(gif.user), method: :put, class: "btn btn-info btn-sm", remote: true do
+          "Follow"
         end
       end
     end
   end
-
 
   private
 
@@ -74,9 +73,9 @@ module GifsHelper
 
   def pluralize_likes(count)
     if count > 1
-      ' like this'
+      " like this"
     else
-      ' likes this'
+      " likes this"
     end
   end
 end

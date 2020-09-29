@@ -1,26 +1,27 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Chatrooms', type: :request do
+RSpec.describe "Chatrooms", type: :request do
   let(:user) { create(:user) }
+
   before do
     sign_in user
   end
-  it 'should create a chatroom ' do
-    new_name = 'Ruby'
-    post '/chatroom', params: {
-      chatroom: { name: new_name, language: 'javascritpt' }
+
+  it "creates a chatroom" do
+    new_name = "Ruby"
+    post "/chatroom", params: {
+      chatroom: { name: new_name, language: "javascritpt" }
     }
     expect(response).to have_http_status(:found)
-    expect(Chatroom.last.name).to  eq('Ruby')
+    expect(Chatroom.last.name).to eq("Ruby")
   end
- 
 
-  it 'should show a chatroom' do
-    new_name = 'Ruby'
-    post '/chatroom', params: {
-      chatroom: { name: new_name, language: 'javascritpt' }
+  it "shows a chatroom" do
+    new_name = "Ruby"
+    post "/chatroom", params: {
+      chatroom: { name: new_name, language: "javascritpt" }
     }
     expect(response).to redirect_to(assigns(:chatroom))
     follow_redirect!

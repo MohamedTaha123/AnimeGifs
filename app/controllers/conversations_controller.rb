@@ -5,15 +5,15 @@ class ConversationsController < ApplicationController
   def index
     @users = User.where.not(id: current_user.id)
     # @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:sender]).includes([:recipient])
-    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).includes([:recipient])
+    @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).includes([:recipient])
   end
 
   def create
-    if Conversation.between(params[:sender_id], params[:recipient_id]).present?
-      @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
-    else
-      @conversation = Conversation.create!(conversation_params)
-    end
+    @conversation = if Conversation.between(params[:sender_id], params[:recipient_id]).present?
+                      Conversation.between(params[:sender_id], params[:recipient_id]).first
+                    else
+                      Conversation.create!(conversation_params)
+                    end
     redirect_to new_conversation_chat_path(@conversation)
   end
 

@@ -23,8 +23,9 @@ class GifsReflex < ApplicationReflex
   def perform
     @value = element[:value].capitalize
   end
+
   def show_followers
-    id = element['data-id']
+    id = element["data-id"]
     @followers = Gif.find(id).user.followers
   end
 end

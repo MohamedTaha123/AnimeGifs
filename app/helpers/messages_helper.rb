@@ -9,7 +9,7 @@ module MessagesHelper
   end
 
   def coderay(text)
-    text.gsub(%r{\<code( lang="(.+?)")?\>(.+?)\</code\>}m) do
+    text.gsub(%r{<code( lang="(.+?)")?>(.+?)</code>}m) do
       CodeRay.scan(Regexp.last_match(3), Regexp.last_match(2)).div(css: :class)
     end
   end
@@ -40,12 +40,12 @@ module MessagesHelper
       superscript: true
     }
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
-    #syntax_highlighter(Redcarpet::Markdown.new(rndr, options)).html_safe
+    # syntax_highlighter(Redcarpet::Markdown.new(rndr, options)).html_safe
   end
 
   def syntax_highlighter(html)
     doc = Nokogiri::HTML(html)
-    doc.search('//pre[@lang]').each do |pre|
+    doc.search("//pre[@lang]").each do |pre|
       pre.replace Albino.colorize(pre.text.rstrip, pre[:lang])
     end
     doc.to_s

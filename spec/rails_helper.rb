@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
-
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../config/environment', __dir__)
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../config/environment", __dir__)
 # Prevent database truncation if the environment is production
 if Rails.env.production?
-  abort('The Rails environment is running in production mode!')
+  abort("The Rails environment is running in production mode!")
 end
 
-require 'support/factory_bot'
-require 'support/database_cleaner'
-require 'spec_helper'
-require 'rspec/rails'
-require 'devise'
-require_relative 'support/controller_macros'
+require "support/factory_bot"
+require "support/database_cleaner"
+require "spec_helper"
+require "rspec/rails"
+require "devise"
+require_relative "support/controller_macros"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -37,9 +36,6 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include FactoryBot::Syntax::Methods
-  
-
-
 
   config.infer_spec_type_from_file_location!
 

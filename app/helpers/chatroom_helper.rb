@@ -5,7 +5,7 @@ module ChatroomHelper
     if user.messages.present?
       user.messages.includes([:chatroom]).last.chatroom
     else
-      Chatroom.order(Arel.sql('RANDOM()')).first
+      Chatroom.order(Arel.sql("RANDOM()")).first
     end
   end
 end

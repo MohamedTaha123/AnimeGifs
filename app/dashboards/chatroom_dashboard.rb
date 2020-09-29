@@ -14,7 +14,7 @@ class ChatroomDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
-    language: Field::String,
+    language: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,32 +23,32 @@ class ChatroomDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  messages
-  id
-  name
-  created_at
+    messages
+    id
+    name
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  messages
-  id
-  name
-  created_at
-  updated_at
-  slug
-  language
+    messages
+    id
+    name
+    created_at
+    updated_at
+    slug
+    language
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  messages
-  name
-  slug
-  language
+    messages
+    name
+    slug
+    language
   ].freeze
 
   # COLLECTION_FILTERS

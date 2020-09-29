@@ -8,15 +8,15 @@ module Users
     attr_reader :service, :user
 
     def facebook
-      handle_auth 'Facebook'
+      handle_auth "Facebook"
     end
 
     def twitter
-      handle_auth 'Twitter'
+      handle_auth "Twitter"
     end
 
     def github
-      handle_auth 'Github'
+      handle_auth "Github"
     end
 
     def failure
@@ -42,7 +42,7 @@ module Users
     end
 
     def auth
-      request.env['omniauth.auth']
+      request.env["omniauth.auth"]
     end
 
     def set_service
@@ -80,7 +80,7 @@ module Users
         name: auth.info.name,
         avatar: auth.info.image,
         password: Devise.friendly_token[0, 20],
-        username: auth.info.nickname
+        username: auth.info.nickname,
       )
     end
   end

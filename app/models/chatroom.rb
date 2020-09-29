@@ -21,7 +21,7 @@ class Chatroom < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  validates :language, :name , presence: true 
-  
-  validates_uniqueness_of :name,  message: "Already Exists"
+  validates :language, :name, presence: true
+
+  validates :name, uniqueness: { message: "Already Exists" }
 end

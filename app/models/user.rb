@@ -48,9 +48,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
- 
-
-  devise :invitable, :masqueradable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable , :omniauth_providers => [:github]
+  devise :invitable, :masqueradable, :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
   has_rich_text :little_description
 
   after_invitation_accepted :process_find_repos_and_assign_job
@@ -68,9 +66,9 @@ class User < ApplicationRecord
   has_many :gifs, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   has_many :services, dependent: :destroy
-  has_many :messages , dependent: :destroy
-  has_many :comments , dependent: :destroy
-  has_many :invitations, class_name: self.to_s, as: :invited_by
+  has_many :messages, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :invitations, class_name: to_s, as: :invited_by
   validates :name, presence: true
   validates :email, presence: true, 'valid_email_2/email': true
   validates :github_url, presence: false, on: :update, length: { maximum: 100 }, format: GITHUB_URL_REGEXP, allow_blank: true
@@ -87,7 +85,6 @@ class User < ApplicationRecord
       user.username = auth.info.login
       user.name = auth.info.name
     end
-    
   end
 
   # instead of deleting, indicate the user requested a delete & timestamp it
@@ -108,22 +105,23 @@ class User < ApplicationRecord
   def online?
     last_seen_at > 15.minutes.ago
   end
+
   # Fix Session Storage(Cookies)
   def authenticatable_salt
     "#{super}#{session_token}"
   end
 
   def invalidate_all_sessions!
-    self.update_attribute(:session_token, SecureRandom.hex)
+    update_attribute(:session_token, SecureRandom.hex)
   end
+
   # Get User Repos Scope
   def user_repos
-    
-      repos_hash.map do |repo|
-        repo
-      end
-  
+    repos_hash.map do |repo|
+      repo
+    end
   end
+
   def process_find_repos_and_assign_job
     FindReposAndAssignJob.perform_now(self)
   end
@@ -131,9 +129,9 @@ class User < ApplicationRecord
   # User followers
   def user_followers
     Rails.cache.fetch([cache_key, __method__], expires_in: 30.minutes) do
-      return 0 unless self.followers.present?
-      self.followers.pluck(:id).count
+      return 0 if followers.blank?
+
+      followers.pluck(:id).count
     end
   end
-  
 end

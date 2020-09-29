@@ -1,30 +1,30 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   # post 'convert/:image_id', to: 'editor#convert'
-  get 'new', to: 'editor#new'
-  post 'new' , to: 'editor#create'
+  get "new", to: "editor#new"
+  post "new", to: "editor#create"
 
-  get 'tags', to: 'tags#index'
-  get '/tagged', to: 'tags#related_gifs', as: :tagged
-  resources :conversations, only: %i[create  index] do
+  get "tags", to: "tags#index"
+  get "/tagged", to: "tags#related_gifs", as: :tagged
+  resources :conversations, only: %i[create index] do
     resources :chats, only: %i[create new]
   end
-  get 'dashboard/index'
+  get "dashboard/index"
   resources :gifs do
     member do
-      put 'like', to: 'gifs#like'
-      put 'unlike', to: 'gifs#unlike'
-      put 'follow', to: 'gifs#follow'
-      put 'unfollow', to: 'gifs#unfollow'
+      put "like", to: "gifs#like"
+      put "unlike", to: "gifs#unlike"
+      put "follow", to: "gifs#follow"
+      put "unfollow", to: "gifs#unfollow"
     end
     resources :comments
     resources :followers do
       member do
-        put 'follow', to: 'followers#follow'
-        put 'unfollow', to: 'followers#unfollow'
+        put "follow", to: "followers#follow"
+        put "unfollow", to: "followers#unfollow"
       end
     end
   end
@@ -34,13 +34,12 @@ Rails.application.routes.draw do
   resources :chatroom, only: %i[show create new] do
     resources :messages, only: %i[create] do
       member do
-        delete 'remove', to: 'messages#remove'
+        delete "remove", to: "messages#remove"
       end
     end
   end
 
   namespace :admin do
-
     resources :read_marks
 
     resources :messages
@@ -52,26 +51,26 @@ Rails.application.routes.draw do
     resources :notifications
     resources :announcements
 
-    root to: 'users#index'
+    root to: "users#index"
   end
-  get '/privacy', to: 'home#privacy'
-  get '/terms', to: 'home#terms'
-  get '/about', to: 'home#about'
+  get "/privacy", to: "home#privacy"
+  get "/terms", to: "home#terms"
+  get "/about", to: "home#about"
   authenticate :user, ->(u) { u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations',
-    sessions: 'users/sessions',
-    invitations: 'users/invitations'
+    omniauth_callbacks: "users/omniauth_callbacks",
+    registrations: "users/registrations",
+    sessions: "users/sessions",
+    invitations: "users/invitations"
   }
-  root to: 'gifs#index'
+  root to: "gifs#index"
 
-  mount ActionCable.server => '/cable'
- 
+  mount ActionCable.server => "/cable"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

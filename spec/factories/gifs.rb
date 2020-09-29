@@ -25,16 +25,15 @@
 #  fk_rails_...  (user_id => users.id)
 #
 
-
-require 'faker'
+require "faker"
 FactoryBot.define do
   factory :gif do
     description { Faker::Lorem.sentence }
-    label { 'gif1' }
+    label { "gif1" }
     user_id { Faker::Number.between(from: 0, to: 1024) }
     # user_id { create :user}
     tag_list { %w[ruby js scss] }
-    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/files/giphy.gif')) }
+    image { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/giphy.gif")) }
     language { Faker::Lorem.sentence }
   end
 end

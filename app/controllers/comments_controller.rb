@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_back fallback_location: @comment, notice: 'Your comment was successfully posted!'
+      redirect_back fallback_location: @comment, notice: "Your comment was successfully posted!"
     else
       redirect_back fallback_location: @comment, alert: "Your comment wasn't posted!"
     end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
   def find_commentable
     if params[:comment_id]
-      @commentable = Comment.find_by_id(params[:comment_id])
+      @commentable = Comment.find_by(id: params[:comment_id])
     end
     @commentable = Gif.friendly.find(params[:gif_id]) if params[:gif_id]
   end

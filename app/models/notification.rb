@@ -15,10 +15,9 @@
 #  recipient_id    :bigint
 #
 
-
 class Notification < ApplicationRecord
-  belongs_to :recipient, class_name: 'User'
-  belongs_to :actor, class_name: 'User'
+  belongs_to :recipient, class_name: "User"
+  belongs_to :actor, class_name: "User"
   belongs_to :notifiable, polymorphic: true
 
   scope :unread, -> { where(read_at: nil) }
@@ -34,7 +33,7 @@ class Notification < ApplicationRecord
           notifiable: notifiable,
           action: action,
           recipient: recipient,
-          actor: from
+          actor: from,
         )
       end
     end

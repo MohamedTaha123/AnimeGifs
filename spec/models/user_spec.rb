@@ -44,36 +44,42 @@
 #  index_users_on_reset_password_token               (reset_password_token) UNIQUE
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  describe '#new' do
-    it 'returns a new instance of user' do
+  describe "#new" do
+    it "returns a new instance of user" do
       expect(FactoryBot.create(:user)).to be_valid
     end
-    it 'is invalid without a name' do
-      expect(FactoryBot.build(:user, name: nil)).to_not be_valid
+
+    it "is invalid without a name" do
+      expect(FactoryBot.build(:user, name: nil)).not_to be_valid
     end
-    it 'is invalid without an email' do
-      expect(FactoryBot.build(:user, email: nil)).to_not be_valid
+
+    it "is invalid without an email" do
+      expect(FactoryBot.build(:user, email: nil)).not_to be_valid
     end
-    it 'is invalid without a password' do
-      expect(FactoryBot.build(:user, password: nil)).to_not be_valid
+
+    it "is invalid without a password" do
+      expect(FactoryBot.build(:user, password: nil)).not_to be_valid
     end
-    it 'is invalid if email format is wrong' do
-      expect(FactoryBot.build(:user, email: 'testemail')).to_not be_valid
+
+    it "is invalid if email format is wrong" do
+      expect(FactoryBot.build(:user, email: "testemail")).not_to be_valid
     end
-    it { should allow_value('https://github.com/test').for(:github_url) }
-    it { should allow_value('https://facobook.com/test').for(:facebook_url) }
-  end
-  describe '#uniqueness' do
-    it { should validate_uniqueness_of(:facebook_url).scoped_to(:id) }
-    it { should validate_uniqueness_of(:github_url).scoped_to(:id) }
+
+    it { is_expected.to allow_value("https://github.com/test").for(:github_url) }
+    it { is_expected.to allow_value("https://facobook.com/test").for(:facebook_url) }
   end
 
-  describe '#havemany' do
-    it { should have_many(:gifs) }
-    it { should have_many(:services) }
-    it { should have_many(:notifications) }
+  describe "#uniqueness" do
+    it { is_expected.to validate_uniqueness_of(:facebook_url).scoped_to(:id) }
+    it { is_expected.to validate_uniqueness_of(:github_url).scoped_to(:id) }
+  end
+
+  describe "#havemany" do
+    it { is_expected.to have_many(:gifs) }
+    it { is_expected.to have_many(:services) }
+    it { is_expected.to have_many(:notifications) }
   end
 end
