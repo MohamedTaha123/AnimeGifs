@@ -24,6 +24,7 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+require 'file_size_validator' 
 
 class Gif < ApplicationRecord
   belongs_to :user
@@ -37,10 +38,11 @@ class Gif < ApplicationRecord
   is_impressionable counter_cache: true, column_name: :impressions_count
 
   mount_uploader :image, ImageUploader, mount_on: :image
+
   validates_integrity_of :image
   validates_processing_of :image
-  validates :image, presence: true
-  validates :image, size: { maximum: 2.megabytes, message: "should be less than 2MB" }
+
+  validates :image, presence: true,  file_size: { maximum: 2.megabytes.to_i }
 
   validates :label, :description, presence: true
   validates :description, length: { minimum: 15, maximum: 200 }
