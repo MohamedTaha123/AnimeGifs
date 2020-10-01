@@ -11,7 +11,7 @@
                 <%= form.input :label , placeholder: "label"%>
                 <%= form.input :tag_list, value: form.object.tag_list.join(", "), class: "form-control",placeholder: "Tag list (comma separated)", hint: 'Example: Ruby On Rails,Js' %>
 
-                <%= form.button :submit, "Make Gif" , class: "btn btn-lg btn-dark", data: {disable_with: "Please wait..." } %>
+                <%= form.button :submit, "Make a Gif" , class: "btn btn-lg btn-block btn-warning", data: {disable_with: "Please wait..." } %>
 
             <% end %>
     

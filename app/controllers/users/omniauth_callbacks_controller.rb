@@ -74,14 +74,16 @@ module Users
       }
     end
 
-    def create_user
-      User.create(
-        email: auth.info.email,
-        name: auth.info.name,
-        avatar: auth.info.image,
-        password: Devise.friendly_token[0, 20],
-        username: auth.info.nickname,
-      )
-    end
+    def create_user 
+      User.where(email: auth.email).first_or_create! do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0, 20]
+        user.username = auth.info.login
+        user.name = auth.info.name
+      end
+    rescue ActiveRecord::RecordInvalid => e
+       flash["alert"] = "Something Bad happened !"
+       redirect_to new_user_session_path
+    end 
   end
 end
