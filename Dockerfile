@@ -32,7 +32,6 @@ RUN bundle check || bundle install
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
 RUN yarn install --check-files
 
 COPY . ./ 

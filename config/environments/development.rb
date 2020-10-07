@@ -72,5 +72,6 @@ Rails.application.configure do
   #   Bullet.skip_html_injection = false
 
   # end
- 
+  # Disable Check for Yarn
+  config.webpacker.check_yarn_integrity = false
 end
