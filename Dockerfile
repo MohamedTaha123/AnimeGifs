@@ -1,6 +1,5 @@
 
 FROM ruby:2.5.1
-
 ENV BUNDLER_VERSION=2.1.4
 
 # Install dependencies
@@ -33,6 +32,7 @@ RUN bundle check || bundle install
 
 COPY package.json yarn.lock ./
 
+RUN yarn install
 RUN yarn install --check-files
 
 COPY . ./ 
