@@ -1,6 +1,6 @@
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDISTOGO_URL") %>
+  url: <%= ENV["REDISTOGO_URL"] %>
   channel_prefix: deploy_app_to_heroku_production
 
 development:

@@ -3,19 +3,22 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start();
+import Rails from "@rails/ujs";
+Rails.start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("local-time").start();
-require("jquery");
+// require("jquery");
+// import $ from 'jquery';
+// global.$ = jQuery;
 
 require('@client-side-validations/client-side-validations');
 require('@client-side-validations/simple-form/dist/simple-form.bootstrap4');
 
-import $ from 'jquery';
+
 import  '../../assets/javascripts/serviceworker-companion.js' ;
-global.$ = jQuery;
+
 
 window.Rails = Rails;
 
