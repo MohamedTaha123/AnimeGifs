@@ -3,27 +3,25 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs";
-Rails.start();
+require("@rails/ujs").start()
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("local-time").start();
-// require("jquery");
-// import $ from 'jquery';
-// global.$ = jQuery;
-
 require('@client-side-validations/client-side-validations');
 require('@client-side-validations/simple-form/dist/simple-form.bootstrap4');
-
-
-import  '../../assets/javascripts/serviceworker-companion.js' ;
-
-
-window.Rails = Rails;
-
+require('jquery');
 require('bootstrap');
 require('data-confirm-modal');
+
+import  '../../assets/javascripts/serviceworker-companion.js' ;
+import "controllers";
+
+window.Rails = Rails;
+window.jQuery = $;
+window.$ = $;
+
+
 
 
 $(document).on("turbolinks:load", () => {
@@ -40,4 +38,4 @@ require("@rails/actiontext");
 Notification.requestPermission().then(function (result) {})
 
 
-import "controllers"
+
