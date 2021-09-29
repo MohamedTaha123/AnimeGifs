@@ -16,7 +16,7 @@
     "bootstrap-social": "^5.1.1",
     "cable_ready": "^4.1.2",
     "data-confirm-modal": "^1.6.2",
-    "datatables.net": "^1.10.20",
+    "datatables.net": "^1.11.3",
     "dropzone": "^5.7.0",
     "es6-promise": "^4.2.8",
     "expose-loader": "^0.7.5",
