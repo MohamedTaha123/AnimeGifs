@@ -103,7 +103,7 @@ gem "redcarpet", "~> 3.5"
 gem "rmagick", "~> 4.1", ">= 4.1.2"
 gem 'rouge', '~> 3.23'
 gem "serviceworker-rails"
-gem "sidekiq", "~> 6.0", ">= 6.0.3"
+gem "sidekiq", "~> 6.4"
 gem "simple_form", "~> 5.0", ">= 5.0.2"
 gem "simple_form_fancy_uploads"
 gem "sitemap_generator", "~> 6.0", ">= 6.0.1"
